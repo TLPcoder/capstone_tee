@@ -7,27 +7,32 @@ export default class PostList extends Component {
         super(props);
 
         this.state = {
-            posts: [
-                'post 1',
-                'post 2',
-                'post 3',
-                'post 4',
-                'post 5',
-                'post 6'
-            ]
+            posts: []
         };
 
-        getFrontPage().then((redditData) => {
-            console.log(redditData);
-        })
+        // getFrontPage().then((redditData) => {
+        //     console.log(redditData);
+        // })
     }
 
     renderPosts() {
         var key = 0;
         var posts = this.state.posts;
 
+        var redditData = getFrontPage()
+            .then((redditData) => {
+                this.setState({
+                    posts: redditData.data.children
+                });
+            })
+
+        if (this.state.posts.length === 0) {
+            return <h3>Loading...</h3>
+        }
         var postComponents = posts.map((post) => {
-            return (<Post key={key++} postText={post}/>)
+            let {title} = post.data;
+
+            return (<Post key={key++} postText={title}/>)
         })
 
         return postComponents
