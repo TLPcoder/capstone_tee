@@ -10,21 +10,22 @@ export default class PostList extends Component {
             posts: []
         };
 
-        // getFrontPage().then((redditData) => {
-        //     console.log(redditData);
-        // })
+        this.renderPosts = this.renderPosts.bind(this)
+        this.setFrontPage();
     }
 
-    renderPosts() {
-        var key = 0;
-        var posts = this.state.posts;
-
+    setFrontPage() {
         var redditData = getFrontPage()
             .then((redditData) => {
                 this.setState({
                     posts: redditData.data.children
                 });
-            })
+            });
+    }
+
+    renderPosts() {
+        var key = 0;
+        var posts = this.state.posts;
 
         if (this.state.posts.length === 0) {
             return <h3>Loading...</h3>
@@ -41,7 +42,6 @@ export default class PostList extends Component {
     render() {
         return (
             <div>
-                <p>This is the post list component</p>
                 {this.renderPosts()}
             </div>
         );
