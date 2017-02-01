@@ -12,6 +12,7 @@ exports.seed = function(knex, Promise) {
             username: 'TPslicer',
             email: 'trevor@gmail.com',
             hashed_password: 'password',
+            zip:94030,
             created_at: new Date('2017-01-29 14:26:16 UTC'),
             updated_at: new Date('2017-01-29 14:26:16 UTC')
         }),
@@ -22,6 +23,7 @@ exports.seed = function(knex, Promise) {
             username: 'Gary',
             email: 'gary@gmail.com',
             hashed_password: 'password',
+            zip:94030,
             created_at: new Date('2017-01-29 14:26:16 UTC'),
             updated_at: new Date('2017-01-29 14:26:16 UTC')
         }),
@@ -32,6 +34,7 @@ exports.seed = function(knex, Promise) {
             username: 'BP',
             email: 'brandon@gmail.com',
             hashed_password: 'password',
+            zip:94030,
             created_at: new Date('2017-01-29 14:26:16 UTC'),
             updated_at: new Date('2017-01-29 14:26:16 UTC')
         })

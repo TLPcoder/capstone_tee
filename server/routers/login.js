@@ -31,16 +31,35 @@ router.post('/createAccount', function(req, res) {
             hashed_password: newUser.hashed_password
         })
         .then(function(data) {
-            if (!req.cookies.id) {
-                console.log("just gave you a cookie");
-                res.cookie('id', data[0].id, {
-                    httpOnly: true
-                });
-            } else {
-                console.log("for some reason you have a cookie");
-            }
-            newUser.unhashPassword(body.password);
-            res.json(data);
+            console.log(data);
+            var payload = {
+                "id": data[0].id,
+                "username": data[0].username,
+                "name": `${data[0].first_name} ${data[0].last_name}`,
+            };
+            var secret = 'GOLF';
+            jwt.encode(secret, payload, function(err, token) {
+                if (err) {
+                    console.error(err.name, err.message);
+                } else {
+                    console.log(token);
+
+                    // decode
+                    jwt.decode(secret, token, function(err_, decodedPayload, decodedHeader) {
+                        if (err) {
+                            console.error(err.name, err.message);
+                        } else {
+                            console.log("decodedPayload", decodedPayload, "decodedHeader", decodedHeader);
+                            res.json({
+                                'Access-Control-Allow-Origin': '*',
+                                'Content-Type': 'multipart/form-data',
+                                payload: decodedPayload,
+                                decodedHeader: decodedHeader
+                            });
+                        }
+                    });
+                }
+            });
         });
     // res.json(body);
 });
