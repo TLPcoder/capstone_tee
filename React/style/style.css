@@ -1,0 +1,75 @@
+.app {
+    width: 100%;
+}
+
+#login-nav-bar {
+    width: 100%;
+    margin: auto;
+    height: 10%;
+    text-align: left;
+    color: white;
+    font-size: 2em;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: #4CAF50;
+}
+.title-log-login{
+    margin-left: 20px;
+    margin-top: 0;
+}
+
+.login {
+    width: 31%;
+    height: 20px;
+    margin: auto;
+    margin-top: 25px;
+    text-align: center;
+    margin-left: 34%;
+    margin-right: 32%;
+    border-radius: 50px;
+}
+
+
+.login-container {
+    background-color: white;
+    /*margin-top: 270px;*/
+    margin-left: 37%;
+    margin-right: 37%;
+    border-radius: 10px;
+    height: 220px;
+    border:black solid 1px;
+    position: relative;
+    top:270px;
+}
+
+.loginSubmit {
+    background-color: #4CAF50;
+    /* Green */
+    /*font-size: 16px;*/
+    font-size: 1.0vw;
+    border: none;
+    color: white;
+    padding: 2% 8%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 37%;
+    margin-right: 38%;
+    margin-bottom: 20px;
+}
+
+.create-account-a{
+    margin-left: 35%;
+    font-size: 1.3vw;
+}
+
+.login-page-container {
+    height:100vh;
+    background-image: url('https://www.proceilingtiles.com/images/P/Cypress-Point-CA-08-003-001.jpg');
+    background-repeat: no-repeat;
+}
+body{
+    margin: 0;
+}

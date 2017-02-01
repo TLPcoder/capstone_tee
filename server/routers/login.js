@@ -4,6 +4,7 @@ const router = express.Router();
 const knex = require('../knex');
 const bcrypt = require('bcrypt');
 const User = require('../models/users');
+var jwt = require('json-web-token');
 
 
 router.get("/", function(req, res) {
@@ -52,7 +53,11 @@ router.get('/cookie', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
+    console.log("WHOS YOUR?!");
+
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
     var body = req.body;
+    console.log("body", body);
     console.log("cookies", req.cookies);
     if (body.password === 'password') {
         console.log("should be here for nonpasswords");
@@ -62,33 +67,41 @@ router.post('/login', function(req, res) {
                 hashed_password: body.password
             })
             .then(function(data) {
-                if (data.length === 0) {
-                    res.json({
-                        member: false,
-                        cookie: false
-                    });
-                }
-                if (!req.cookies.id) {
-                    console.log("just gave you a cookie");
-                    res.cookie('id', data[0].id, {
-                        httpOnly: true
-                    });
-                } else {
-                    console.log("you have a cookie");
-                    res.json({
-                        member: true,
-                        id: req.cookies.id
-                    });
-                }
-                res.render('../views/logout');
+                console.log(data);
+                var payload = {
+                    "id": data[0].id,
+                    "username": data[0].username,
+                    "name": `${data[0].first_name} ${data[0].last_name}`,
+                };
+                var secret = 'GOLF';
+                jwt.encode(secret, payload, function(err, token) {
+                    if (err) {
+                        console.error(err.name, err.message);
+                    } else {
+                        console.log(token);
+
+                        // decode
+                        jwt.decode(secret, token, function(err_, decodedPayload, decodedHeader) {
+                            if (err) {
+                                console.error(err.name, err.message);
+                            } else {
+                                console.log("decodedPayload", decodedPayload, "decodedHeader", decodedHeader);
+                                res.json({
+                                    'Access-Control-Allow-Origin': '*',
+                                    'Content-Type': 'multipart/form-data',
+                                    payload: decodedPayload,
+                                    decodedHeader: decodedHeader
+                                });
+                            }
+                        });
+                    }
+                });
             });
     } else {
         knex('users')
             .returning('*')
             .where('username', body.username)
             .then(function(data) {
-                console.log("please be true:",
-                    bcrypt.compareSync(body.password, data[0].hashed_password));
                 var userExist = bcrypt.compareSync(body.password, data[0].hashed_password);
                 if (userExist) {
                     knex('users').returning('*')
@@ -96,26 +109,35 @@ router.post('/login', function(req, res) {
                             username: body.username
                         })
                         .then(function(userData) {
-                            if (userData.length === 0) {
-                                res.json({
-                                    member: false,
-                                    cookie: false
-                                });
-                            }
-                            if (!req.cookies.id) {
-                                console.log("just gave you a cookie");
-                                res.cookie('id', userData[0].id, {
-                                    httpOnly: true
-                                });
-                                console.log(req.cookies);
-                            } else {
-                                console.log("you have a cookie");
-                                res.json({
-                                    member: true,
-                                    cookie: req.cookies.id
-                                });
-                            }
-                            res.redirect('/login/cookie');
+                            console.log(userData);
+                            var payload = {
+                                "id": userData[0].id,
+                                "username": userData[0].username,
+                                "name": `${userData[0].first_name} ${userData[0].last_name}`,
+                            };
+                            var secret = 'GOLF';
+                            jwt.encode(secret, payload, function(err, token) {
+                                if (err) {
+                                    console.error(err.name, err.message);
+                                } else {
+                                    console.log(token);
+
+                                    // decode
+                                    jwt.decode(secret, token, function(err_, decodedPayload, decodedHeader) {
+                                        if (err) {
+                                            console.error(err.name, err.message);
+                                        } else {
+                                            console.log("decodedPayload", decodedPayload, "decodedHeader", decodedHeader);
+                                            res.json({
+                                                'Access-Control-Allow-Origin': 'http://localhost:8080',
+                                                'Content-Type': 'multipart/form-data',
+                                                payload: decodedPayload,
+                                                decodedHeader: decodedHeader
+                                            });
+                                        }
+                                    });
+                                }
+                            });
                         });
                 } else {
                     res.json({
