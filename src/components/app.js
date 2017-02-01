@@ -1,14 +1,19 @@
+'use strict';
 import React, {Component} from 'react';
-import Nav from './Nav';
-import PostList from './PostList';
+import Login from './login';
+import NavLogin from './nav-login'
 
 export default class App extends Component {
+    constructor(props){
+        super(props);
+    }
     render() {
         return (
-            <div>
-                <div>React simple starter</div>
-                <Nav/>
-                <PostList/>
+            <div className = "login-page-container">
+                <NavLogin/>
+                <div className = 'login-container'>
+                    <Login></Login>
+                </div>
             </div>
         );
     }
