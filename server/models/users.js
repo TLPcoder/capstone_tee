@@ -18,9 +18,6 @@ class User {
         console.log("your password works!", bcrypt.compareSync(password, this.hashed_password));
         return bcrypt.compareSync(password, this.hashed_password);
     }
-    password() {
-        return this.hashed_password;
-    }
 }
 
 module.exports = User;
