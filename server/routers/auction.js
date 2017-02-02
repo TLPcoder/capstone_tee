@@ -16,6 +16,16 @@ router.get('/', function(req, res) {
         });
 });
 
+router.get('/:id', function(req, res){
+    var id = req.params.id;
+    knex('auction')
+    .innerJoin('courses', 'courses.id', 'auction.course_id')
+    .where('auction.id', id)
+    .then(function(data){
+        res.json(data);
+    });
+})
+
 router.get('/course/:id', function(req,res){
     var id =req.params.id;
     knex('auction')

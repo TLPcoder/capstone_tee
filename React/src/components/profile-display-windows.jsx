@@ -14,7 +14,6 @@ class DisplayWindow extends Component{
         this.getWindowData();
     }
     getWindowData(){
-        console.log('url', this.props.url);
         var url = this.props.url;
         fetch(url)
         .then((promise) =>{
@@ -33,9 +32,12 @@ class DisplayWindow extends Component{
         var key = 0;
         var json = this.state.json;
         var all = json.map(function(element){
-            console.log("hello", element);
             key++;
-            return <CreateCard key = {key} data={element}/>
+            if(element.auction_id){
+                return <CreateCard key = {key} dataAuction={element}/>
+            }else{
+                return <CreateCard key = {key} data={element}/>
+            }
         })
         if(!json.length){
             return (<h1></h1>)

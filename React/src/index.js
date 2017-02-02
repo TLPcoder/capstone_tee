@@ -16,7 +16,7 @@ ReactDOM.render(
             <Route path='createAccount' component={CreateAccount}></Route>
             <Route path='login' component={Login}></Route>
             <Route path='profile' component={ProfileMain}></Route>
-            <Route path='courseAuction' component={CourseAuction}></Route>
+            <Route path='courseAuction/:id' component={CourseAuction}></Route>
         </Route>
     </Router>
   , document.querySelector('.app'));
