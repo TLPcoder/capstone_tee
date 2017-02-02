@@ -1,5 +1,7 @@
 'use strict';
 import React, {Component} from 'react';
+import NavLogin from './nav-login';
+import Link from 'react-router';
 
 class Login extends Component {
     constructor(props) {
@@ -62,12 +64,16 @@ class Login extends Component {
         return data;
     }
     render() {
+        console.log(this.props);
         return (
-            <div>
-                <input className = "login" type="text" onChange={this.getDataFromUsername} placeholder= "username"/>
-                <input className = "login" type="password" onChange={this.getDataFromPassword}placeholder="password"/>
-                <input className = 'loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
-                <a className = "create-account-a" href="">Create Account</a>
+            <div className = "login-page-container">
+                <NavLogin/>
+                <div className = 'login-container'>
+                    <input className = "login" type="text" onChange={this.getDataFromUsername} placeholder= "username"/>
+                    <input className = "login" type="password" onChange={this.getDataFromPassword}placeholder="password"/>
+                    <input className = 'loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
+                    <a className = "create-account-a" href="http://localhost:8080/#/createAccount">Create Account</a>
+                </div>
             </div>
         )
     }

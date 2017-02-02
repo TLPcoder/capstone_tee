@@ -1,6 +1,8 @@
 'use strict';
 import React, {Component} from 'react';
 import Alert from 'react-s-alert';
+import NavLogin from './nav-login';
+
 // import 'react-s-alert/dist/s-alert-default.css';
 
 class CreateAccount extends Component {
@@ -146,14 +148,17 @@ class CreateAccount extends Component {
     }
     render() {
         return (
-            <div>
-                <input className="login" type="text" placeholder="first name" onChange={this.getFirstName}/>
-                <input className="login" type="text" placeholder="last name" onChange={this.getLastName}/>
-                <input className="login" type="text" placeholder="email" onChange={this.getEmail}/>
-                <input className="login" type="text" onChange={this.getDataFromUsername} placeholder="username"/>
-                <input placeholder="password" className="login" type="password" onChange={this.getDataFromPassword}/>
-                <input placeholder="zip" className="login" type="text" onChange={this.getZip}/>
-                <input className='loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
+            <div className="create-account-page-container">
+                <NavLogin/>
+                <div className='create-account-container'>
+                    <input className="login" type="text" placeholder="first name" onChange={this.getFirstName}/>
+                    <input className="login" type="text" placeholder="last name" onChange={this.getLastName}/>
+                    <input className="login" type="text" placeholder="email" onChange={this.getEmail}/>
+                    <input className="login" type="text" onChange={this.getDataFromUsername} placeholder="username"/>
+                    <input placeholder="password" className="login" type="password" onChange={this.getDataFromPassword}/>
+                    <input placeholder="zip" className="login" type="text" onChange={this.getZip}/>
+                    <input className='loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
+                </div>
             </div>
         )
     }
