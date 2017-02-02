@@ -1,5 +1,7 @@
 'use strict';
 import React, {Component} from 'react';
+import Alert from 'react-s-alert';
+// import 'react-s-alert/dist/s-alert-default.css';
 
 class CreateAccount extends Component {
     constructor(props) {
@@ -10,7 +12,8 @@ class CreateAccount extends Component {
                 lastName: '',
                 userName: '',
                 email: '',
-                password: ''
+                password: '',
+                zip: null
             }
         };
         this.fetchJWT = this.fetchJWT.bind(this);
@@ -21,6 +24,7 @@ class CreateAccount extends Component {
         this.getFirstName = this.getFirstName.bind(this);
         this.getLastName = this.getLastName.bind(this);
         this.getEmail = this.getEmail.bind(this);
+        this.getZip = this.getZip.bind(this);
     }
     fetchJWT() {
         console.log(this.state);
@@ -31,42 +35,51 @@ class CreateAccount extends Component {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                first_name: this.state.loginData.userName,
+                first_name: this.state.loginData.firstName,
                 last_name: this.state.loginData.lastName,
-                user_name: this.state.loginData.username,
-                email:this.state.loginData.email,
+                username: this.state.loginData.userName,
+                email: this.state.loginData.email,
+                zip: this.state.loginData.zip,
                 password: this.state.loginData.password
             })
-        }).then(function(res) {
+        }).then((res) => {
             return res.json();
-        }).then(function(resData) {
-            console.log("data", resData);
-            sessionStorage.setItem("golfMember", resData.payload.id);
-            console.log("set JWT");
+        }).then((resData) => {
+            console.log("resData.usernameAvailable", resData.usernameNotAvailable);
+            if (resData.usernameNotAvailable) {
+                alert('The username you have entered is taken');
+                // Alert.error('The username you have entered is taken');
+            } else {
+                console.log("data", resData);
+                sessionStorage.setItem("golfMember", resData.payload.id);
+                console.log("set JWT");
+            }
         }).catch(function(res) {
             console.log(res);
         });
     }
-    getFirstName(event){
+    getFirstName(event) {
         console.log("first", event.target.value);
         this.setState({
             loginData: {
-                firstName:event.target.value,
-                lastName:this.state.loginData.lastName,
+                firstName: event.target.value,
+                lastName: this.state.loginData.lastName,
                 userName: this.state.loginData.userName,
                 email: this.state.loginData.email,
+                zip: this.state.loginData.zip,
                 password: this.state.loginData.password
             }
         });
     }
-    getLastName(event){
+    getLastName(event) {
         console.log("last", event.target.value);
         this.setState({
             loginData: {
-                firstName:this.state.loginData.firstName,
-                lastName:event.target.value,
+                firstName: this.state.loginData.firstName,
+                lastName: event.target.value,
                 userName: this.state.loginData.userName,
                 email: this.state.loginData.email,
+                zip: this.state.loginData.zip,
                 password: this.state.loginData.password
             }
         });
@@ -75,22 +88,24 @@ class CreateAccount extends Component {
         console.log("username", event.target.value);
         this.setState({
             loginData: {
-                firstName:this.state.loginData.firstName,
-                lastName:this.state.loginData.lastName,
+                firstName: this.state.loginData.firstName,
+                lastName: this.state.loginData.lastName,
                 userName: event.target.value,
                 email: this.state.loginData.email,
+                zip: this.state.loginData.zip,
                 password: this.state.loginData.password
             }
         });
     }
-    getEmail(event){
+    getEmail(event) {
         console.log("email", event.target.value);
         this.setState({
             loginData: {
-                firstName:this.state.loginData.firstName,
-                lastName:this.state.loginData.lastName,
+                firstName: this.state.loginData.firstName,
+                lastName: this.state.loginData.lastName,
                 userName: this.state.loginData.userName,
                 email: event.target.value,
+                zip: this.state.loginData.zip,
                 password: this.state.loginData.password
             }
         });
@@ -99,11 +114,25 @@ class CreateAccount extends Component {
         console.log("pass", event.target.value);
         this.setState({
             loginData: {
-                firstName:this.state.loginData.firstName,
-                lastName:this.state.loginData.lastName,
+                firstName: this.state.loginData.firstName,
+                lastName: this.state.loginData.lastName,
                 userName: this.state.loginData.userName,
                 email: this.state.loginData.email,
+                zip: this.state.loginData.zip,
                 password: event.target.value
+            }
+        });
+    }
+    getZip(event) {
+        console.log("zip", event.target.value);
+        this.setState({
+            loginData: {
+                firstName: this.state.loginData.firstName,
+                lastName: this.state.loginData.lastName,
+                userName: this.state.loginData.userName,
+                email: this.state.loginData.email,
+                password: this.state.loginData.password,
+                zip: event.target.value
             }
         });
     }
@@ -123,8 +152,8 @@ class CreateAccount extends Component {
                 <input className="login" type="text" placeholder="email" onChange={this.getEmail}/>
                 <input className="login" type="text" onChange={this.getDataFromUsername} placeholder="username"/>
                 <input placeholder="password" className="login" type="password" onChange={this.getDataFromPassword}/>
+                <input placeholder="zip" className="login" type="text" onChange={this.getZip}/>
                 <input className='loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
-                <a className="create-account-a" href="">Create Account</a>
             </div>
         )
     }

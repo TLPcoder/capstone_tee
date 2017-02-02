@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary();
         table.string('first_name').notNullable().defaultTo('');
         table.string('last_name').notNullable().defaultTo('');
-        table.string('username').notNullable().defaultTo('').unique();
+        table.string('username').notNullable().unique();
         table.string('email').notNullable().unique();
         table.specificType('hashed_password', 'char(60)').notNullable();
         table.integer('zip').notNullable();
