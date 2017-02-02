@@ -19,7 +19,6 @@ class Login extends Component {
         this.readJWT = this.readJWT.bind(this);
     }
     fetchJWT() {
-        console.log(this.state);
         fetch(`http://localhost:3000/login/login`, {
             method: "POST",
             headers: {
@@ -33,12 +32,14 @@ class Login extends Component {
             console.log("data", resData);
             sessionStorage.setItem("golfMember", resData.payload.id);
             console.log("set JWT");
-        }).catch(function(res) {
-            console.log(res);
+            window.location.hash = '/profile';
+        }).catch(function(err) {
+            console.log("error", err);
         });
+        console.log('Your username or password my be incorrect');
+        alert('Your username or password my be incorrect');
     }
     getDataFromUsername(event) {
-        console.log("username", event.target.value);
         this.setState({
             loginData: {
                 username: event.target.value,
@@ -47,7 +48,6 @@ class Login extends Component {
         });
     }
     getDataFromPassword(event) {
-        console.log("password", event.target.value);
         this.setState({
             loginData: {
                 username: this.state.loginData.username,
@@ -64,7 +64,6 @@ class Login extends Component {
         return data;
     }
     render() {
-        console.log(this.props);
         return (
             <div className = "login-page-container">
                 <NavLogin/>

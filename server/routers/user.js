@@ -34,4 +34,12 @@ router.get('/bids/:id', function(req,res){
     });
 });
 
+router.get('/:id',function(req,res){
+    var id = req.params.id;
+    knex('users').where('users.id', id)
+    .then(function(data){
+        res.json(data);
+    });
+});
+
 module.exports = router;
