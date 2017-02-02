@@ -1,7 +1,8 @@
 'use strict';
 import React, {Component} from 'react';
 import Login from './login';
-import NavLogin from './nav-login'
+import CreateAccount from './create-account';
+import {Router, Route, IndexRoute, hashHistory, Link} from 'react-router';
 
 export default class App extends Component {
     constructor(props){
@@ -9,11 +10,8 @@ export default class App extends Component {
     }
     render() {
         return (
-            <div className = "login-page-container">
-                <NavLogin/>
-                <div className = 'login-container'>
-                    <Login></Login>
-                </div>
+            <div>
+                {this.props.children}
             </div>
         );
     }

@@ -73,7 +73,7 @@ router.get('/:postalcode/:distance/', function(req, res) {
                 zipCodeCity.push(city.placeName);
             });
             console.log("zip codes", zipCodeCity);
-            knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.top_bid', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+            knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.top_bid', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
                 .from('auction')
                 .innerJoin('courses', 'courses.id', 'auction.course_id')
                 .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -167,7 +167,7 @@ router.get('/:postalcode/:distance/:sort', function(req, res) {
                 zipCodeCity.push(city.placeName);
             });
             console.log("zip codes", zipCodeCity);
-            knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.top_bid', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+            knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.top_bid', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
                 .from('auction')
                 .innerJoin('courses', 'courses.id', 'auction.course_id')
                 .innerJoin('users', 'users.id', 'auction.owner_id')

@@ -20,27 +20,56 @@ router.get('/createAccount', function(req, res) {
 
 router.post('/createAccount', function(req, res) {
     var body = req.body;
-    var newUser = new User(body.first_name, body.last_name, body.username, body.email, body.password);
+    var newUser = new User(body.first_name, body.last_name, body.username, body.email, body.password, body.zip);
     newUser.passwordHash(body.password);
-
-    knex('users').returning('*').insert({
-            first_name: newUser.first_name,
-            last_name: newUser.last_name,
-            username: newUser.username,
-            email: newUser.email,
-            hashed_password: newUser.hashed_password
-        })
+    knex('users').where('users.username', newUser.username)
         .then(function(data) {
-            if (!req.cookies.id) {
-                console.log("just gave you a cookie");
-                res.cookie('id', data[0].id, {
-                    httpOnly: true
+            if(data.length !== 0) {
+                res.json({
+                    usernameNotAvailable: true
                 });
             } else {
-                console.log("for some reason you have a cookie");
+                knex('users').returning('*').insert({
+                        first_name: newUser.first_name,
+                        last_name: newUser.last_name,
+                        username: newUser.username,
+                        email: newUser.email,
+                        hashed_password: newUser.hashed_password,
+                        zip: newUser.zip
+                    })
+                    .then(function(data) {
+                        console.log(data);
+                        var payload = {
+                            "id": data[0].id,
+                            "username": data[0].username,
+                            "name": `${data[0].first_name} ${data[0].last_name}`,
+                        };
+                        var secret = 'GOLF';
+                        jwt.encode(secret, payload, function(err, token) {
+                            if (err) {
+                                console.error(err.name, err.message);
+                            } else {
+                                console.log(token);
+
+                                // decode
+                                jwt.decode(secret, token, function(err_, decodedPayload, decodedHeader) {
+                                    if (err) {
+                                        console.error(err.name, err.message);
+                                    } else {
+                                        console.log("decodedPayload", decodedPayload, "decodedHeader", decodedHeader);
+                                        res.json({
+                                            'Access-Control-Allow-Origin': '*',
+                                            'Content-Type': 'multipart/form-data',
+                                            payload: decodedPayload,
+                                            decodedHeader: decodedHeader
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    });
             }
-            newUser.unhashPassword(body.password);
-            res.json(data);
+            console.log(data);
         });
     // res.json(body);
 });
