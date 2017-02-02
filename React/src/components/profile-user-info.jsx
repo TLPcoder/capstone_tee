@@ -11,8 +11,10 @@ class UserInfo extends Component{
         this.getUserInfo = this.getUserInfo.bind(this);
         this.getUserInfo();
     }
-    getUserInfo(id){
-        fetch(`http://localhost:3000/user/1`)
+    getUserInfo(){
+        var id = this.props.findUser();
+        console.log('user id', id);
+        fetch(`http://localhost:3000/user/${id}`)
         .then((promise) =>{
             return promise.json();
         }).then((json)=>{

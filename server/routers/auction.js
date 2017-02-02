@@ -16,6 +16,16 @@ router.get('/', function(req, res) {
         });
 });
 
+router.get('/course/:id', function(req,res){
+    var id =req.params.id;
+    knex('auction')
+    .innerJoin('courses', 'courses.id', 'auction.course_id')
+    .where('auction.course_id', id)
+    .then(function(data){
+        res.json(data);
+    });
+});
+
 router.get('/country/:searchCountry/', function(req,res){
     var country = req.params.searchCountry;
     knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.course_id','auction.top_bid','auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')

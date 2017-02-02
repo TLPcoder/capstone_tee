@@ -14,6 +14,7 @@ class DisplayWindow extends Component{
         this.getWindowData();
     }
     getWindowData(){
+        console.log('url', this.props.url);
         var url = this.props.url;
         fetch(url)
         .then((promise) =>{

@@ -55,6 +55,7 @@ class CreateAccount extends Component {
                 console.log("data", resData);
                 sessionStorage.setItem("golfMember", resData.payload.id);
                 console.log("set JWT");
+                window.location.hash = '/profile';
             }
         }).catch(function(res) {
             console.log(res);
