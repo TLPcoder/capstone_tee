@@ -11,9 +11,8 @@ class ProfileNav extends Component{
     }
     render(){
         return(
-            <div>
+            <div id = 'profile-nav'>
                 <button onClick = {this.logout}>Logout</button>
-                <h1>NAV BAR</h1>
             </div>
         )
     }

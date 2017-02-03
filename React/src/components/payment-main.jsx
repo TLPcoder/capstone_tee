@@ -1,60 +1,67 @@
 'use strict';
 import React, {Component} from 'react';
+import MainNav from './nav-main';
+import PaymentWindow from './payment-payment-window';
+import AuctionImage from './course-auction-img';
 
 class Payment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userData: {},
+            userData: [],
+            auctionData: [],
             auctionId: this.props.params.id,
-            bid: this.props.params.bid
         };
-        console.log(this.props.params);
         this.getUserData = this.getUserData.bind(this);
-        this.changeBid = this.changeBid.bind(this);
         this.getUser = this.getUser.bind(this);
+        this.getAuctionData = this.getAuctionData.bind(this);
         this.getUserData();
+        this.getAuctionData();
+    }
+    getAuctionData(){
+        fetch(`http://localhost:3000/auction/${this.state.auctionId}`).then((promise) => {
+            return promise.json();
+        }).then((json) => {
+            this.setState({
+                userData: this.state.userData,
+                auctionData: json,
+                auctionId: this.props.params.id,
+            });
+        });
     }
     getUserData() {
         var userId = this.getUser();
-        console.log("current user id", userId);
         fetch(`http://localhost:3000/payment/userInfo/${userId}`).then((promise) => {
             return promise.json();
         }).then((json) => {
-            this.setState({userData: json, auctionId: this.props.params.id, bid: this.props.params.bid});
-        });
-
-    }
-    changeBid() {
-        fetch(`http://localhost:3000/auction/changeBid`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({id: auctionId, newBid: this.state.currentBid})
-        }).then((promise) => {
-            return promise.json();
-        }).then((json) => {
-            console.log(json)
-            this.setState({currentBid: this.state.currentBid, bidData: this.state.currentBid});
+            this.setState({
+                userData: json,
+                auctionData: this.state.auctionData,
+                auctionId: this.props.params.id,
+            });
         });
     }
     getUser() {
         return sessionStorage.getItem('golfMember');
     }
     render() {
-        if (this.state.userData.length > 0) {
+        if (this.state.userData.length > 0 && this.state.auctionData.length > 0) {
+            console.log("auction data", this.state.auctionData);
             console.log("user data", this.state.userData);
             return (
                 <div>
-                    <h1>Payment 2</h1>
+                    <MainNav/>
+                    <div>
+                        <img src={this.state.auctionData[0].image} alt="" height='300px' width='300px'/>
+                        <h4>{this.state.auctionData[0].name}</h4>
+                    </div>
+                    <PaymentWindow userData = {this.state.userData}
+                     auctionData={this.state.auctionData}/>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <h1>Payment</h1>
                 </div>
             )
         }

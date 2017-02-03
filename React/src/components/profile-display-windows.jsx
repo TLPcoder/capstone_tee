@@ -35,6 +35,9 @@ class DisplayWindow extends Component{
             key++;
             if(element.auction_id){
                 return <CreateCard key = {key} dataAuction={element}/>
+            }
+            if(element.id){
+                return <CreateCard key = {key} dataAuction={element}/>
             }else{
                 return <CreateCard key = {key} data={element}/>
             }

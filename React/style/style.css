@@ -96,3 +96,7 @@
 body{
     margin: 0;
 }
+
+#profile-nav {
+    background-color: #4CAF50; 
+}
