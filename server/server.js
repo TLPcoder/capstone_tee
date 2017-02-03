@@ -8,6 +8,7 @@ const login = require('./routers/login');
 const auction = require('./routers/auction');
 const tee_time = require('./routers/tee_time');
 const user = require('./routers/user');
+const payment = require('./routers/payment');
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
@@ -41,6 +42,7 @@ app.use('/login', login);
 app.use('/auction', auction);
 app.use('/tee_time', tee_time);
 app.use('/user', user);
+app.use('/payment', payment);
 
 
 app.listen(PORT, function(){

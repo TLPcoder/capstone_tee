@@ -204,4 +204,20 @@ router.get('/:postalcode/:distance/:sort', function(req, res) {
         });
 });
 
+router.put('/changeBid',function(req,res){
+    var newBid = req.body.newBid * 1;
+    var auctionId = req.body.id;
+    console.log(newBid);
+
+    knex.select('*').from('auction')
+    .where('id', auctionId)
+    .update({
+        'top_bid': newBid
+    })
+    .then(function(data){
+        console.log(data);
+        res.json(data);
+    });
+});
+
 module.exports = router;
