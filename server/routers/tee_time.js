@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 var knex = require('../knex');
 var fetch = require('node-fetch');
+const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDay()} 24:00:00 UTC`;
 
 router.get('/:time', function(req, res) {
     var time = req.params.time;
@@ -12,6 +13,7 @@ router.get('/:time', function(req, res) {
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+        .where('auction.auction_ends', '>',date)
         .orderBy('auction.tee_time', time)
         .then(function(data) {
             res.json(data);
@@ -27,6 +29,7 @@ router.get('/country/:searchCountry/:time', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+        .where('auction.auction_ends', '>',date)
         .where('courses.country', country)
         .orderBy('auction.tee_time', time)
         .then(function(data) {
@@ -43,6 +46,7 @@ router.get('/state/:searchState/:time', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+        .where('auction.auction_ends', '>',date)
         .where('courses.state', country)
         .orderBy('auction.tee_time', time)
         .then(function(data) {
@@ -59,6 +63,7 @@ router.get('/city/:searchCity/:time', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+        .where('auction.auction_ends', '>',date)
         .where('courses.city', country)
         .orderBy('auction.tee_time', time)
         .then(function(data) {
@@ -88,6 +93,7 @@ router.get('/:postalcode/:distance/:time', function(req, res) {
                 .innerJoin('users', 'users.id', 'auction.owner_id')
                 .innerJoin('bids', 'bids.auction_id', 'auction.id')
                 .where('bids.bid_amount', knex.raw('auction.top_bid'))
+                .where('auction.auction_ends', '>',date)
                 .whereIn('courses.city', zipCodeCity)
                 .orderBy('auction.tee_time', time)
                 .then(function(data) {
@@ -109,6 +115,7 @@ router.get('/:time/:price', function(req, res) {
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+        .where('auction.auction_ends', '>',date)
         .orderBy('auction.tee_time', time)
         .orderBy('auction.tee_time', price)
         .then(function(data) {
@@ -126,6 +133,7 @@ router.get('/country/:searchCountry/:time/:price', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+        .where('auction.auction_ends', '>',date)
         .where('courses.country', country)
         .orderBy('auction.tee_time', time)
         .orderBy('auction.tee_time', price)
@@ -144,6 +152,7 @@ router.get('/state/:searchState/:time/:price', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+        .where('auction.auction_ends', '>',date)
         .where('courses.state', country)
         .orderBy('auction.tee_time', time)
         .orderBy('auction.tee_time', price)
@@ -162,6 +171,7 @@ router.get('/city/:searchCity/:time/:price', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+        .where('auction.auction_ends', '>',date)
         .where('courses.city', country)
         .orderBy('auction.tee_time', time)
         .orderBy('auction.tee_time', price)
@@ -193,6 +203,7 @@ router.get('/:postalcode/:distance/:time/:price', function(req, res) {
                 .innerJoin('users', 'users.id', 'auction.owner_id')
                 .innerJoin('bids', 'bids.auction_id', 'auction.id')
                 .where('bids.bid_amount', knex.raw('auction.top_bid'))
+                .where('auction.auction_ends', '>',date)
                 .whereIn('courses.city', zipCodeCity)
                 .orderBy('auction.tee_time', time)
                 .orderBy('auction.tee_time', price)
