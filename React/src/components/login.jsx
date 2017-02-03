@@ -29,15 +29,13 @@ class Login extends Component {
         }).then(function(res) {
             return res.json();
         }).then(function(resData) {
-            console.log("data", resData);
             sessionStorage.setItem("golfMember", resData.payload.id);
-            console.log("set JWT");
             window.location.hash = '/profile';
         }).catch(function(err) {
             console.log("error", err);
         });
         console.log('Your username or password my be incorrect');
-        alert('Your username or password my be incorrect');
+        //alert('Your username or password my be incorrect');
     }
     getDataFromUsername(event) {
         this.setState({

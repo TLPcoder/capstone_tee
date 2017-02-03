@@ -8,6 +8,7 @@ import Home from './components/home';
 import App from './components/app';
 import ProfileMain from './components/profile-main';
 import CourseAuction from './components/course-auctions';
+import Payment from './components/payment-main';
 
 ReactDOM.render(
     <Router history={hashHistory}>
@@ -17,6 +18,7 @@ ReactDOM.render(
             <Route path='login' component={Login}></Route>
             <Route path='profile' component={ProfileMain}></Route>
             <Route path='courseAuction/:id' component={CourseAuction}></Route>
+            <Route path='payment/:id/:bid' component={Payment}></Route>
         </Route>
     </Router>
   , document.querySelector('.app'));
