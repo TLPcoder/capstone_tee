@@ -243,6 +243,7 @@ body{
     top: 0;
     left: 0;
     position: fixed;
+    z-index: 15;
     background-color: #4CAF50;
 }
 #main-nav h1{
@@ -266,4 +267,93 @@ body{
 .main-nav-button a:hover{
     text-decoration: none;
     border-bottom: solid 1px #4CAF50;
+}
+
+#auction-body-container{
+    margin:auto;
+    position:relative;
+    bottom:50px;
+    margin-top: 100px;
+    margin-left:10%;
+    margin-right:10%;
+    background-color: white;
+    border-radius: 30px;
+    padding-bottom: 50px;
+}
+#auction-container{
+    background-image: url('https://static1.squarespace.com/static/5436f6f4e4b07f1e91b331eb/t/557a259be4b028e09773e6ba/1434068393556/mlsouth.jpg?format=1500w');
+    /*background-repeat: no-repeat;*/
+    background-size:cover;
+    background-attachment: fixed;
+    padding-top: 100px;
+}
+
+.auction-bidding-box{
+    float:right;
+    border: 1px solid;
+    margin:auto;
+    width: 300px;
+    margin-top:70px;
+    background-color: #F9F9FA;
+    border-radius: 10px;
+    border: 2px #B4B7C0 solid;
+    margin-right:10%;
+}
+
+#course-auction-bid-button{
+    list-style-type: none;
+}
+#course-auction-bid-button li{
+    display: inline-block;
+}
+
+
+.course-auction-bid-buttons a{
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px
+}
+
+.course-auction-bid-buttons a:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.course-auction-text{
+    text-align: center;
+    font-size: 15px;
+}
+
+#auction-image{
+    margin-left: 1%;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+#auction-image:active{
+    border-radius: 20px;
+    width:50%;
+    height: 500px;
+    z-index: 10;
+    position: relative;
+    left: 25%;
+}
+.course-auction-description{
+
+    margin:20px 10% 0% 10%;
 }
