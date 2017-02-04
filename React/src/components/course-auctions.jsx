@@ -31,11 +31,13 @@ class CourseAuction extends Component {
             )
         } else {
             return (
-                <div>
+                <div id = "auction-container">
                     <MainNav/>
-                    <AuctionImage image={this.state.data[0].image}/>
-                    <BiddingBox data = {this.state.data[0]}/>
-                    <CourseAuctionBody data = {this.state.data[0]}/>
+                    <div id = "auction-body-container">
+                        <AuctionImage image={this.state.data[0].image}/>
+                        <BiddingBox data = {this.state.data[0]}/>
+                        <CourseAuctionBody data = {this.state.data[0]}/>
+                    </div>
                 </div>
             )
         }

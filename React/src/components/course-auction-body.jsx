@@ -6,9 +6,13 @@ class CourseAuctionBody extends Component{
         super(props);
     }
     render(){
+        var center = {
+            textAlign:'center'
+        }
         return(
             <div>
-                <p id =     "course-auction-description">{this.props.data.description}</p>
+                <h5  style={center} className="course-auction-description">Description of {this.props.data.name}</h5>
+                <p className = "course-auction-description">{this.props.data.description}</p>
             </div>
         )
     }

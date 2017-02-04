@@ -8,7 +8,7 @@ class AuctionImage extends Component{
     render(){
         console.log("image", this.props)
         return(
-            <img src={this.props.image} alt="" height='300px' width='300px'/>
+            <img id = "auction-image" src={this.props.image} alt="" height='400px' width='400px'/>
         )
     }
 }
