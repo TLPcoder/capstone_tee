@@ -20,7 +20,7 @@ router.get('/createAccount', function(req, res) {
 
 router.post('/createAccount', function(req, res) {
     var body = req.body;
-    var newUser = new User(body.first_name, body.last_name, body.username, body.email, body.password, body.zip);
+    var newUser = new User(body.first_name, body.last_name, body.username, body.email, body.password, body.zip, body.image);
     newUser.passwordHash(body.password);
     knex('users').where('users.username', newUser.username)
         .then(function(data) {
@@ -35,7 +35,8 @@ router.post('/createAccount', function(req, res) {
                         username: newUser.username,
                         email: newUser.email,
                         hashed_password: newUser.hashed_password,
-                        zip: newUser.zip
+                        zip: newUser.zip,
+                        image:newUser.image
                     })
                     .then(function(data) {
                         console.log(data);

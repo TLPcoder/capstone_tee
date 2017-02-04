@@ -10,7 +10,7 @@ class CreateCard extends Component {
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.auction_id}`;
             return (
                 <div>
-                    <img src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
+                    <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                     <a href={url}>
                         <p>{this.props.dataAuction.name}</p>
                     </a>
@@ -20,7 +20,7 @@ class CreateCard extends Component {
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.id}`;
             return (
                 <div>
-                    <img src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
+                    <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                     <a href={url}>
                         <p>{this.props.dataAuction.name}</p>
                     </a>
@@ -29,7 +29,7 @@ class CreateCard extends Component {
         }else {
             return (
                 <div>
-                    <img src={this.props.data.image} alt="" height="300px" width="300px"/>
+                    <img className = "courseImage" src={this.props.data.image} alt="" height="300px" width="300px"/>
                     <p>{this.props.data.name}</p>
                 </div>
             )

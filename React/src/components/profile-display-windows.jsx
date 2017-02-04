@@ -34,12 +34,18 @@ class DisplayWindow extends Component{
         var all = json.map(function(element){
             key++;
             if(element.auction_id){
-                return <CreateCard key = {key} dataAuction={element}/>
+                return (
+                    <li><CreateCard key = {key} dataAuction={element}/></li>
+                )
             }
             if(element.id){
-                return <CreateCard key = {key} dataAuction={element}/>
+                return (
+                    <li><CreateCard key = {key} dataAuction={element}/></li>
+                )
             }else{
-                return <CreateCard key = {key} data={element}/>
+                return (
+                    <li><CreateCard key = {key} data={element}/></li>
+                )
             }
         })
         if(!json.length){

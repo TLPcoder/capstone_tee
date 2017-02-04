@@ -67,10 +67,11 @@
 
 .login-page-container {
     height:100vh;
-    width:100%;
     background-image: url('https://www.proceilingtiles.com/images/P/Cypress-Point-CA-08-003-001.jpg');
     background-repeat: no-repeat;
-    background-size: 100%
+    /*background-size: 100%;*/
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .create-account-container{
@@ -79,10 +80,10 @@
     margin-left: 37%;
     margin-right: 37%;
     border-radius: 10px;
-    height: 400px;
+    height: 420px;
     border:black solid 1px;
     position: relative;
-    top:270px;
+    top:200px;
 }
 
 .create-account-page-container{
@@ -90,13 +91,93 @@
     /*width:100%;*/
     background-image: url('https://www.proceilingtiles.com/images/P/Cypress-Point-CA-08-003-001.jpg');
     background-repeat: no-repeat;
-    background-size: 100%
+    background-size: 100%;
 }
 
 body{
     margin: 0;
 }
 
+#profile-body-container{
+    color:white;
+    background-image: url("https://cdn2.hubspot.net/hubfs/1883407/Imported_Blog_Media/14-web1-1.jpg?t=1485644052965");
+    background-repeat: no-repeat;
+    /*background-size: 100%;*/
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#profile-nav-buttons-ul{
+    list-style-type: none;
+    margin-top: 50px;
+    float:right;
+}
+.profile-nav-button{
+    margin-top: 20px;
+    display: inline;
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: white;
+    margin-right:5px;
+}
+.profile-nav-button a{
+    text-decoration: none;
+}
+.profile-nav-button a:hover{
+    text-decoration: none;
+    border-bottom: solid 1px #4CAF50;
+}
 #profile-nav {
-    background-color: #4CAF50; 
+    width: 100%;
+    margin: auto;
+    height: 10%;
+    color: white;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: #4CAF50;
+}
+#profile-nav h1{
+    margin: auto;
+    margin-top:20px;
+    float:left;
+}
+.headshot{
+    border-radius: 50%;
+    margin: auto;
+    margin-top:20px;
+    margin-left:5%;
+    text-align: center;
+}
+#profile-container{
+    margin:auto;
+    margin-top:76px;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+#profile-container ul{
+    margin:auto;
+    list-style-type: none;
+}
+#profile-container li{
+    margin:auto;
+    margin-right: 20px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.profile-bids{
+    width:100%;
+    height:350px;
+    border-radius: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background-color: #F9F9FA;
+    border:solid 2px #B4B7C0;
+}
+
+.courseImage{
+    border-radius: 5px;
 }

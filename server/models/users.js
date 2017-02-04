@@ -2,13 +2,14 @@
 var bcrypt = require('bcrypt');
 
 class User {
-    constructor(first_name, last_name, username, email, hashed_password, zip) {
+    constructor(hashed_password,email,image,zip,first_name, last_name, username) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
         this.email = email;
-        this.zip = zip
+        this.zip = zip;
         this.hashed_password = hashed_password;
+        this.image = image;
     }
     passwordHash(password) {
         //const salt = bcrypt.genSaltSync(10);

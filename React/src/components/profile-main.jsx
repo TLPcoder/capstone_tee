@@ -10,7 +10,7 @@ class ProfileMain extends Component {
         super(props);
         this.getUserId = this.getUserId.bind(this);
     }
-    getUserId(){
+    getUserId() {
         var data = sessionStorage.getItem('golfMember');
         return data;
     }
@@ -18,21 +18,37 @@ class ProfileMain extends Component {
     render() {
         var userId = this.getUserId();
         console.log("session", userId);
-        if(userId === null){
-            return(
-                <a href="http://localhost:8080/#/login"><h1>Login</h1></a>
+        if (userId === null) {
+            return (
+                <a href="http://localhost:8080/#/login">
+                    <h1>Login</h1>
+                </a>
             )
         }
         return (
-            <div>
+            <div id ="profile-body-container">
                 <ProfileNav/>
-                <UserInfo findUser = {this.getUserId}/>
-                <h1>Bids</h1>
-                <DisplayWindow url={`http://localhost:3000/user/bids/${userId}`}/>
-                <h1>favorites</h1>
-                <DisplayWindow                         url={`http://localhost:3000/user/favorites/${userId}`}/>
-                <h1>Current</h1>
-                <DisplayWindow url={`http://localhost:3000/auction`}/>
+                <div id="profile-container">
+                    <UserInfo findUser={this.getUserId}/>
+                    <h1>Bids</h1>
+                    <div className="profile-bids">
+                        <ul>
+                            <DisplayWindow url={`http://localhost:3000/user/bids/${userId}`}/>
+                        </ul>
+                    </div>
+                    <h1>Favorites</h1>
+                    <div className="profile-bids">
+                        <ul>
+                            <DisplayWindow url={`http://localhost:3000/user/favorites/${userId}`}/>
+                        </ul>
+                    </div>
+                    <h1>Current</h1>
+                    <div className="profile-bids">
+                        <ul>
+                            <DisplayWindow url={`http://localhost:3000/auction`}/>
+                        </ul>
+                    </div>
+                </div>
             </div>
         )
     }
