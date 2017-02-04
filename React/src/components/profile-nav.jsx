@@ -12,7 +12,24 @@ class ProfileNav extends Component{
     render(){
         return(
             <div id = 'profile-nav'>
-                <button onClick = {this.logout}>Logout</button>
+                <h1>Tee-Ball</h1>
+                <ul id = "profile-nav-buttons-ul">
+                    <li className = "profile-nav-button">
+                        <a href="">Auctions</a>
+                    </li>
+                    <li className = "profile-nav-button">
+                        <a href="">Search</a>
+                    </li>
+                    <li className = "profile-nav-button">
+                        <a href="http://localhost:8080/#/profile">Profile</a>
+                    </li>
+                    <li className = "profile-nav-button">
+                        <a onClick ={this.logout} href="http://localhost:8080/#/login">Logout</a>
+                    </li>
+                    <li className = "profile-nav-button">
+                        <a onClick ={this.props.updateWindow}>Update Profile</a>
+                    </li>
+                </ul>
             </div>
         )
     }

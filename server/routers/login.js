@@ -20,7 +20,7 @@ router.get('/createAccount', function(req, res) {
 
 router.post('/createAccount', function(req, res) {
     var body = req.body;
-    var newUser = new User(body.first_name, body.last_name, body.username, body.email, body.password, body.zip);
+    var newUser = new User(body.password, body.email, body.image, body.zip, body.first_name, body.last_name, body.username);
     newUser.passwordHash(body.password);
     knex('users').where('users.username', newUser.username)
         .then(function(data) {
@@ -35,7 +35,8 @@ router.post('/createAccount', function(req, res) {
                         username: newUser.username,
                         email: newUser.email,
                         hashed_password: newUser.hashed_password,
-                        zip: newUser.zip
+                        zip: newUser.zip,
+                        image:newUser.image
                     })
                     .then(function(data) {
                         console.log(data);
@@ -88,7 +89,7 @@ router.post('/login', function(req, res) {
     var body = req.body;
     console.log("body", body);
     console.log("cookies", req.cookies);
-    if (body.password === 'password') {
+    if (body.password === 'passwor') {
         console.log("should be here for nonpasswords");
         knex('users').returning('*')
             .where({

@@ -15,7 +15,8 @@ class CreateAccount extends Component {
                 userName: '',
                 email: '',
                 password: '',
-                zip: null
+                zip: null,
+                image: ''
             }
         };
         this.fetchJWT = this.fetchJWT.bind(this);
@@ -27,6 +28,7 @@ class CreateAccount extends Component {
         this.getLastName = this.getLastName.bind(this);
         this.getEmail = this.getEmail.bind(this);
         this.getZip = this.getZip.bind(this);
+        this.getImageUrl = this.getImageUrl.bind(this);
     }
     fetchJWT() {
         console.log(this.state);
@@ -42,7 +44,8 @@ class CreateAccount extends Component {
                 username: this.state.loginData.userName,
                 email: this.state.loginData.email,
                 zip: this.state.loginData.zip,
-                password: this.state.loginData.password
+                password: this.state.loginData.password,
+                image: this.state.loginData.image
             })
         }).then((res) => {
             return res.json();
@@ -70,7 +73,8 @@ class CreateAccount extends Component {
                 userName: this.state.loginData.userName,
                 email: this.state.loginData.email,
                 zip: this.state.loginData.zip,
-                password: this.state.loginData.password
+                password: this.state.loginData.password,
+                image: this.state.loginData.image
             }
         });
     }
@@ -83,7 +87,8 @@ class CreateAccount extends Component {
                 userName: this.state.loginData.userName,
                 email: this.state.loginData.email,
                 zip: this.state.loginData.zip,
-                password: this.state.loginData.password
+                password: this.state.loginData.password,
+                image: this.state.loginData.image
             }
         });
     }
@@ -96,7 +101,8 @@ class CreateAccount extends Component {
                 userName: event.target.value,
                 email: this.state.loginData.email,
                 zip: this.state.loginData.zip,
-                password: this.state.loginData.password
+                password: this.state.loginData.password,
+                image: this.state.loginData.image
             }
         });
     }
@@ -109,7 +115,9 @@ class CreateAccount extends Component {
                 userName: this.state.loginData.userName,
                 email: event.target.value,
                 zip: this.state.loginData.zip,
-                password: this.state.loginData.password
+                image: this.state.loginData.image,
+                password: this.state.loginData.password,
+                image: this.state.loginData.image
             }
         });
     }
@@ -122,6 +130,7 @@ class CreateAccount extends Component {
                 userName: this.state.loginData.userName,
                 email: this.state.loginData.email,
                 zip: this.state.loginData.zip,
+                image: this.state.loginData.image,
                 password: event.target.value
             }
         });
@@ -135,7 +144,21 @@ class CreateAccount extends Component {
                 userName: this.state.loginData.userName,
                 email: this.state.loginData.email,
                 password: this.state.loginData.password,
+                image: this.state.loginData.image,
                 zip: event.target.value
+            }
+        });
+    }
+    getImageUrl(event){
+        this.setState({
+            loginData: {
+                firstName: this.state.loginData.firstName,
+                lastName: this.state.loginData.lastName,
+                userName: this.state.loginData.userName,
+                email: this.state.loginData.email,
+                password: this.state.loginData.password,
+                zip: event.target.value,
+                image: this.state.loginData.image
             }
         });
     }
@@ -158,6 +181,7 @@ class CreateAccount extends Component {
                     <input className="login" type="text" onChange={this.getDataFromUsername} placeholder="username"/>
                     <input placeholder="password" className="login" type="password" onChange={this.getDataFromPassword}/>
                     <input placeholder="zip" className="login" type="text" onChange={this.getZip}/>
+                    <input className="login" type="text" placeholder = "imageUrl" onChage ={this.getImageUrl}/>
                     <input className='loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
                 </div>
             </div>
