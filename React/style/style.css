@@ -121,6 +121,7 @@ body{
     margin-right:5px;
 }
 .profile-nav-button a{
+    color:#4CAF50;
     text-decoration: none;
 }
 .profile-nav-button a:hover{
@@ -143,11 +144,12 @@ body{
     float:left;
 }
 .headshot{
-    border-radius: 50%;
+    margin-right;
     margin: auto;
     margin-top:20px;
     margin-left:5%;
     text-align: center;
+    border-radius: 50%;
 }
 #profile-container{
     margin:auto;
@@ -180,4 +182,44 @@ body{
 
 .courseImage{
     border-radius: 5px;
+}
+.userInfor{
+    text-align: center;
+}
+
+.update-profile{
+    background-color: white;
+    margin: auto;
+    width:200px;
+    border-radius: 10px;
+    height: 250px;
+    border:2px #B4B7C0 solid;
+    float: right;
+    margin-top: 20px;
+}
+
+.profile-inputs{
+    width: 80%;
+    height: 20px;
+    margin: auto;
+    margin-top: 25px;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 50px;
+}
+
+.profile-update-button{
+    background-color: #4CAF50;
+    /* Green */
+    /*font-size: 16px;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 32%;
+    margin-right: 38%;
 }

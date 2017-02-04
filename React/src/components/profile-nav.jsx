@@ -26,6 +26,9 @@ class ProfileNav extends Component{
                     <li className = "profile-nav-button">
                         <a onClick ={this.logout} href="http://localhost:8080/#/login">Logout</a>
                     </li>
+                    <li className = "profile-nav-button">
+                        <a onClick ={this.props.updateWindow}>Update Profile</a>
+                    </li>
                 </ul>
             </div>
         )

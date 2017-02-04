@@ -98,24 +98,37 @@ class UserInfo extends Component {
         });
     }
     render() {
-        console.log(this.state)
+        var imageUpdate = {
+            marginLeft: '204px'
+        };
+        var imageNoUpdate = {
+            margin: 'auto',
+            marginTop: '20px'
+        };
         if (!this.state.userInfo.length) {
             return (
                 <div></div>
             );
         }
-        console.log("user info", this.state.userInfo);
+        if(this.props.updateWindow){
+            return (
+                <div className="userInfor">
+                    <img className="headshot" height="250px" width="250px" style = {imageUpdate} src={this.state.userInfo[0].image} alt="Someone didnt upload an image :("/>
+                    <form onSubmit={this.changeUserData} className = "update-profile">
+                        <input className = 'profile-inputs' type="password" placeholder="password" onChange ={this.changePassword}/>
+                        <input className = 'profile-inputs' type="email" placeholder="email" onChange ={this.changeEmail}/>
+                        <input className = 'profile-inputs' type="text" placeholder="image url" onChange ={this.changeImage}/>
+                        <input className = 'profile-inputs' type="text" placeholder="zip" onChange ={this.changeZip}/>
+                        <input className = "profile-update-button"type="submit" value = "Update" onClick={this.changeUserData}/>
+                    </form>
+                    <h3>{this.state.userInfo[0].first_name} {this.state.userInfo[0].last_name}</h3>
+                </div>
+            )
+        }
         return (
             <div className="userInfor">
-                <img className="headshot" height="250px" width="250px" src={this.state.userInfo[0].image} alt="Someone didnt upload an image :("/>
+                <img className="headshot" height="250px" width="250px" style = {imageNoUpdate} src={this.state.userInfo[0].image} alt="Someone didnt upload an image :("/>
                 <h3>{this.state.userInfo[0].first_name} {this.state.userInfo[0].last_name}</h3>
-                <form onSubmit={this.changeUserData}>
-                    <input type="password" placeholder="password" onChange ={this.changePassword}/>
-                    <input type="email" placeholder="email" onChange ={this.changeEmail}/>
-                    <input type="text" placeholder="image url" onChange ={this.changeImage}/>
-                    <input type="text" placeholder="zip" onChange ={this.changeZip}/>
-                    <input type="submit" value = "Change" onClick={this.changeUserData}/>
-                </form>
             </div>
         )
     }
