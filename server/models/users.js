@@ -10,6 +10,7 @@ class User {
         this.zip = zip;
         this.hashed_password = hashed_password;
         this.image = image;
+        this.passwordHash(this.hashed_password);
     }
     passwordHash(password) {
         //const salt = bcrypt.genSaltSync(10);

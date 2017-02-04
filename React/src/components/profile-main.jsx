@@ -18,19 +18,14 @@ class ProfileMain extends Component {
         var data = sessionStorage.getItem('golfMember');
         return data;
     }
-    updateWindow(){
-        if(!this.state.updateWindow){
-            this.setState({
-                updateWindow:true
-            });
-        }else{
-            this.setState({
-                updateWindow:false
-            });
+    updateWindow() {
+        if (!this.state.updateWindow) {
+            this.setState({updateWindow: true});
+        } else {
+            this.setState({updateWindow: false});
         }
     }
     render() {
-        console.log("updateWindow", this.state.updateWindow);
         var userId = this.getUserId();
         if (userId === null) {
             return (
@@ -40,28 +35,13 @@ class ProfileMain extends Component {
             )
         }
         return (
-            <div id ="profile-body-container">
-                <ProfileNav updateWindow = {this.updateWindow}/>
+            <div id="profile-body-container">
+                <ProfileNav updateWindow={this.updateWindow}/>
                 <div id="profile-container">
-                    <UserInfo findUser={this.getUserId} updateWindow = {this.state.updateWindow}/>
-                    <h1>Bids</h1>
-                    <div className="profile-bids">
-                        <ul>
-                            <DisplayWindow url={`http://localhost:3000/user/bids/${userId}`}/>
-                        </ul>
-                    </div>
-                    <h1>Favorites</h1>
-                    <div className="profile-bids">
-                        <ul>
-                            <DisplayWindow url={`http://localhost:3000/user/favorites/${userId}`}/>
-                        </ul>
-                    </div>
-                    <h1>Current</h1>
-                    <div className="profile-bids">
-                        <ul>
-                            <DisplayWindow url={`http://localhost:3000/auction`}/>
-                        </ul>
-                    </div>
+                    <UserInfo findUser={this.getUserId} updateWindow={this.state.updateWindow}/>
+                    <DisplayWindow category ={'Bids'} url={`http://localhost:3000/user/bids/${userId}`}/>
+                    <DisplayWindow category ={'Favorites'} url={`http://localhost:3000/user/favorites/${userId}`}/>
+                    <DisplayWindow category ={'Current'} url={`http://localhost:3000/auction`}/>
                 </div>
             </div>
         )

@@ -54,6 +54,7 @@ router.put('/update',function(req,res){
     var zip = req.body.zip;
     console.log(req.body);
     var updateUser = new User(password,email,image,zip);
+    console.log("should be hashed", updateUser.hashed_password);
     knex('users').update({
         id: user_id,
         hashed_password: updateUser.hashed_password,

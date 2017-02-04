@@ -15,7 +15,7 @@ class ProfileNav extends Component{
                 <h1>Tee-Ball</h1>
                 <ul id = "profile-nav-buttons-ul">
                     <li className = "profile-nav-button">
-                        <a href="">Bids</a>
+                        <a href="">Auctions</a>
                     </li>
                     <li className = "profile-nav-button">
                         <a href="">Search</a>
