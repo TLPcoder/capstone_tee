@@ -88,8 +88,7 @@ router.post('/login', function(req, res) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
     var body = req.body;
     console.log("body", body);
-    console.log("cookies", req.cookies);
-    if (body.password === 'passwor') {
+    if (body.password === 'password') {
         console.log("should be here for nonpasswords");
         knex('users').returning('*')
             .where({
@@ -133,6 +132,7 @@ router.post('/login', function(req, res) {
             .where('username', body.username)
             .then(function(data) {
                 var userExist = bcrypt.compareSync(body.password, data[0].hashed_password);
+                console.log("this should be true:", userExist);
                 if (userExist) {
                     knex('users').returning('*')
                         .where({
