@@ -10,6 +10,10 @@ class CreateCard extends Component {
         var center ={
             textAlign: 'center'
         };
+        var textDecoration = {
+            textDecoration:'none',
+            color: '#4CAF50'
+        };
         // if(!this.props.dataAuction.image){
         //     console.log("shit");
         //     return (<div></div>)
@@ -19,7 +23,7 @@ class CreateCard extends Component {
             return (
                 <div>
                     <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
-                    <a href={url}>
+                    <a href={url} style={textDecoration}>
                         <p style={center}>{this.props.dataAuction.name}</p>
                     </a>
                 </div>
@@ -29,7 +33,7 @@ class CreateCard extends Component {
             return (
                 <div>
                     <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
-                    <a href={url}>
+                    <a href={url} style={textDecoration}>
                         <p style={center}>{this.props.dataAuction.name}</p>
                     </a>
                 </div>

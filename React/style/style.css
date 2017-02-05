@@ -156,7 +156,7 @@ body{
     margin-top:76px;
     margin-left: 10%;
     margin-right: 10%;
-
+    padding-bottom:50px;
 }
 #profile-container ul{
     margin:auto;
@@ -170,13 +170,27 @@ body{
 }
 
 .profile-bids{
-    height:350px;
-    border-radius: 20px;
-    overflow-x: scroll;
+    /*height:350px;*/
+    border-radius: 10px;
+    overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     background-color: #F9F9FA;
     border:solid 2px #B4B7C0;
+}
+
+::-webkit-scrollbar {
+width: 12px;
+}
+
+::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px     rgba(0,0,0,0.3);
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px     rgba(0,0,0,0.5);
 }
 
 .courseImage{
