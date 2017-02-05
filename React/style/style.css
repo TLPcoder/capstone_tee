@@ -272,7 +272,7 @@ body{
 #auction-body-container{
     margin:auto;
     position:relative;
-    bottom:50px;
+    bottom:100px;
     margin-top: 100px;
     margin-left:10%;
     margin-right:10%;
@@ -281,6 +281,8 @@ body{
     padding-bottom: 50px;
 }
 #auction-container{
+    position: relative;
+    top: 50px;
     background-image: url('https://static1.squarespace.com/static/5436f6f4e4b07f1e91b331eb/t/557a259be4b028e09773e6ba/1434068393556/mlsouth.jpg?format=1500w');
     /*background-repeat: no-repeat;*/
     background-size:cover;
