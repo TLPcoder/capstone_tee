@@ -156,8 +156,8 @@ router.get('/state/:searchState/:time/:price', function(req,res){
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
         .where('auction.auction_ends', '>',date)
         .where('courses.state', country)
-        .orderBy('auction.tee_time', time)
         .orderBy('auction.tee_time', price)
+        .orderBy('auction.tee_time', time)
         .then(function(data) {
             res.json(data);
         });

@@ -10,10 +10,10 @@ class CreateCard extends Component {
         var center ={
             textAlign: 'center'
         };
-        if(!this.props.dataAuction.image){
-            console.log("shit");
-            return (<div></div>)
-        }
+        // if(!this.props.dataAuction.image){
+        //     console.log("shit");
+        //     return (<div></div>)
+        // }
         if (this.props.dataAuction.auction_id) {
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.auction_id}`;
             return (
@@ -24,7 +24,7 @@ class CreateCard extends Component {
                     </a>
                 </div>
             )
-        } if(this.props.dataAuction.id){
+        } else if(this.props.dataAuction.id){
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.id}`;
             return (
                 <div>
