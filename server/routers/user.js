@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
-const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDay()} 24:00:00 UTC`;
+const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
 var User = require('../models/users');
 
 router.get('/favorites/:id', function(req,res){
