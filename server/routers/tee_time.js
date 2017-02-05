@@ -3,18 +3,20 @@ const express = require('express');
 const router = express.Router();
 var knex = require('../knex');
 var fetch = require('node-fetch');
-const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDay()} 24:00:00 UTC`;
+const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
 
 router.get('/:time', function(req, res) {
     var time = req.params.time;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
         .where('auction.auction_ends', '>',date)
-        .orderBy('auction.tee_time', time)
+        .whereRaw('auction.tee_time LIKE ?', '%'+time+'%')
+        //.where('auction.tee_time', '=', time)
+        //.orderBy('auction.tee_time', time)
         .then(function(data) {
             res.json(data);
         });
@@ -23,7 +25,7 @@ router.get('/:time', function(req, res) {
 router.get('/country/:searchCountry/:time', function(req,res){
     var country = req.params.searchCountry;
     var time = req.params.time;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.course_id','auction.top_bid','auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.course_id','auction.top_bid','auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -40,7 +42,7 @@ router.get('/country/:searchCountry/:time', function(req,res){
 router.get('/state/:searchState/:time', function(req,res){
     var country = req.params.searchState;
     var time = req.params.time;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -57,7 +59,7 @@ router.get('/state/:searchState/:time', function(req,res){
 router.get('/city/:searchCity/:time', function(req,res){
     var country = req.params.searchCity;
     var time = req.params.time;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -87,7 +89,7 @@ router.get('/:postalcode/:distance/:time', function(req, res) {
                 zipCodeCity.push(city.placeName);
             });
             console.log("zip codes", zipCodeCity);
-            knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.top_bid', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+            knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.top_bid', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
                 .from('auction')
                 .innerJoin('courses', 'courses.id', 'auction.course_id')
                 .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -109,7 +111,7 @@ router.get('/:postalcode/:distance/:time', function(req, res) {
 router.get('/:time/:price', function(req, res) {
     var time = req.params.time;
     var price = req.params.price;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -127,7 +129,7 @@ router.get('/country/:searchCountry/:time/:price', function(req,res){
     var country = req.params.searchCountry;
     var time = req.params.time;
     var price = req.params.price;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.course_id','auction.top_bid','auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.course_id','auction.top_bid','auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -146,7 +148,7 @@ router.get('/state/:searchState/:time/:price', function(req,res){
     var country = req.params.searchState;
     var time = req.params.time;
     var price = req.params.price;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount', 'bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -154,8 +156,8 @@ router.get('/state/:searchState/:time/:price', function(req,res){
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
         .where('auction.auction_ends', '>',date)
         .where('courses.state', country)
-        .orderBy('auction.tee_time', time)
         .orderBy('auction.tee_time', price)
+        .orderBy('auction.tee_time', time)
         .then(function(data) {
             res.json(data);
         });
@@ -165,7 +167,7 @@ router.get('/city/:searchCity/:time/:price', function(req,res){
     var country = req.params.searchCity;
     var time = req.params.time;
     var price = req.params.price;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -197,7 +199,7 @@ router.get('/:postalcode/:distance/:time/:price', function(req, res) {
                 zipCodeCity.push(city.placeName);
             });
             console.log("zip codes", zipCodeCity);
-            knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.top_bid', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+            knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country','courses.zip', 'courses.state','auction.top_bid', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id', 'courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
                 .from('auction')
                 .innerJoin('courses', 'courses.id', 'auction.course_id')
                 .innerJoin('users', 'users.id', 'auction.owner_id')

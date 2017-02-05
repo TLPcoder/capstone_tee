@@ -6,23 +6,35 @@ class CreateCard extends Component {
         super(props);
     }
     render() {
+        console.log("image url", this.props.dataAuction.image)
+        var center ={
+            textAlign: 'center'
+        };
+        var textDecoration = {
+            textDecoration:'none',
+            color: '#4CAF50'
+        };
+        // if(!this.props.dataAuction.image){
+        //     console.log("shit");
+        //     return (<div></div>)
+        // }
         if (this.props.dataAuction.auction_id) {
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.auction_id}`;
             return (
                 <div>
                     <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
-                    <a href={url}>
-                        <p>{this.props.dataAuction.name}</p>
+                    <a href={url} style={textDecoration}>
+                        <p style={center}>{this.props.dataAuction.name}</p>
                     </a>
                 </div>
             )
-        } if(this.props.dataAuction.id){
+        } else if(this.props.dataAuction.id){
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.id}`;
             return (
                 <div>
                     <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
-                    <a href={url}>
-                        <p>{this.props.dataAuction.name}</p>
+                    <a href={url} style={textDecoration}>
+                        <p style={center}>{this.props.dataAuction.name}</p>
                     </a>
                 </div>
             )

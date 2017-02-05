@@ -21,7 +21,7 @@ class MainNav extends Component {
                 <h1>Tee-Ball</h1>
                 <ul id = "main-nav-buttons">
                     <li className = "main-nav-button">
-                        <a href="">Auctions</a>
+                        <a href="http://localhost:8080/#/auctionSearch">Auctions</a>
                     </li>
                     <li className = "main-nav-button">
                         <a href="">Search</a>

@@ -36,6 +36,7 @@
     "react-redux": "^4.0.0",
     "react-router": "^2.8.1",
     "react-s-alert": "^1.2.2",
+    "react-select": "^1.0.0-rc.3",
     "redux": "^3.0.4"
   }
 }
