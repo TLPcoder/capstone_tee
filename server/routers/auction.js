@@ -17,7 +17,12 @@ router.get('/', function(req, res) {
             res.json(data);
         });
 });
-
+router.get('/course', function(req,res){
+    knex.select('name').from('courses')
+    .then(function(data){
+        res.json(data);
+    });
+});
 router.get('/:id', function(req, res){
     var id = req.params.id;
     knex('auction')

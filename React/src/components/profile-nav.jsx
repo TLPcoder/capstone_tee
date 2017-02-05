@@ -15,7 +15,7 @@ class ProfileNav extends Component{
                 <h1>Tee-Ball</h1>
                 <ul id = "profile-nav-buttons-ul">
                     <li className = "profile-nav-button">
-                        <a href="">Auctions</a>
+                        <a href="http://localhost:8080/#/auctionSearch">Auctions</a>
                     </li>
                     <li className = "profile-nav-button">
                         <a href="">Search</a>
