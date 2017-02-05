@@ -10,6 +10,7 @@ import ProfileMain from './components/profile-main';
 import CourseAuction from './components/course-auctions';
 import Payment from './components/payment-main';
 import Success from './components/success';
+import AuctionSearch from './components/auction-search-main';
 
 ReactDOM.render(
     <Router history={hashHistory}>
@@ -21,6 +22,7 @@ ReactDOM.render(
             <Route path='courseAuction/:id' component={CourseAuction}></Route>
             <Route path='payment/:id' component={Payment}></Route>
             <Route path='success' component={Success}></Route>
+            <Route path='auctionSearch' component={AuctionSearch}></Route>
         </Route>
     </Router>
   , document.querySelector('.app'));

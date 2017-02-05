@@ -62,7 +62,7 @@ class DisplayWindow extends Component {
         })
         if (!json.length) {
             return (
-                <h1></h1>
+                <div></div>
             )
         }
         if(length === 0){

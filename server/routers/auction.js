@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 var knex = require('../knex');
 var fetch = require('node-fetch');
-const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDay()} 24:00:00 UTC`;
+const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
 
 router.get('/', function(req, res) {
     knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount', 'bids.auction_id')
@@ -17,7 +17,12 @@ router.get('/', function(req, res) {
             res.json(data);
         });
 });
-
+router.get('/course', function(req,res){
+    knex.select('name').from('courses')
+    .then(function(data){
+        res.json(data);
+    });
+});
 router.get('/:id', function(req, res){
     var id = req.params.id;
     knex('auction')
@@ -27,7 +32,7 @@ router.get('/:id', function(req, res){
     .then(function(data){
         res.json(data);
     });
-})
+});
 
 router.get('/course/:id', function(req,res){
     var id =req.params.id;
