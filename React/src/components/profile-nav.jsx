@@ -18,7 +18,7 @@ class ProfileNav extends Component{
                         <a href="http://localhost:8080/#/auctionSearch">Auctions</a>
                     </li>
                     <li className = "profile-nav-button">
-                        <a href="">Create Auction</a>
+                        <a href="http://localhost:8080/#/createauction">Create Auction</a>
                     </li>
                     <li className = "profile-nav-button">
                         <a href="">Search Courses</a>

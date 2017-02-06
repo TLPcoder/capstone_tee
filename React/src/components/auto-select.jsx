@@ -25,6 +25,7 @@ class AutoSelect extends Component {
         this.createCourse = this.createCourse.bind(this);
         this.getUserId = this.getUserId.bind(this);
         this.createAuction = this.createAuction.bind(this);
+        this.createBid = this.createBid.bind(this);
         this.getCourseNames();
     }
     getCourseNames() {
@@ -127,8 +128,29 @@ class AutoSelect extends Component {
             return res.json();
         }).then((resData) => {
             console.log(resData);
+            this.createBid(resData);
         }).catch(function(res) {
             console.log(res);
+        });
+    }
+    createBid(data){
+        var bider_id = this.getUserId();
+        var auction_id = data[0].id;
+        var bid_amount = data[0].top_bid;
+        fetch(`http://localhost:3000/payment/newBid`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                bider_id: bider_id,
+                auction_id: auction_id,
+                bid_amount:bid_amount})
+        }).then((promise) => {
+            return promise.json();
+        }).then((json) => {
+            console.log("created new Bid", json);
         });
     }
     getUserId(){
@@ -178,7 +200,7 @@ class AutoSelect extends Component {
                     <input type="datetime-local" name="" id="" onChange={this.teeTime}/>
                     <input type="date" name="" id="" onChange={this.auctionEnds}/>
                     <input type="text" name="" id="" placeholder="Starting Bid" onChange={this.startingBid}/>
-                    <input type="button" value="Create Auction"/>
+                    <input type="button" value="Creat Course"/>
                 </div>
             )
         }

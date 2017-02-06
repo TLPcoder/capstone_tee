@@ -5,6 +5,15 @@ var knex = require('../knex');
 var fetch = require('node-fetch');
 const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
 
+// router.get('/', function(req, res) {
+//     knex('auction')
+//         .innerJoin('bids', 'bids.auction_id', 'auction.id')
+//         .where('bids.bid_amount', knex.raw('auction.top_bid'))
+//         .where('auction.auction_ends', '>',date)
+//         .then(function(data) {
+//             res.json(data);
+//         });
+// });
 router.get('/', function(req, res) {
     knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount', 'bids.auction_id')
         .from('auction')
@@ -12,7 +21,7 @@ router.get('/', function(req, res) {
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-        // .where('auction.auction_ends', '>',date)
+        .where('auction.auction_ends', '>',date)
         .then(function(data) {
             res.json(data);
         });
@@ -40,7 +49,7 @@ router.get('/:id', function(req, res){
     knex('auction')
     .innerJoin('courses', 'courses.id', 'auction.course_id')
     .where('auction.id', id)
-    // .where('auction.auction_ends', '>',date)
+    .where('auction.auction_ends', '>',date)
     .then(function(data){
         res.json(data);
     });
@@ -51,7 +60,7 @@ router.get('/course/:id', function(req,res){
     knex('auction')
     .innerJoin('courses', 'courses.id', 'auction.course_id')
     .where('auction.course_id', id)
-    // .where('auction.auction_ends', '>',date)
+    .where('auction.auction_ends', '>',date)
     .then(function(data){
         res.json(data);
     });
@@ -65,7 +74,7 @@ router.get('/country/:searchCountry/', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-        // .where('auction.auction_ends', '>',date)
+        .where('auction.auction_ends', '>',date)
         .where('courses.country', country)
         .then(function(data) {
             res.json(data);
@@ -80,7 +89,7 @@ router.get('/state/:searchCountry/', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-        // .where('auction.auction_ends', '>',date)
+        .where('auction.auction_ends', '>',date)
         .where('courses.state', country)
         .then(function(data) {
             res.json(data);
@@ -95,7 +104,7 @@ router.get('/city/:searchCountry', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-        // .where('auction.auction_ends', '>',date)
+        .where('auction.auction_ends', '>',date)
         .where('courses.city', country)
         .then(function(data) {
             res.json(data);
@@ -123,7 +132,7 @@ router.get('/:postalcode/:distance/', function(req, res) {
                 .innerJoin('users', 'users.id', 'auction.owner_id')
                 .innerJoin('bids', 'bids.auction_id', 'auction.id')
                 .where('bids.bid_amount', knex.raw('auction.top_bid'))
-                // .where('auction.auction_ends', '>',date)
+                .where('auction.auction_ends', '>',date)
                 .whereIn('courses.city', zipCodeCity)
                 .then(function(data) {
                     console.log("course data", data);
@@ -142,7 +151,7 @@ router.get('/:sort', function(req, res) {
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-        // .where('auction.auction_ends', '>',date)
+        .where('auction.auction_ends', '>',date)
         .orderBy('auction.top_bid', sortJSON )
         .then(function(data) {
             res.json(data);
@@ -158,7 +167,7 @@ router.get('/country/:searchCountry/:sort', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-        // .where('auction.auction_ends', '>',date)
+        .where('auction.auction_ends', '>',date)
         .where('courses.country', country)
         .orderBy('auction.top_bid', sortJSON)
         .then(function(data) {
@@ -175,7 +184,7 @@ router.get('/state/:searchCountry/:sort', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-        // .where('auction.auction_ends', '>',date)
+        .where('auction.auction_ends', '>',date)
         .where('courses.state', country)
         .orderBy('auction.top_bid', sortJSON )
         .then(function(data) {
@@ -192,7 +201,7 @@ router.get('/city/:searchCountry/:sort', function(req,res){
         .innerJoin('users', 'users.id', 'auction.owner_id')
         .innerJoin('bids', 'bids.auction_id', 'auction.id')
         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-        // .where('auction.auction_ends', '>',date)
+        .where('auction.auction_ends', '>',date)
         .where('courses.city', country)
         .orderBy('auction.top_bid', sortJSON )
         .then(function(data) {
@@ -222,7 +231,7 @@ router.get('/:postalcode/:distance/:sort', function(req, res) {
                 .innerJoin('users', 'users.id', 'auction.owner_id')
                 .innerJoin('bids', 'bids.auction_id', 'auction.id')
                 .where('bids.bid_amount', knex.raw('auction.top_bid'))
-                // .where('auction.auction_ends', '>',date)
+                .where('auction.auction_ends', '>',date)
                 .whereIn('courses.city', zipCodeCity)
                 .orderBy('auction.top_bid', sortJSON )
                 .then(function(data) {
@@ -233,6 +242,21 @@ router.get('/:postalcode/:distance/:sort', function(req, res) {
             console.log(err);
         });
 });
+// router.post('/create/bid', function(req,res){
+//     var bider_id = req.body.bider_id;
+//     var auction_id = req.body.auction_id;
+//     var bid_amount = req.body.bid_amount;
+//     knex('bids')
+//     .insert({
+//         bider_id: bider_id,
+//         auction_id:auction_id,
+//         bid_amount:bid_amount
+//     }).then((data) => {
+//         res.json(data);
+//     }).catch((err) =>{
+//         console.log(err);
+//     });
+// });
 
 router.put('/changeBid',function(req,res){
     var newBid = req.body.newBid * 1;
@@ -257,14 +281,14 @@ router.post('/create', function(req,res){
     var top_bid = req.body.top_bid;
     var tee_time = req.body.tee_time;
     var auction_ends = req.body.auction_ends;
-    knex('auction').insert({
+    knex('auction').returning('*').insert({
         course_id: course_id * 1,
         owner_id:owner_id * 1,
         top_bid:top_bid * 1,
         tee_time: tee_time,
         auction_ends:auction_ends
     }).then((data)=>{
-        console.log(data);
+        console.log("fkjsdlkfjsadklfjasl;dkfjsa;dlkfsda", data);
         res.json(data);
     });
 });
