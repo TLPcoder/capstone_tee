@@ -30,6 +30,7 @@ class Payment extends Component {
         });
     }
     getUserData() {
+        console.log("hello");
         var userId = this.getUser();
         fetch(`http://localhost:3000/payment/userInfo/${userId}`).then((promise) => {
             return promise.json();
@@ -60,8 +61,11 @@ class Payment extends Component {
                 </div>
             )
         } else {
+            console.log("state", this.state)
+            console.log("props", this.props)
             return (
                 <div>
+                    Hello there;
                 </div>
             )
         }

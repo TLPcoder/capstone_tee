@@ -19,7 +19,7 @@ class CourseAuction extends Component {
         fetch(`http://localhost:3000/auction/${this.props.params.id}`).then((promise) => {
             return promise.json();
         }).then((json) => {
-            console.log("json", json)
+            console.log("course info", json);
             this.setState({loading: false, data: json});
         });
     }

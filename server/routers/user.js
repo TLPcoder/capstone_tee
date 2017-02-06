@@ -21,6 +21,20 @@ router.get('/favorites/:id', function(req,res){
     });
 });
 
+router.get('/favorites/courses/:id', function(req,res){
+    var id = req.params.id;
+    knex.select("*")
+    .from('users')
+    .where('users.id', id)
+    .innerJoin('favorite', 'favorite.user_id', 'users.id')
+    .innerJoin('courses', 'courses.id', 'favorite.course_id')
+    .then(function(userData){
+        res.json(userData);
+    }).catch(function(err){
+        console.log(err);
+    });
+});
+
 router.get('/bids/:id', function(req,res){
     var id = req.params.id;
     knex('users')
@@ -65,6 +79,18 @@ router.put('/update',function(req,res){
     .where('id', user_id)
     .returning('*')
     .then(function(data){
+        console.log(data);
+        res.json(data);
+    });
+});
+
+router.post('/favorite',function(req,res){
+    var user_id = req.body.user_id;
+    var course_id = req.body.course_id;
+    knex('favorite').returning('*').insert({
+        user_id:user_id,
+        course_id:course_id
+    }).then(function(data){
         console.log(data);
         res.json(data);
     });

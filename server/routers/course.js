@@ -4,6 +4,12 @@ const router = express.Router();
 var knex = require('../knex');
 var fetch = require('node-fetch');
 
+router.get('/',function(req,res){
+    knex('courses').then(function(data){
+        res.json(data);
+    });
+});
+
 router.post('/create',function(req,res){
     var name = req.body.name;
     var image = req.body.image;
