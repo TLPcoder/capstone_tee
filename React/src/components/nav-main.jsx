@@ -21,13 +21,22 @@ class MainNav extends Component {
                 <h1>Tee-Ball</h1>
                 <ul id = "main-nav-buttons">
                     <li className = "main-nav-button">
+                        <a href="http://localhost:8080/#/profile">Profile</a>
+                    </li>
+                    <li className = "main-nav-button">
                         <a href="http://localhost:8080/#/auctionSearch">Auctions</a>
                     </li>
                     <li className = "main-nav-button">
-                        <a href="">Search</a>
+                        <a href="http://localhost:8080/#/createauction">Create Auction</a>
                     </li>
                     <li className = "main-nav-button">
-                        <a href="http://localhost:8080/#/profile">Profile</a>
+                        <a href="">Current Bids</a>
+                    </li>
+                    <li className = "main-nav-button">
+                        <a href="http://localhost:8080/#/createauction">Favorites</a>
+                    </li>
+                    <li className = "main-nav-button">
+                        <a href="">Search Courses</a>
                     </li>
                     <li className = "main-nav-button">
                         <a onClick ={this.logout} href="http://localhost:8080/#/login">Logout</a>

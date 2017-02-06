@@ -92,6 +92,8 @@ class UserInfo extends Component {
         }).then((promise) => {
             return promise.json();
         }).then((json) => {
+            // window.location.hash = '/profile';
+            location.reload();
             console.log(json);
         }).catch(function(res) {
             console.log(res);
@@ -119,7 +121,7 @@ class UserInfo extends Component {
                         <input className = 'profile-inputs' type="email" placeholder="email" onChange ={this.changeEmail}/>
                         <input className = 'profile-inputs' type="text" placeholder="image url" onChange ={this.changeImage}/>
                         <input className = 'profile-inputs' type="text" placeholder="zip" onChange ={this.changeZip}/>
-                        <input className = "profile-update-button"type="submit" value = "Update" onClick={this.changeUserData}/>
+                        <a className = "profile-update-button" href="http://localhost:8080/#/profile" onClick = {this.changeUserData}>Update</a>
                     </form>
                     <h3>{this.state.userInfo[0].first_name} {this.state.userInfo[0].last_name}</h3>
                 </div>
@@ -135,3 +137,8 @@ class UserInfo extends Component {
 }
 
 export default UserInfo;
+
+
+
+
+// <input className = "profile-update-button"type="submit" value = "Update" onClick={this.changeUserData}/>
