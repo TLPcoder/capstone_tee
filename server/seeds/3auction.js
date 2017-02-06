@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         // Inserts seed entries
         knex('auction').insert({
-            id: 1,
+            //id: 1,
             course_id: 1,
             owner_id: 1,
             top_bid:95,
@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
             'auction_ends': new Date('2017-01-19 24:00:00 UTC')
         }),
         knex('auction').insert({
-            id: 2,
+            //id: 2,
             course_id: 2,
             owner_id: 2,
             top_bid:100,
@@ -22,7 +22,7 @@ exports.seed = function(knex, Promise) {
             'auction_ends': new Date('2017-01-19 24:00:00 UTC')
         }),
         knex('auction').insert({
-            id: 3,
+            //id: 3,
             course_id: 3,
             owner_id: 3,
             top_bid:120,

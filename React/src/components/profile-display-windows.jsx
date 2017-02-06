@@ -41,16 +41,16 @@ class DisplayWindow extends Component {
         };
         var key = 0;
         var json = this.state.json;
-        console.log("length", json.length);
-        var length = json.length;
+        var user = this.props.user();
         var all = json.map(function(element) {
             key++;
-            if (element.auction_id) {
+            if(element.owner_id === user * 1){
+                return;
+            }else if (element.auction_id) {
                 return (
                     <li><CreateCard key={key} dataAuction={element}/></li>
                 )
-            }
-            if (element.id) {
+            }else if (element.id) {
                 return (
                     <li><CreateCard key={key} dataAuction={element}/></li>
                 )
@@ -60,6 +60,14 @@ class DisplayWindow extends Component {
                 )
             }
         })
+        var adjustedArray = []
+        for(var i = 0; i < all.length; i++){
+            if(all[i]){
+                adjustedArray.push(all[i]);
+            }
+        }
+        var length = adjustedArray.length;
+        console.log("adjustedArray", adjustedArray);
         if (!json.length) {
             return (
                 <div></div>
@@ -76,7 +84,7 @@ class DisplayWindow extends Component {
                     <h1>{this.props.category}</h1>
                     <div style ={oneCard} className="profile-bids">
                         <ul>
-                            <div>{all}</div>
+                            <div>{adjustedArray}</div>
                         </ul>
                     </div>
                 </div>
@@ -87,7 +95,7 @@ class DisplayWindow extends Component {
                     <h1>{this.props.category}</h1>
                     <div style ={twoCards} className="profile-bids">
                         <ul>
-                            <div>{all}</div>
+                            <div>{adjustedArray}</div>
                         </ul>
                     </div>
                 </div>
@@ -98,7 +106,7 @@ class DisplayWindow extends Component {
                     <h1>{this.props.category}</h1>
                     <div style ={threeOrMoreCards} className="profile-bids">
                         <ul>
-                            <div>{all}</div>
+                            <div>{adjustedArray}</div>
                         </ul>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ const auction = require('./routers/auction');
 const tee_time = require('./routers/tee_time');
 const user = require('./routers/user');
 const payment = require('./routers/payment');
+const course = require('./routers/course');
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
@@ -43,6 +44,7 @@ app.use('/auction', auction);
 app.use('/tee_time', tee_time);
 app.use('/user', user);
 app.use('/payment', payment);
+app.use('/course', course);
 
 
 app.listen(PORT, function(){
