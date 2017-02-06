@@ -23,6 +23,18 @@ router.get('/course', function(req,res){
         res.json(data);
     });
 });
+router.get('/course/name/id', function(req,res){
+    knex.select('name', 'id').from('courses')
+    .then(function(data){
+        var allCourses = data.map((element) =>{
+            return{
+                course_name:element.name,
+                course_id:element.id
+            };
+        });
+        res.json(allCourses);
+    });
+});
 router.get('/:id', function(req, res){
     var id = req.params.id;
     knex('auction')
@@ -238,4 +250,22 @@ router.put('/changeBid',function(req,res){
     });
 });
 
+router.post('/create', function(req,res){
+    console.log(req.body);
+    var course_id = req.body.course_id;
+    var owner_id = req.body.owner_id;
+    var top_bid = req.body.top_bid;
+    var tee_time = req.body.tee_time;
+    var auction_ends = req.body.auction_ends;
+    knex('auction').insert({
+        course_id: course_id * 1,
+        owner_id:owner_id * 1,
+        top_bid:top_bid * 1,
+        tee_time: tee_time,
+        auction_ends:auction_ends
+    }).then((data)=>{
+        console.log(data);
+        res.json(data);
+    });
+});
 module.exports = router;

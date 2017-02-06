@@ -18,16 +18,16 @@ class ProfileNav extends Component{
                         <a href="http://localhost:8080/#/auctionSearch">Auctions</a>
                     </li>
                     <li className = "profile-nav-button">
-                        <a href="">Search</a>
+                        <a href="">Create Auction</a>
                     </li>
                     <li className = "profile-nav-button">
-                        <a href="http://localhost:8080/#/profile">Profile</a>
-                    </li>
-                    <li className = "profile-nav-button">
-                        <a onClick ={this.logout} href="http://localhost:8080/#/login">Logout</a>
+                        <a href="">Search Courses</a>
                     </li>
                     <li className = "profile-nav-button">
                         <a onClick ={this.props.updateWindow}>Update Profile</a>
+                    </li>
+                    <li className = "profile-nav-button">
+                        <a onClick ={this.logout} href="http://localhost:8080/#/login">Logout</a>
                     </li>
                 </ul>
             </div>
