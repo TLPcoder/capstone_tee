@@ -21,6 +21,20 @@ router.get('/favorites/:id', function(req,res){
     });
 });
 
+router.get('/favorites/courses/:id', function(req,res){
+    var id = req.params.id;
+    knex.select("*")
+    .from('users')
+    .where('users.id', id)
+    .innerJoin('favorite', 'favorite.user_id', 'users.id')
+    .innerJoin('courses', 'courses.id', 'favorite.course_id')
+    .then(function(userData){
+        res.json(userData);
+    }).catch(function(err){
+        console.log(err);
+    });
+});
+
 router.get('/bids/:id', function(req,res){
     var id = req.params.id;
     knex('users')

@@ -38,6 +38,16 @@ class CreateCard extends Component {
                     </a>
                 </div>
             )
+        }else if(this.props.dataAuction.course_id){
+            var courseURL =  `http://localhost:8080/#/course/${this.props.dataAuction.course_id}`
+            return (
+                <div>
+                    <a href={courseURL}>
+                        <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
+                    </a>
+                    <p>{this.props.dataAuction.name}</p>
+                </div>
+            )
         }else {
             return (
                 <div>
