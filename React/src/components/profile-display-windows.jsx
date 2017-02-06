@@ -36,33 +36,34 @@ class DisplayWindow extends Component {
             margin: 'auto'
         };
         var oneCard = {
-            width: '60%',
+            width: '380px',
             margin: 'auto'
         };
-        var key = 0;
-        var json = this.state.json;
-        var user = this.props.user();
-        var all = json.map(function(element) {
-            key++;
-            if(element.owner_id === user * 1){
-                return;
-            }else if (element.auction_id) {
-                return (
-                    <li><CreateCard key={key} dataAuction={element}/></li>
-                )
-            }else if (element.id) {
-                return (
-                    <li><CreateCard key={key} dataAuction={element}/></li>
-                )
-            } else {
-                return (
-                    <li><CreateCard key={key} data={element}/></li>
-                )
-            }
-        })
+            var key = 0;
+            var json = this.state.json;
+            var user = this.props.user();
+            var all = json.map(function(element) {
+                key++;
+                if (element.owner_id === user * 1) {
+                    return;
+                } else if (element.auction_id) {
+                    return (
+                        <li><CreateCard key={key} dataAuction={element}/></li>
+                    )
+                } else if (element.id) {
+                    return (
+                        <li><CreateCard key={key} dataAuction={element}/></li>
+                    )
+                } else {
+                    return (
+                        <li><CreateCard key={key} data={element}/></li>
+                    )
+                }
+            })
+        console.log("all images", all);
         var adjustedArray = []
-        for(var i = 0; i < all.length; i++){
-            if(all[i]){
+        for (var i = 0; i < all.length; i++) {
+            if (all[i]) {
                 adjustedArray.push(all[i]);
             }
         }
@@ -73,12 +74,13 @@ class DisplayWindow extends Component {
                 <div></div>
             )
         }
-        if(length === 0){
-            return(
+        if (length === 0) {
+            return (
                 <div></div>
             )
         }
         if (length === 1) {
+            console.log("length of 1")
             return (
                 <div>
                     <h1>{this.props.category}</h1>
@@ -89,8 +91,10 @@ class DisplayWindow extends Component {
                     </div>
                 </div>
             )
-        }else if (length === 2) {
-            return(
+        } else if (length === 2) {
+            console.log("length of 2")
+
+            return (
                 <div>
                     <h1>{this.props.category}</h1>
                     <div style ={twoCards} className="profile-bids">
@@ -101,7 +105,9 @@ class DisplayWindow extends Component {
                 </div>
             )
         } else {
+            console.log("length of 3>")
             return (
+
                 <div>
                     <h1>{this.props.category}</h1>
                     <div style ={threeOrMoreCards} className="profile-bids">

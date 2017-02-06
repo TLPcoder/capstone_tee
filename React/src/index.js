@@ -13,6 +13,7 @@ import Success from './components/success';
 import AuctionSearch from './components/auction-search-main';
 import CreateAuction from './components/new-auction-main';
 import FavoriteMain from './components/favorites-main';
+import BidsMain from './components/bids-main';
 
 ReactDOM.render(
     <Router history={hashHistory}>
@@ -27,6 +28,7 @@ ReactDOM.render(
             <Route path='auctionSearch' component={AuctionSearch}></Route>
             <Route path='createAuction' component={CreateAuction}></Route>
             <Route path='favorites' component={FavoriteMain}></Route>
+            <Route path='bids' component={BidsMain}></Route>
         </Route>
     </Router>
   , document.querySelector('.app'));

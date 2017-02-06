@@ -37,14 +37,14 @@ router.get('/favorites/courses/:id', function(req,res){
 
 router.get('/bids/:id', function(req,res){
     var id = req.params.id;
-    knex('users')
+    knex('users').returning('*')
     .innerJoin('bids', 'bids.bider_id', 'users.id')
     .innerJoin('auction', 'auction.id', 'bids.auction_id')
     .innerJoin('courses', 'courses.id', 'auction.course_id')
     .where('users.id', id)
     .where('bids.bider_id', id)
     .where('auction.auction_ends', '>',date)
-    .orderBy('bids.bid_amount', 'desc')
+    .where('auction.top_bid', knex.raw('bids.bid_amount'))
     .then(function(data){
         res.json(data);
     }).catch(function(err){
