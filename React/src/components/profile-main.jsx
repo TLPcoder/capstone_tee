@@ -39,9 +39,9 @@ class ProfileMain extends Component {
                 <ProfileNav updateWindow={this.updateWindow}/>
                 <div id="profile-container">
                     <UserInfo findUser={this.getUserId} updateWindow={this.state.updateWindow}/>
-                    <DisplayWindow category ={'Bids'} url={`http://localhost:3000/user/bids/${userId}`}/>
-                    <DisplayWindow category ={'Favorites'} url={`http://localhost:3000/user/favorites/${userId}`}/>
-                    <DisplayWindow category ={'Current'} url={`http://localhost:3000/auction`}/>
+                    <DisplayWindow category ={'Bids'} user ={this.getUserId} url={`http://localhost:3000/user/bids/${userId}`}/>
+                    <DisplayWindow category ={'Favorites'} user ={this.getUserId} url={`http://localhost:3000/user/favorites/${userId}`}/>
+                    <DisplayWindow category ={'Current'} user ={this.getUserId} url={`http://localhost:3000/auction`}/>
                 </div>
             </div>
         )

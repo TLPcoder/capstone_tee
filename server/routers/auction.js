@@ -5,15 +5,6 @@ var knex = require('../knex');
 var fetch = require('node-fetch');
 const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
 
-// router.get('/', function(req, res) {
-//     knex('auction')
-//         .innerJoin('bids', 'bids.auction_id', 'auction.id')
-//         .where('bids.bid_amount', knex.raw('auction.top_bid'))
-//         .where('auction.auction_ends', '>',date)
-//         .then(function(data) {
-//             res.json(data);
-//         });
-// });
 router.get('/', function(req, res) {
     knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount', 'bids.auction_id')
         .from('auction')

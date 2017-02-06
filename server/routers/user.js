@@ -7,7 +7,7 @@ var User = require('../models/users');
 
 router.get('/favorites/:id', function(req,res){
     var id = req.params.id;
-    knex.select('users.first_name','users.last_name','users.username','courses.image','courses.zip','favorite.course_id', 'courses.name', 'auction.tee_time','favorite.user_id','auction.id', 'auction.auction_ends')
+    knex.select('users.first_name','users.last_name','users.username','courses.image','courses.zip','favorite.course_id', 'courses.name', 'auction.tee_time','favorite.user_id','auction.id', 'auction.auction_ends', 'auction.top_bid')
     .from('users')
     .where('users.id', id)
     .innerJoin('favorite', 'favorite.user_id', 'users.id')

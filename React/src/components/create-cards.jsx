@@ -6,7 +6,7 @@ class CreateCard extends Component {
         super(props);
     }
     render() {
-        console.log("image url", this.props.dataAuction.image)
+
         var center ={
             textAlign: 'center'
         };
@@ -14,27 +14,27 @@ class CreateCard extends Component {
             textDecoration:'none',
             color: '#4CAF50'
         };
-        // if(!this.props.dataAuction.image){
-        //     console.log("shit");
-        //     return (<div></div>)
-        // }
-        if (this.props.dataAuction.auction_id) {
+        if(this.props.dataAuction.top_bid){
+            console.log("shit");
+        }
+
+        if (this.props.dataAuction.auction_id && this.props.dataAuction.top_bid) {
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.auction_id}`;
             return (
                 <div>
                     <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                     <a href={url} style={textDecoration}>
-                        <p style={center}>{this.props.dataAuction.name}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                     </a>
                 </div>
             )
-        } else if(this.props.dataAuction.id){
+        } else if(this.props.dataAuction.id && this.props.dataAuction.top_bid){
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.id}`;
             return (
                 <div>
                     <img className = "courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                     <a href={url} style={textDecoration}>
-                        <p style={center}>{this.props.dataAuction.name}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                     </a>
                 </div>
             )

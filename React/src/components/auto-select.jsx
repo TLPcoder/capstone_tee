@@ -99,6 +99,7 @@ class AutoSelect extends Component {
         });
     }
     createCourse(){
+        console.log("hello there bitch")
         var createCourse = !this.state.createCourse;
         this.setState({
             courseNames: this.state.courseNames,
@@ -106,9 +107,10 @@ class AutoSelect extends Component {
             course_id: this.state.course_id,
             tee_time: this.state.tee_time,
             auction_ends: this.state.auction_ends,
-            top_bid: event.target.value,
+            top_bid: this.state.top_bid,
             createCourse: createCourse
         });
+        this.getCourseNames();
     }
     createAuction() {
         fetch(`http://localhost:3000/auction/create`, {
@@ -178,6 +180,8 @@ class AutoSelect extends Component {
         return (format.join('-'));
     }
     render() {
+        var divKey = 0;
+        divKey++;
         console.log("course id", this.state.course_id);
         var key = 0;
         var margin = {
@@ -193,20 +197,14 @@ class AutoSelect extends Component {
         }
         if (this.state.courseNames && this.state.createCourse) {
             return (
-                <div style={margin}>
-                    <CreateCourseForm/>
-                    <SimpleSelect onValueChange={this.courseValue} options={options} placeholder="Select a Course"></SimpleSelect>
-                    <input type="button" value = "Create Course" onClick={this.createCourse}/>
-                    <input type="datetime-local" name="" id="" onChange={this.teeTime}/>
-                    <input type="date" name="" id="" onChange={this.auctionEnds}/>
-                    <input type="text" name="" id="" placeholder="Starting Bid" onChange={this.startingBid}/>
-                    <input type="button" value="Creat Course"/>
+                <div key = {divKey} style={margin}>
+                    <CreateCourseForm createCourse = {this.createCourse}/>
                 </div>
             )
         }
         if (this.state.courseNames) {
             return (
-                <div style={margin}>
+                <div style={margin} key = {divKey}>
                     <SimpleSelect onValueChange={this.courseValue} options={options} placeholder="Select a Course"></SimpleSelect>
                     <input type="button" value = "Create Course" onClick={this.createCourse}/>
                     <input type="datetime-local" name="" id="" onChange={this.teeTime}/>
