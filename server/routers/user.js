@@ -84,4 +84,16 @@ router.put('/update',function(req,res){
     });
 });
 
+router.post('/favorite',function(req,res){
+    var user_id = req.body.user_id;
+    var course_id = req.body.course_id;
+    knex('favorite').returning('*').insert({
+        user_id:user_id,
+        course_id:course_id
+    }).then(function(data){
+        console.log(data);
+        res.json(data);
+    });
+});
+
 module.exports = router;

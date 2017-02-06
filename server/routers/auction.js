@@ -39,6 +39,7 @@ router.get('/:id', function(req, res){
     var id = req.params.id;
     knex('auction')
     .innerJoin('courses', 'courses.id', 'auction.course_id')
+    .innerJoin('bids', 'bids.auction_id', 'auction.id')
     .where('auction.id', id)
     .where('auction.auction_ends', '>',date)
     .then(function(data){

@@ -1,7 +1,6 @@
 'use strict';
 import React, {Component} from 'react';
 import ReactSelectize from "react-selectize";
-import CreateCourseForm from "./create-course-form";
 import CreateCard from './create-cards';
 var SimpleSelect = ReactSelectize.SimpleSelect;
 

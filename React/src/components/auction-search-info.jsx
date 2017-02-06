@@ -1,6 +1,5 @@
 'use strict';
 import React, {Component} from 'react';
-import Select from 'react-select';
 
 class SearchInfo extends Component {
     constructor(props) {
@@ -256,7 +255,3 @@ class SearchInfo extends Component {
     }
 }
 export default SearchInfo;
-
-
-
-// <Select ref="stateSelect" autofocus options={options} simpleValue clearable={true} name="selected-state" value={this.state.courseName.name} onChange={this.logChange} searchable={true}/>
