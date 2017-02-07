@@ -36,45 +36,45 @@ class DisplayWindow extends Component {
             margin: 'auto'
         };
         var oneCard = {
-            width: '60%',
+            width: '380px',
             margin: 'auto'
         };
-        var key = 0;
-        var json = this.state.json;
-        var user = this.props.user();
-        var all = json.map(function(element) {
-            key++;
-            if(element.owner_id === user * 1){
-                return;
-            }else if (element.auction_id) {
-                return (
-                    <li><CreateCard key={key} dataAuction={element}/></li>
-                )
-            }else if (element.id) {
-                return (
-                    <li><CreateCard key={key} dataAuction={element}/></li>
-                )
-            } else {
-                return (
-                    <li><CreateCard key={key} data={element}/></li>
-                )
-            }
-        })
+            var key = 0;
+            var json = this.state.json;
+            var user = this.props.user();
+            var all = json.map(function(element) {
+                key++;
+                if (element.owner_id === user * 1) {
+                    return;
+                } else if (element.auction_id) {
+                    return (
+                        <li><CreateCard key={key} dataAuction={element}/></li>
+                    )
+                } else if (element.id) {
+                    return (
+                        <li><CreateCard key={key} dataAuction={element}/></li>
+                    )
+                } else {
+                    return (
+                        <li><CreateCard key={key} data={element}/></li>
+                    )
+                }
+            })
+        console.log("all images", all);
         var adjustedArray = []
-        for(var i = 0; i < all.length; i++){
-            if(all[i]){
+        for (var i = 0; i < all.length; i++) {
+            if (all[i]) {
                 adjustedArray.push(all[i]);
             }
         }
         var length = adjustedArray.length;
-        console.log("adjustedArray", adjustedArray);
         if (!json.length) {
             return (
                 <div></div>
             )
         }
-        if(length === 0){
-            return(
+        if (length === 0) {
+            return (
                 <div></div>
             )
         }
@@ -89,8 +89,8 @@ class DisplayWindow extends Component {
                     </div>
                 </div>
             )
-        }else if (length === 2) {
-            return(
+        } else if (length === 2) {
+            return (
                 <div>
                     <h1>{this.props.category}</h1>
                     <div style ={twoCards} className="profile-bids">
@@ -102,6 +102,7 @@ class DisplayWindow extends Component {
             )
         } else {
             return (
+
                 <div>
                     <h1>{this.props.category}</h1>
                     <div style ={threeOrMoreCards} className="profile-bids">

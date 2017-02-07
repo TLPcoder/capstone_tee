@@ -1,5 +1,7 @@
 'use strict';
 import React, {Component} from 'react';
+import ReactSelectize from "react-selectize";
+var SimpleSelect = ReactSelectize.SimpleSelect;
 
 class SearchInfo extends Component {
     constructor(props) {
@@ -22,7 +24,8 @@ class SearchInfo extends Component {
             courseName: {
                 name: null
             },
-            courseData: []
+            courseData: [],
+            courses: []
         };
         this.radioButton = this.radioButton.bind(this);
         this.radioButtonSearchBar = this.radioButtonSearchBar.bind(this);
@@ -32,7 +35,37 @@ class SearchInfo extends Component {
         this.logChange = this.logChange.bind(this);
         this.getCourseData = this.getCourseData.bind(this);
         this.updateCourse = this.updateCourse.bind(this);
+        this.getCourses = this.getCourses.bind(this);
+        this.getCourses(`http://localhost:3000/course`);
         this.getCourseData();
+
+    }
+    getCourses(url) {
+        fetch(url).then((promise) => {
+            return promise.json();
+        }).then((json) => {
+            this.setState({
+                priceSort: {
+                    run: this.state.priceSort.run,
+                    type: this.state.priceSort.type
+                },
+                location: {
+                    run: this.state.location.run,
+                    type: this.state.location.type,
+                    radius: this.state.location.radius,
+                    value: this.state.location.value
+                },
+                date: {
+                    run: false,
+                    time: null
+                },
+                courseName: {
+                    name: this.state.courseName.name
+                },
+                courseData: this.state.courseData,
+                courses: json
+            });
+        });
     }
     radioButton(event) {
         console.log("radio button", event.target.value);
@@ -44,7 +77,8 @@ class SearchInfo extends Component {
             location: {
                 run: true,
                 type: event.target.value,
-                radius: this.state.location.radius
+                radius: this.state.location.radius,
+                value: this.state.location.value
             },
             date: {
                 run: false,
@@ -53,7 +87,8 @@ class SearchInfo extends Component {
             courseName: {
                 name: this.state.courseName.name
             },
-            courseData: this.state.courseData
+            courseData: this.state.courseData,
+            courses: this.state.courses
         });
     }
     radioButtonSearchBar(event) {
@@ -76,7 +111,8 @@ class SearchInfo extends Component {
             courseName: {
                 name: this.state.courseName.name
             },
-            courseData: this.state.courseData
+            courseData: this.state.courseData,
+            courses: this.state.courses
         });
     }
     zipCodeRadius(event) {
@@ -99,8 +135,14 @@ class SearchInfo extends Component {
             courseName: {
                 name: this.state.courseName.name
             },
-            courseData: this.state.courseData
+            courseData: this.state.courseData,
+            courses: this.state.courses
         });
+        console.log(this.state);
+        if(this.state.location.type === 'zip'){
+            console.log("yes it works :)");
+            this.getCourses(`http://localhost:3000/course/zip/${this.state.location.value}/${event.target.value}`);
+        }
     }
     activateSort(event) {
         console.log("zip value", event.target.value);
@@ -122,13 +164,14 @@ class SearchInfo extends Component {
             courseName: {
                 name: this.state.courseName.name
             },
-            courseData: this.state.courseData
+            courseData: this.state.courseData,
+            courses: this.state.courses
         });
     }
     dateChange(event) {
         console.log("date", event.target.value);
     }
-    updateCourse(event) {
+    updateCourse(value) {
         this.setState({
             priceSort: {
                 run: true,
@@ -145,9 +188,10 @@ class SearchInfo extends Component {
                 time: null
             },
             courseName: {
-                name: event.target.value
+                name: value.value
             },
-            courseData: this.state.courseData
+            courseData: this.state.courseData,
+            courses: this.state.courses
         });
     }
     logChange(val) {
@@ -170,11 +214,12 @@ class SearchInfo extends Component {
             courseName: {
                 name: val.value
             },
-            courseData: this.state.courseData
+            courseData: this.state.courseData,
+            courses: this.state.courses
         });
     }
     getCourseData() {
-        fetch(`http://localhost:3000/auction/course`).then((promise) => {
+        fetch(`http://localhost:3000/auction`).then((promise) => {
             return promise.json();
         }).then((json) => {
             this.setState({
@@ -195,7 +240,8 @@ class SearchInfo extends Component {
                 courseName: {
                     name: this.state.courseName.name
                 },
-                courseData: json
+                courseData: json,
+                courses: this.state.courses
             });
         });
     }
@@ -204,16 +250,58 @@ class SearchInfo extends Component {
         this.props.updateSearchData(this.state);
     }
     render() {
-        var json = this.state.courseData;
-        // console.log(json);
-        // var options = [];
-        // json.forEach(function(element) {
-        //     options.push({value: element.name, label: element.name});
-        // });
-        // console.log("iotsdflnsdflkd", options);
-        if (this.state.location.type === 'zip') {
+        var margin = {
+            marginTop: '100px'
+        };
+        if (this.props.courseSearch) {
+            var courses = this.state.courses.map((course) => {
+                return {value: course.id, label: course.name};
+            });
+        }
+        if (this.props.run) {
+            var auctionCourses = this.state.courseData.map((course) => {
+                return {label: course.name, value: course.course_id};
+            });
+        }
+
+        console.log("true",this.props.courseSearch && this.state.courses.length && this.state.location.type === 'zip');
+        if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'zip') {
+           return (
+               <div style={margin}>
+                   <form>
+                       <input type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                       <input type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                       <input type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                       <input type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                       <input type="text" onChange={this.radioButtonSearchBar} placeholder={this.state.location.type}/>
+                       <select onChange={this.zipCodeRadius} name="distance" id="">
+                           <option value="0">Select Distance</option>
+                           <option value="10">10 Miles</option>
+                           <option value="20">20 Miles</option>
+                           <option value="30">30 Miles</option>
+                       </select>
+                       <SimpleSelect onValueChange={this.updateCourse} options={courses} placeholder="Select a Course"></SimpleSelect>
+                       <input type="submit" onClick={this.submitSearch}/>
+                   </form>
+               </div>
+           )
+       }else if (this.props.courseSearch && this.state.courses.length) {
             return (
-                <div>
+                <div style={margin}>
+                    <form>
+                        <input type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <input type="text" onChange={this.radioButtonSearchBar} placeholder={this.state.location.type}/>
+                        <SimpleSelect onValueChange={this.updateCourse} options={courses} placeholder="Select a Course"></SimpleSelect>
+                        <input type="submit" onClick={this.submitSearch}/>
+                    </form>
+                </div>
+            )
+        } else if (this.state.location.type === 'zip') {
+            return (
+                <div style={margin}>
                     <form>
                         <input type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
                         <input type="radio" name='location' value='state' onClick ={this.radioButton}/>State
@@ -229,14 +317,14 @@ class SearchInfo extends Component {
                         <input type="radio" name="sort" value='asc' onClick={this.activateSort}/>Sort Asc Price
                         <input type="radio" name="sort" value='desc' onClick={this.activateSort}/>Sort Desc Price
                         <input type="date" name="date" id=""/>
-                        <input type="text" name="course" onChange={this.updateCourse} placeholder="course name"/>
+                        <SimpleSelect onValueChange={this.updateCourse} options={auctionCourses} placeholder="Select a Course"></SimpleSelect>
                         <input type="submit" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
-        }
+        } else if (!this.props.courseSearch && this.state.courseData) {
             return (
-                <div>
+                <div style={margin}>
                     <form>
                         <input type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
                         <input type="radio" name='location' value='state' onClick ={this.radioButton}/>State
@@ -246,12 +334,16 @@ class SearchInfo extends Component {
                         <input type="radio" name="sort" value='asc' onClick={this.activateSort}/>Sort Asce Price
                         <input type="radio" name="sort" value='desc' onClick={this.activateSort}/>Sort Desc Price
                         <input type="date" name="date" id="" onChange={this.dateChange}/>
-                        <input type="text" name="course" onChange={this.updateCourse} placeholder="course name"/>
-
+                        <SimpleSelect onValueChange={this.updateCourse} options={auctionCourses} placeholder="Select a Course"></SimpleSelect>
                         <input type="submit" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
+        } else {
+            return (
+                <div></div>
+            )
+        }
     }
 }
 export default SearchInfo;

@@ -35,16 +35,34 @@ router.get('/favorites/courses/:id', function(req,res){
     });
 });
 
+// router.get('/bids/:id', function(req,res){
+//     var id = req.params.id;
+//     knex('users').returning('*')
+//     .innerJoin('bids', 'bids.bider_id', 'users.id')
+//     .innerJoin('auction', 'auction.id', 'bids.auction_id')
+//     .innerJoin('courses', 'courses.id', 'auction.course_id')
+//     .where('users.id', id)
+//     .where('bids.bider_id', id)
+//     .where('auction.auction_ends', '>',date)
+//     .where('auction.top_bid', knex.raw('bids.bid_amount'))
+//     .then(function(data){
+//         res.json(data);
+//     }).catch(function(err){
+//         console.log(err);
+//     });
+// });
 router.get('/bids/:id', function(req,res){
     var id = req.params.id;
-    knex('users')
+    knex.select('bids.bid_amount','courses.image','bids.auction_id','auction.id','auction.course_id','bids.bider_id', 'auction.top_bid','courses.name','auction.tee_time').from('users')
+    .max('bids.bid_amount')
     .innerJoin('bids', 'bids.bider_id', 'users.id')
     .innerJoin('auction', 'auction.id', 'bids.auction_id')
     .innerJoin('courses', 'courses.id', 'auction.course_id')
     .where('users.id', id)
     .where('bids.bider_id', id)
     .where('auction.auction_ends', '>',date)
-    .orderBy('bids.bid_amount', 'desc')
+    .groupBy('bids.bid_amount','courses.image','bids.auction_id','auction.id','auction.course_id','bids.bider_id', 'auction.top_bid','courses.name','auction.tee_time')
+    .having('bids.bid_amount', '=',knex.raw('bids.bid_amount'))
     .then(function(data){
         res.json(data);
     }).catch(function(err){

@@ -26,12 +26,12 @@ class BidsMain extends Component {
         });
     }
     render() {
-        if (bidData) {
+        if (this.state.bidData) {
             return (
                 <div>
                     <MainNav/>
                     <h1>Bids</h1>
-
+                    <GridDisplay courseData={this.state.bidData}/>
                 </div>
             )
         }else{

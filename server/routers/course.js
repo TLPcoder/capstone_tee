@@ -10,6 +10,59 @@ router.get('/',function(req,res){
     });
 });
 
+router.get('/country/:country',function(req,res){
+    knex('courses')
+    .where('country',req.params.country)
+    .then(function(data){
+        res.json(data);
+    }).catch((err)=>{
+        console.log(err);
+    });
+});
+router.get('/state/:state',function(req,res){
+    knex('courses')
+    .where('state',req.params.state)
+    .then(function(data){
+        res.json(data);
+    }).catch((err)=>{
+        console.log(err);
+    });
+});
+router.get('/city/:city',function(req,res){
+    knex('courses').where('city',req.params.city)
+    .then(function(data){
+        res.json(data);
+    }).catch((err)=>{
+        console.log(err);
+    });
+});
+router.get('/zip/:zip/:distance',function(req,res){
+    var params = req.params;
+    var zipCodeCity = [];
+    var sortJSON = req.params.sort;
+    var url = `http://api.geonames.org/findNearbyPostalCodesJSON?postalcode=${params.zip}&country=US&radius=${params.distance}&username=tlpcoder`;
+    fetch(url)
+        .then(data => {
+            var json = data.json();
+            return json;
+        })
+        .then(json => {
+            console.log("json", json);
+            json.postalCodes.forEach(function(city){
+                zipCodeCity.push(city.placeName);
+            });
+            console.log("zip codes", zipCodeCity);
+            knex('courses')
+                .whereIn('courses.city', zipCodeCity)
+                .then(function(data) {
+                    console.log("course data", data);
+                    res.json(data);
+                });
+        }).catch(function(err) {
+            console.log(err);
+        });
+});
+
 router.post('/create',function(req,res){
     var name = req.body.name;
     var image = req.body.image;
@@ -33,5 +86,6 @@ router.post('/create',function(req,res){
         res.json(data);
     });
 });
+
 
 module.exports = router;

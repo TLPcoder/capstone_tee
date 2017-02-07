@@ -30,13 +30,13 @@ class MainNav extends Component {
                         <a href="http://localhost:8080/#/createauction">Create Auction</a>
                     </li>
                     <li className = "main-nav-button">
-                        <a href="">Current Bids</a>
+                        <a href="http://localhost:8080/#/bids">Current Bids</a>
                     </li>
                     <li className = "main-nav-button">
                         <a href="http://localhost:8080/#/favorites">Favorites</a>
                     </li>
                     <li className = "main-nav-button">
-                        <a href="">Search Courses</a>
+                        <a href="http://localhost:8080/#/searchcourse">Search Courses</a>
                     </li>
                     <li className = "main-nav-button">
                         <a onClick ={this.logout} href="http://localhost:8080/#/login">Logout</a>
