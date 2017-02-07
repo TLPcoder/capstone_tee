@@ -10,6 +10,21 @@ router.get('/',function(req,res){
     });
 });
 
+router.get('/name/id/:id', function(req,res){
+    var courseId = req.params.id;
+    knex.select('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id').from('courses').max('bids.bid_amount')
+    .returning('auction.id')
+    .innerJoin('auction', 'courses.id', 'auction.course_id')
+    .innerJoin('bids', 'bids.auction_id','auction.id')
+    .where('courses.id', courseId)
+    .groupBy('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id')
+    .then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        console.log(err);
+    });
+});
+
 router.get('/country/:country',function(req,res){
     knex('courses')
     .where('country',req.params.country)

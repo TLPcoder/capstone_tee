@@ -36,6 +36,7 @@ class SearchInfo extends Component {
         this.getCourseData = this.getCourseData.bind(this);
         this.updateCourse = this.updateCourse.bind(this);
         this.getCourses = this.getCourses.bind(this);
+        this.setState = this.setState.bind(this);
         this.getCourses(`http://localhost:3000/course`);
         this.getCourseData();
 
@@ -248,6 +249,27 @@ class SearchInfo extends Component {
     submitSearch(event) {
         event.preventDefault();
         this.props.updateSearchData(this.state);
+        this.setState({
+            priceSort: {
+                run: false,
+                type: null
+            },
+            location: {
+                run: false,
+                type: null,
+                value: null,
+                radius: null
+            },
+            date: {
+                run: false,
+                time: null
+            },
+            courseName: {
+                name: null
+            },
+            courseData: this.state.courseData,
+            courses: this.state.courses
+        });
     }
     render() {
         var margin = {

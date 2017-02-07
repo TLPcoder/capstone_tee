@@ -17,12 +17,10 @@ class AuctionSearch extends Component {
         this.returnURL = this.returnURL.bind(this);
     }
     updateSearchData(data) {
-        console.log("i found your data", data);
         this.changeURl(data);
     }
     changeURl(data) {
         if (data) {
-            console.log('should rerender')
             this.setState({
                 searchData: data,
                 url: this.returnURL(data),
@@ -33,15 +31,18 @@ class AuctionSearch extends Component {
         }
     }
     returnURL(data){
-        console.log("i found your data again brooooo", data)
+        console.log("search data", data);
         var sortByDate = null;
         var location = data.location.run;
         var price = data.priceSort.run;
-        var name = data.courseName;
+        var name = data.courseName.name;
+        console.log("NAME ID ", name)
         price ? price = data.priceSort.type : price = 'asc';
-        if(data.location.type === 'zip'){
+        if(name){
+            return `http://localhost:3000/course/name/id/${name}`
+        }else if(data.location.type === 'zip'){
             return `http://localhost:3000/tee_time/${data.location.value}/${data.location.radius}/asc/${price}`
-        }else if(location){
+        }else  if(location){
             return `http://localhost:3000/tee_time/${data.location.type}/${data.location.value}/asc/${price}`;
         }else{
             location ? location = data.location.type : location = 'United States';
@@ -49,7 +50,7 @@ class AuctionSearch extends Component {
         }
     }
     render() {
-        console.log("state main", this.state);
+        console.log("URL", this.state.url);
         return (
             <div>
                 <MainNav/>
