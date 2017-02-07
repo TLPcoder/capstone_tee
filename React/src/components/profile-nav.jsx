@@ -27,7 +27,7 @@ class ProfileNav extends Component{
                         <a href="http://localhost:8080/#/favorites">Favorites</a>
                     </li>
                     <li className = "profile-nav-button">
-                        <a href="">Search Courses</a>
+                        <a href="http://localhost:8080/#/searchcourse">Search Courses</a>
                     </li>
                     <li className = "profile-nav-button">
                         <a onClick ={this.props.updateWindow}>Update Profile</a>

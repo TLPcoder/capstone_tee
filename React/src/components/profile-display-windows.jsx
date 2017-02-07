@@ -68,7 +68,6 @@ class DisplayWindow extends Component {
             }
         }
         var length = adjustedArray.length;
-        console.log("adjustedArray", adjustedArray);
         if (!json.length) {
             return (
                 <div></div>
@@ -80,7 +79,6 @@ class DisplayWindow extends Component {
             )
         }
         if (length === 1) {
-            console.log("length of 1")
             return (
                 <div>
                     <h1>{this.props.category}</h1>
@@ -92,8 +90,6 @@ class DisplayWindow extends Component {
                 </div>
             )
         } else if (length === 2) {
-            console.log("length of 2")
-
             return (
                 <div>
                     <h1>{this.props.category}</h1>
@@ -105,7 +101,6 @@ class DisplayWindow extends Component {
                 </div>
             )
         } else {
-            console.log("length of 3>")
             return (
 
                 <div>
