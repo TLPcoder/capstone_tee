@@ -140,10 +140,10 @@ class SearchInfo extends Component {
             courses: this.state.courses
         });
         console.log(this.state);
-        if(this.state.location.type === 'zip'){
-            console.log("yes it works :)");
-            this.getCourses(`http://localhost:3000/course/zip/${this.state.location.value}/${event.target.value}`);
-        }
+        // if(this.state.location.type === 'zip'){
+        //     console.log("yes it works :)");
+        //     this.getCourses(`http://localhost:3000/course/zip/${this.state.location.value}/${event.target.value}`);
+        // }
     }
     activateSort(event) {
         console.log("zip value", event.target.value);
