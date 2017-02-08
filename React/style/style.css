@@ -110,7 +110,7 @@ body{
 
 #profile-nav-buttons-ul{
     list-style-type: none;
-    margin-top: 57px;
+    margin-top: 54px;
     float:right;
 }
 .profile-nav-button{
@@ -132,7 +132,7 @@ body{
 #profile-nav {
     width: 100%;
     margin: auto;
-    height: 10%;
+    height: 80px;
     color: white;
     top: 0;
     left: 0;
@@ -246,14 +246,14 @@ border-radius: 10px;
 
 #main-nav-buttons{
     list-style-type: none;
-    margin-top: 57px;
+    margin-top: 54px;
     float:right;
 }
 
 #main-nav {
     width: 100%;
     margin: auto;
-    height: 10%;
+    height: 80px;
     color: white;
     top: 0;
     left: 0;
@@ -373,4 +373,96 @@ border-radius: 10px;
 .course-auction-description{
 
     margin:20px 10% 0% 10%;
+}
+.create-auction-box-container{
+    margin: auto;
+    margin-left: 36%;
+    margin-right: 37%;
+    width:400px;
+    position: relative;
+    top:270px;
+    border-radius: 5px;
+    background-color: #F9F9FA;
+}
+
+.create-auction-inputs {
+    margin-top:20px;
+}
+#create-auction-container{
+    height:100vh;
+    background-image: url("http://www.golftripper.com/wp-content/uploads/2010/07/Olympic-Club-Lake-Hole-8-4-copy.jpg");
+    background-repeat: no-repeat;
+    /*background-size: 100%;*/
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+
+}
+.react-selectize.root-node{
+    left:50px;
+    width:200px;
+}
+
+.create-auction-buttons{
+    background-color: #4CAF50;
+    /* Green */
+    /*font-size: 16px;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid 1px #4CAF50;
+    margin: 10px 10px 10px 0px;
+}
+.create-auction-buttons:hover{
+    background-color: white;
+    border: solid 1px #4CAF50;
+    color: #4CAF50;
+}
+.create-auction-buttons-left{
+    margin-left: 10px;
+}
+.create-auction-tee-time{
+    color:#4CAF50;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+}
+.create-auction-auction-ends{
+    padding-top: 10px;
+    color:#4CAF50;
+    padding-bottom: 10px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+}
+.create-auction-starting-bid{
+    color:#4CAF50;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
 }

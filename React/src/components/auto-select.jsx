@@ -185,7 +185,15 @@ class AutoSelect extends Component {
         console.log("course id", this.state.course_id);
         var key = 0;
         var margin = {
-            marginTop: '100px'
+            fontFamily:'Arial, Helvetica, sans-serif',
+            width: '210px',
+            top:'10px',
+            left: '100px',
+            color:'brown',
+            backgroundColor:'white'
+        };
+        var color = {
+            color:'brown'
         };
         var options = this.state.courseNames.map((course) => {
             return {label: course.course_name, value: course.course_id};
@@ -204,13 +212,18 @@ class AutoSelect extends Component {
         }
         if (this.state.courseNames) {
             return (
-                <div style={margin} key = {divKey}>
-                    <SimpleSelect onValueChange={this.courseValue} options={options} placeholder="Select a Course"></SimpleSelect>
-                    <input type="button" value = "Create Course" onClick={this.createCourse}/>
-                    <input type="datetime-local" name="" id="" onChange={this.teeTime}/>
-                    <input type="date" name="" id="" onChange={this.auctionEnds}/>
-                    <input type="text" name="" id="" placeholder="Starting Bid" onChange={this.startingBid}/>
-                    <input type="button" value="Create Auction" onClick = {this.createAuction}/>
+                <div className = "create-auction-box-container" key = {divKey}>
+                    <SimpleSelect style={margin}className = "create-auction-inputs create-auction-drop-down" onValueChange={this.courseValue} options={options} placeholder="Select a Course"></SimpleSelect>
+                    <br/>
+                    <input style={color} className = "create-auction-inputs create-auction-tee-time" type="datetime-local" name="" id="" onChange={this.teeTime}/>
+                    <br/>
+                    <input style={color} className = "create-auction-inputs create-auction-auction-ends" type="date" name="" id="" onChange={this.auctionEnds}/>
+                    <br/>
+                    <input style={color} className = "create-auction-inputs create-auction-starting-bid" type="text" name="" id="" placeholder="Starting Bid" onChange={this.startingBid}/>
+                    <br/>
+                    <br/>
+                    <input className = "create-auction-inputs create-auction-buttons create-auction-buttons-left" type="button" value = "Create Course" onClick={this.createCourse}/>
+                    <input className = "create-auction-inputs create-auction-buttons" type="button" value="Create Auction" onClick = {this.createAuction}/>
                 </div>
             )
         }

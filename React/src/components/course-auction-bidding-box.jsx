@@ -17,6 +17,7 @@ class BiddingBox extends Component {
     }
     render() {
         console.log("course id", this.props.data);
+        var courseId = `http://localhost:8080/#/course/${this.props.data.course_id}`
         return (
             <div className="auction-bidding-box">
                 <h4 className="course-auction-text">{this.props.data.name}</h4>
@@ -26,7 +27,7 @@ class BiddingBox extends Component {
                 <h5 className="course-auction-text">Current Bid ${this.props.data.top_bid}</h5>
                 <ul id = 'course-auction-bid-button'>
                     <li  className="course-auction-bid-buttons"><a href="" onClick={this.payment}>Make Bid</a></li>
-                <li className="course-auction-bid-buttons"><a href="" onClick = {this.checkoutCourse}>View Course</a></li>
+                <li className="course-auction-bid-buttons"><a href={courseId} onClick = {this.checkoutCourse}>View Course</a></li>
                 </ul>
 
             </div>
