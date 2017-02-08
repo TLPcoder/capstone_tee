@@ -42,6 +42,7 @@ class DisplayWindow extends Component {
             var key = 0;
             var json = this.state.json;
             var user = this.props.user();
+            console.log("all images should beeeeeeee here", json)
             var all = json.map(function(element) {
                 key++;
                 if (element.owner_id === user * 1) {

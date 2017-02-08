@@ -27,6 +27,7 @@ class ProfileMain extends Component {
     }
     render() {
         var userId = this.getUserId();
+        var bidURL = `http://localhost:3000/user/bids/${userId}`;
         if (userId === null) {
             return (
                 <a href="http://localhost:8080/#/login">
@@ -39,7 +40,7 @@ class ProfileMain extends Component {
                 <ProfileNav updateWindow={this.updateWindow}/>
                 <div id="profile-container">
                     <UserInfo findUser={this.getUserId} updateWindow={this.state.updateWindow}/>
-                    <DisplayWindow category ={'Bids'} user ={this.getUserId} url={`http://localhost:3000/user/bids/${userId}`}/>
+                    <DisplayWindow category ={'Bids'} user ={this.getUserId} url={bidURL}/>
                     <DisplayWindow category ={'Favorites'} user ={this.getUserId} url={`http://localhost:3000/user/favorites/${userId}`}/>
                     <DisplayWindow category ={'Current'} user ={this.getUserId} url={`http://localhost:3000/auction`}/>
                 </div>

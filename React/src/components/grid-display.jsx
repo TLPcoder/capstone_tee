@@ -18,7 +18,9 @@ class GridDisplay extends Component {
         var key = 0;
         var favorites = this.props.courseData.map((course) =>{
             key++;
-            console.log(course);
+            if (course.owner_id === userId * 1) {
+                return;
+            }
             return (
                 <CreateCard dataAuction={course} key={key}/>
             )
