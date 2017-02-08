@@ -392,8 +392,6 @@ class SearchInfo extends Component {
                             <option value="20">20 Miles</option>
                             <option value="30">30 Miles</option>
                         </select>
-                        <input type="radio" name="sort" value='asc' onClick={this.activateSort}/>Sort Asc Price
-                        <input type="radio" name="sort" value='desc' onClick={this.activateSort}/>Sort Desc Price
                         <input type="submit" onClick={this.submitSearch}/>
                     </form>
                 </div>
