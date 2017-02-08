@@ -34,19 +34,24 @@ class AuctionSearch extends Component {
         console.log("search data", data);
         var sortByDate = null;
         var location = data.location.run;
-        var price = data.priceSort.run;
+        var priceRun = data.priceSort.run;
+        var sortBy = data.priceSort.type;
         var name = data.courseName.name;
-        console.log("NAME ID ", name)
-        price ? price = data.priceSort.type : price = 'asc';
+        var sortType = data.priceSort.type ? sortType = data.priceSort.type : sortType = 'asc';
+        console.log("NAME ID ", name);
         if(name){
-            return `http://localhost:3000/course/name/id/${name}`
-        }else if(data.location.type === 'zip'){
-            return `http://localhost:3000/tee_time/${data.location.value}/${data.location.radius}/asc/${price}`
+            return `http://localhost:3000/course/name/id/${name}/${sortType}`
+        }else if(data.priceSort.run){
+            console.log("sort by something")
+            return `http://localhost:3000/auction/sort/by/${sortBy}`
+        }
+        else if(data.location.type === 'zip'){
+            return `http://localhost:3000/tee_time/${data.location.value}/${data.location.radius}/asc/${sortBy}`
         }else  if(location){
-            return `http://localhost:3000/tee_time/${data.location.type}/${data.location.value}/asc/${price}`;
+            return `http://localhost:3000/tee_time/${data.location.type}/${data.location.value}/asc/${sortBy}`;
         }else{
             location ? location = data.location.type : location = 'United States';
-            return `http://localhost:3000/tee_time/country/${location}/asc/${price}`;
+            return `http://localhost:3000/tee_time/country/${location}/asc/${sortBy}`;
         }
     }
     render() {

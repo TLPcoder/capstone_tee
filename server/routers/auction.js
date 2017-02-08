@@ -135,9 +135,9 @@ router.get('/:postalcode/:distance/', function(req, res) {
         });
 });
 
-router.get('/:sort', function(req, res) {
+router.get('/sort/by/:sort', function(req, res) {
     var sortJSON  = req.params.sort;
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount','bids.auction_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')

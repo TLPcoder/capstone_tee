@@ -4,7 +4,6 @@ import ReactSelectize from "react-selectize";
 var SimpleSelect = ReactSelectize.SimpleSelect;
 import Allstate from './states';
 import Countries from './countries';
-import Zips from './zip';
 
 class SearchInfo extends Component {
     constructor(props) {
@@ -19,10 +18,6 @@ class SearchInfo extends Component {
                 type: null,
                 value: null,
                 radius: null
-            },
-            date: {
-                run: false,
-                time: null
             },
             courseName: {
                 name: null
@@ -60,10 +55,6 @@ class SearchInfo extends Component {
                     radius: this.state.location.radius,
                     value: this.state.location.value
                 },
-                date: {
-                    run: false,
-                    time: null
-                },
                 courseName: {
                     name: this.state.courseName.name
                 },
@@ -94,10 +85,6 @@ class SearchInfo extends Component {
                 radius: this.state.location.radius,
                 value: this.state.location.value
             },
-            date: {
-                run: false,
-                time: null
-            },
             courseName: {
                 name: this.state.courseName.name
             },
@@ -117,10 +104,6 @@ class SearchInfo extends Component {
                 type: this.state.location.type,
                 value: event.target.value,
                 radius: this.state.location.radius
-            },
-            date: {
-                run: false,
-                time: null
             },
             courseName: {
                 name: this.state.courseName.name
@@ -142,10 +125,6 @@ class SearchInfo extends Component {
                 value: value.value,
                 radius: this.state.location.radius
             },
-            date: {
-                run: false,
-                time: null
-            },
             courseName: {
                 name: this.state.courseName.name
             },
@@ -166,20 +145,12 @@ class SearchInfo extends Component {
                 value: this.state.location.value,
                 radius: event.target.value
             },
-            date: {
-                run: false,
-                time: null
-            },
             courseName: {
                 name: this.state.courseName.name
             },
             courseData: this.state.courseData,
             courses: this.state.courses
         });
-        // if(this.state.location.type === 'zip'){
-        //     console.log("yes it works :)");
-        //     this.getCourses(`http://localhost:3000/course/zip/${this.state.location.value}/${event.target.value}`);
-        // }
     }
     activateSort(event) {
         console.log("zip value", event.target.value);
@@ -193,10 +164,6 @@ class SearchInfo extends Component {
                 type: this.state.location.type,
                 value: this.state.location.value,
                 radius: this.state.location.radius
-            },
-            date: {
-                run: false,
-                time: null
             },
             courseName: {
                 name: this.state.courseName.name
@@ -218,10 +185,6 @@ class SearchInfo extends Component {
                 value: this.state.location.value,
                 radius: this.state.location.radius
             },
-            date: {
-                run: true,
-                time: event.target.value
-            },
             courseName: {
                 name: this.state.courseName.name
             },
@@ -240,10 +203,6 @@ class SearchInfo extends Component {
                 type: this.state.location.type,
                 value: this.state.location.value,
                 radius: this.state.location.radius
-            },
-            date: {
-                run: false,
-                time: null
             },
             courseName: {
                 name: value.value
@@ -264,10 +223,6 @@ class SearchInfo extends Component {
                 type: this.state.location.type,
                 value: this.state.location.value,
                 radius: this.state.location.radius
-            },
-            date: {
-                run: false,
-                time: null
             },
             courseName: {
                 name: val.value
@@ -291,10 +246,6 @@ class SearchInfo extends Component {
                     value: this.state.location.value,
                     radius: this.state.location.radius
                 },
-                date: {
-                    run: false,
-                    time: null
-                },
                 courseName: {
                     name: this.state.courseName.name
                 },
@@ -304,10 +255,6 @@ class SearchInfo extends Component {
         });
     }
     submitSearch(event) {
-        console.log("event", event);
-        event.preventDefault();
-
-        this.props.updateSearchData(this.state);
         this.setState({
             priceSort: {
                 run: false,
@@ -319,16 +266,16 @@ class SearchInfo extends Component {
                 value: null,
                 radius: null
             },
-            date: {
-                run: false,
-                time: null
-            },
             courseName: {
                 name: null
             },
             courseData: this.state.courseData,
             courses: this.state.courses
         });
+        console.log("event", event);
+        event.preventDefault();
+
+        this.props.updateSearchData(this.state);
     }
     render() {
         var margin = {
@@ -347,26 +294,14 @@ class SearchInfo extends Component {
         if (this.state.location.type === 'state') {
             console.log('state');
             var states = Allstate();
-            // var selectStates = states.map((state) => {
-            //     return {label: state.value, value: state.value};
-            // });
         }
         if (this.state.location.type === 'country') {
             console.log('country');
             var countries = Countries();
         }
-        if (this.state.location.type === 'zip') {
-            console.log('zip');
-            var zips = Zips();
-            var selectZips = zips.map((zip) => {
-                return {label: zip.value, value: zip.value};
-            });
-            console.log(selectZips);
-        }
-        console.log("true", this.props.courseSearch && this.state.courses.length && this.state.location.type === 'zip');
         if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'zip') {
             return (
-                <div style={margin}>
+                <div className="search-courses-params" style={margin}>
                     <form>
                         <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
                         <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
@@ -387,7 +322,7 @@ class SearchInfo extends Component {
 
         } else if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'country') {
             return (
-                <div style={margin}>
+                <div className="search-courses-params" style={margin}>
                     <form>
                         <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
                         <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
@@ -399,10 +334,9 @@ class SearchInfo extends Component {
                     </form>
                 </div>
             )
-            // <input type="text" onChange={this.radioButtonSearchBar} placeholder={this.state.location.type}/>
         } else if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'state') {
             return (
-                <div style={margin}>
+                <div className="search-courses-params" style={margin}>
                     <form>
                         <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
                         <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
@@ -414,10 +348,9 @@ class SearchInfo extends Component {
                     </form>
                 </div>
             )
-            // <input type="text" onChange={this.radioButtonSearchBar} placeholder={this.state.location.type}/>
         } else if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'city') {
             return (
-                <div style={margin}>
+                <div className="search-courses-params" style={margin}>
                     <form>
                         <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
                         <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
@@ -429,10 +362,9 @@ class SearchInfo extends Component {
                     </form>
                 </div>
             )
-            // <input type="text" onChange={this.radioButtonSearchBar} placeholder={this.state.location.type}/>
         }else if (this.props.courseSearch && this.state.courses.length) {
             return (
-                <div style={margin}>
+                <div className="search-courses-params" style={margin}>
                     <form>
                         <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
                         <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
@@ -475,14 +407,11 @@ class SearchInfo extends Component {
                         <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
                         <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
                         <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <input type="radio" name="sort" value='asc' onClick={this.activateSort}/>Sort Asce Price
-                        <input type="radio" name="sort" value='desc' onClick={this.activateSort}/>Sort Desc Price
                         <SimpleSelect onValueChange={this.radioButtonSearchBar} options={countries} placeholder="Select a Country"></SimpleSelect>
                         <input type="submit" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
-            // <input type="text" onChange={this.radioButtonSearchBar} placeholder={this.state.location.type}/>
         } else if (this.state.courseData && this.state.location.type === 'state') {
             return (
                 <div style={margin}>
@@ -492,14 +421,11 @@ class SearchInfo extends Component {
                         <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
                         <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
                         <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <input type="radio" name="sort" value='asc' onClick={this.activateSort}/>Sort Asce Price
-                        <input type="radio" name="sort" value='desc' onClick={this.activateSort}/>Sort Desc Price
                         <SimpleSelect onValueChange={this.radioButtonSearchBar} options={states} placeholder="Select a Course"></SimpleSelect>
                         <input type="submit" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
-            // <input type="text" onChange={this.radioButtonSearchBar} placeholder={this.state.location.type}/>
         } else if (this.state.courseData && this.state.location.type === 'city') {
             return (
                 <div style={margin}>
@@ -509,14 +435,11 @@ class SearchInfo extends Component {
                         <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
                         <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
                         <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <input type="radio" name="sort" value='asc' onClick={this.activateSort}/>Sort Asce Price
-                        <input type="radio" name="sort" value='desc' onClick={this.activateSort}/>Sort Desc Price
                         <input type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
                         <input type="submit" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
-            // <input type="text" onChange={this.radioButtonSearchBar} placeholder={this.state.location.type}/>
         } else if (!this.props.courseSearch && this.state.courseData) {
             return (
                 <div style={margin}>
@@ -526,8 +449,6 @@ class SearchInfo extends Component {
                         <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
                         <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
                         <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <input type="radio" name="sort" value='asc' onClick={this.activateSort}/>Sort Asce Price
-                        <input type="radio" name="sort" value='desc' onClick={this.activateSort}/>Sort Desc Price
                         <SimpleSelect onValueChange={this.updateCourse} options={auctionCourses} placeholder="Select a Course"></SimpleSelect>
                         <input type="submit" onClick={this.submitSearch}/>
                     </form>

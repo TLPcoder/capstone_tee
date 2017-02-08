@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 var knex = require('../knex');
 var fetch = require('node-fetch');
+const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
 
 router.get('/',function(req,res){
     knex('courses').then(function(data){
@@ -20,13 +21,16 @@ router.get('/:course_id', function(req,res){
     });
 });
 
-router.get('/name/id/:id', function(req,res){
+router.get('/name/id/:id/:sort', function(req,res){
     var courseId = req.params.id;
     knex.select('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id').from('courses').max('bids.bid_amount')
     .returning('auction.id')
     .innerJoin('auction', 'courses.id', 'auction.course_id')
     .innerJoin('bids', 'bids.auction_id','auction.id')
     .where('courses.id', courseId)
+    .where('bids.bid_amount', knex.raw('auction.top_bid'))
+    .where('auction.auction_ends', '>',date)
+    .orderBy('auction.top_bid', req.params.sort)
     .groupBy('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id')
     .then((data) => {
         res.json(data);

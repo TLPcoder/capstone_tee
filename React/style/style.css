@@ -105,15 +105,16 @@ body{
     /*background-size: 100%;*/
     background-size: cover;
     background-attachment: fixed;
+    text-align: center;
 }
 
 #profile-nav-buttons-ul{
     list-style-type: none;
-    margin-top: 50px;
+    margin-top: 57px;
     float:right;
 }
 .profile-nav-button{
-    margin-top: 20px;
+    margin-top: 25px;
     display: inline;
     text-decoration: none;
     padding: 8px 16px;
@@ -245,7 +246,7 @@ border-radius: 10px;
 
 #main-nav-buttons{
     list-style-type: none;
-    margin-top: 50px;
+    margin-top: 57px;
     float:right;
 }
 
