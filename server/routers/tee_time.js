@@ -73,7 +73,7 @@ router.get('/city/:searchCity/:time', function(req,res){
         });
 });
 
-router.get('/:postalcode/:distance/:time', function(req, res) {
+router.get('zip/:postalcode/:distance/:time', function(req, res) {
     var params = req.params;
     var zipCodeCity = [];
     var time = req.params.time;

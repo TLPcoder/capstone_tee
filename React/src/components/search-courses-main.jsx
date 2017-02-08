@@ -34,8 +34,11 @@ class SearchCourse extends Component {
 
     returnURL(data){
         var location = data.location.run;
-        var name = data.courseName;
-        if(data.location.type === 'zip'){
+        var name = data.courseName.name;
+        console.log("data is here", data)
+        if(name){
+            return `http://localhost:3000/course/${name}`
+        }else if(data.location.type === 'zip'){
             return `http://localhost:3000/course/zip/${data.location.value}/${data.location.radius}`;
         }else if(location){
             return `http://localhost:3000/course/${data.location.type}/${data.location.value}`;
