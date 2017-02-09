@@ -6,6 +6,7 @@ class CreateCard extends Component {
         super(props);
     }
     render() {
+        console.log("props here", this.props)
         var border = {
             border: 'solid 1px #b9bcc5'
         }

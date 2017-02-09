@@ -8,10 +8,14 @@ class GridDisplay extends Component {
     constructor(props) {
         super(props);
         this.getUserId = this.getUserId.bind(this);
+        this.setClassNameBasedOnLength = this.setClassNameBasedOnLength.bind(this);
     }
     getUserId() {
         var data = sessionStorage.getItem('golfMember');
         return data;
+    }
+    setClassNameBasedOnLength(length){
+        this.props.setClassName(length);
     }
     render() {
         var userId = this.getUserId();
@@ -25,6 +29,9 @@ class GridDisplay extends Component {
                 <CreateCard dataAuction={course} key={key}/>
             )
         });
+        this.setClassNameBasedOnLength(favorites.length);
+        console.log("length here", favorites.length);
+
         if(this.props.courseData){
             return(
                 <div className = "grid-display">{favorites}</div>
