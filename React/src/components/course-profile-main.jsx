@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
 import MainNav from './nav-main';
 import Comments from './comments';
+import StarRating from 'react-star-rating';
+import AddComment from './add-comment';
 
 class CourseProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            courseData: []
+            courseData: [],
+            addComment: false
         };
         this.getCourse = this.getCourse.bind(this);
         this.getUser = this.getUser.bind(this);
         this.addToFavorites = this.addToFavorites.bind(this);
+        this.rating = this.rating.bind(this);
+        this.commentBoolean = this.commentBoolean.bind(this);
         this.getCourse();
     }
     getCourse() {
@@ -19,13 +24,30 @@ class CourseProfile extends Component {
         }).then((json) => {
             console.log(json);
             this.setState({
-                courseData: json
+                courseData: json,
+                addComment: this.state.addComment
             });
+        });
+    }
+    commentBoolean(){
+        this.setState({
+            courseData: this.state.courseData,
+            addComment: !this.state.addComment
         });
     }
     getUser() {
         var data = sessionStorage.getItem('golfMember');
         return data;
+    }
+    rating(){
+        var ratings = 0;
+        var numberOfRatings = 0;
+        this.state.courseData.forEach((rating)=>{
+            numberOfRatings++;
+            ratings += rating.rating;
+        });
+        ratings = ratings / numberOfRatings;
+        return ratings;
     }
     addToFavorites() {
         console.log(this.state);
@@ -57,17 +79,21 @@ class CourseProfile extends Component {
             console.log("comments here", commentInfo);
             return <Comments comments={commentInfo}/>
         });
-        var rating = 0;
-        if (this.state.courseData.length) {
+        var rating = this.rating()
+
+        if (this.state.courseData.length && !this.state.addComment) {
             console.log("help", this.state.courseData[0].image)
             return (
                 <div>
+                    <div className = "course-profile-background-image"></div>
                     <div>
                         <MainNav/>
                     </div>
                     <div style = {margin}>
                         <div>
                             <img src={this.state.courseData[0].image} alt="" height="300px" width = "300px"/>
+                            <br/>
+                            <StarRating name="airbnb-rating" caption="Course Rating" rating={rating} size={17}/>
                         </div>
                         <div>
                             <h3>{this.state.courseData[0].name}</h3>
@@ -75,6 +101,7 @@ class CourseProfile extends Component {
                             <p>{this.state.courseData[0].city}</p>
                             <p>{this.state.courseData[0].address}</p>
                             <input type="button" value = "Add to Favorites" onClick={this.addToFavorites}/>
+                            <input type="button" value = "Add Comment" onClick={this.commentBoolean}/>
                         </div>
                         <div>
                             <p>{this.state.courseData[0].description}</p>
@@ -83,7 +110,22 @@ class CourseProfile extends Component {
                     </div>
                 </div>
             )
-        } else {
+        }
+        else if(this.state.addComment){
+            console.log("hello there from add comment")
+            return(
+                <div style={margin}>
+                    <div className = "course-profile-background-image"></div>
+                    <div>
+                        <MainNav/>
+                    </div>
+                    <div>
+                        <AddComment back={this.commentBoolean}/>
+                    </div>
+                </div>
+            )
+        }
+        else {
             return (
                 <div></div>
             )
