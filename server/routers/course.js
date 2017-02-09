@@ -22,8 +22,9 @@ router.get('/:course_id', function(req,res){
 });
 
 router.get('/:course_id/comments', function(req,res){
-    knex('courses').returning('*')
+    knex.select('courses.image','courses.description','courses.name','courses.address','courses.city','courses.country','courses.state','users.username','comments.comment','comments.rating').from('courses')
     .innerJoin('comments', 'comments.course_id','courses.id')
+    .innerJoin('users','users.id','comments.commenter_id')
     .where('courses.id', req.params.course_id)
     .then((data) =>{
         res.json(data);

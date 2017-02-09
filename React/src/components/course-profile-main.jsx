@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import MainNav from './nav-main';
+import Comments from './comments';
 
 class CourseProfile extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class CourseProfile extends Component {
         this.getCourse();
     }
     getCourse() {
-        fetch(`http://localhost:3000/course/${this.props.params.id}`).then((promise) => {
+        fetch(`http://localhost:3000/course/${this.props.params.id}/comments`).then((promise) => {
             return promise.json();
         }).then((json) => {
             console.log(json);
@@ -48,13 +49,17 @@ class CourseProfile extends Component {
         });
     }
     render() {
-        console.log(this.props.params);
+        console.log("hello there", this.state.courseData);
         var margin = {
             marginTop: '100px'
         };
+        var comments = this.state.courseData.map((commentInfo)=>{
+            console.log("comments here", commentInfo);
+            return <Comments comments={commentInfo}/>
+        });
+        var rating = 0;
         if (this.state.courseData.length) {
             console.log("help", this.state.courseData[0].image)
-            console.log("hello")
             return (
                 <div>
                     <div>
@@ -74,6 +79,7 @@ class CourseProfile extends Component {
                         <div>
                             <p>{this.state.courseData[0].description}</p>
                         </div>
+                        <div>{comments}</div>
                     </div>
                 </div>
             )
