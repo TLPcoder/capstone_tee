@@ -21,6 +21,27 @@ router.get('/:course_id', function(req,res){
     });
 });
 
+router.get('/:course_id/comments', function(req,res){
+    knex('courses').returning('*')
+    .innerJoin('comments', 'comments.course_id','courses.id')
+    .where('courses.id', req.params.course_id)
+    .then((data) =>{
+        res.json(data);
+    }).catch((err) =>{
+        console.log(err);
+    });
+});
+
+router.post('/comments', function(req,res){
+    knex('courses').returning('*')
+    .where('courses.id', req.params.course_id)
+    .then((data) =>{
+        res.json(data);
+    }).catch((err) =>{
+        console.log(err);
+    });
+});
+
 router.get('/name/id/:id/:sort', function(req,res){
     var courseId = req.params.id;
     knex.select('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id').from('courses').max('bids.bid_amount')

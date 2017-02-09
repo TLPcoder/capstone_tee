@@ -42,6 +42,7 @@
     "react-s-alert": "^1.2.2",
     "react-select": "^1.0.0-rc.3",
     "react-selectize": "^2.1.0",
+    "react-star-rating": "^1.4.2",
     "react-toolbox": "^2.0.0-beta.6",
     "redux": "^3.0.4"
   }
