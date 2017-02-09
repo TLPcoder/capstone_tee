@@ -169,48 +169,58 @@ class CreateCourseForm extends Component {
     render() {
         var states = Allstate();
         var countries = Countries();
+        var simpleSelect = {
+            fontFamily:'Arial, Helvetica, sans-serif',
+            width: '210px',
+            top:'10px',
+            left: '90px',
+            color:'brown',
+            backgroundColor:'white',
+            marginBottom: '10px',
+        };
+        var color = {
+            color:'brown'
+        }
         if (this.state.country === "United States") {
             return (
-                <div>
-                    <input type="text" name="name" id="" placeholder='Course Name' onChange = {this.courseNameValue}/>
+                <div className = "create-course-box-container">
+                    <input style={color} className = "create-course-input" type="text" name="name" id="" placeholder='Course Name' onChange = {this.courseNameValue}/>
 
-                    <input type="text" name="image url" id="" placeholder='Image URL' onChange ={this.imageValue}/>
+                    <input style={color} className = "create-course-input" type="text" name="image url" id="" placeholder='Image URL' onChange ={this.imageValue}/>
 
-                    <input type="text" name="address" id="" placeholder='Address' onChange={this.addressValue}/>
+                    <input style={color} className = "create-course-input" type="text" name="address" id="" placeholder='Address' onChange={this.addressValue}/>
 
-                    <SimpleSelect onValueChange={this.countryValue} options={countries} placeholder="Select Country"></SimpleSelect>
+                    <SimpleSelect style={simpleSelect}  className='create-course-select' onValueChange={this.countryValue} options={countries} placeholder="Select Country"></SimpleSelect>
 
-                    <SimpleSelect onValueChange={this.stateValue} options={states} placeholder="Select State"></SimpleSelect>
+                    <SimpleSelect style={simpleSelect} onValueChange={this.stateValue} options={states} placeholder="Select State"></SimpleSelect>
 
-                    <input type="text" name="city" id="" placeholder='City' onChange={this.cityValue}/>
+                    <input style={color} className = "create-course-input" type="text" name="city" id="" placeholder='City' onChange={this.cityValue}/>
 
-                    <input type="text" name="zip" id="" placeholder='Zip Code' onChange = {this.zipValue}/>
-
-                    <label htmlFor="">Description</label>
-                    <textarea name="" id="" cols="30" rows="10" onChange={this.descriptionValue}></textarea>
-
-                    <input type="button" value="Create Course" onClick={this.createCourse}/>
+                    <input style={color} className = "create-course-input" type="text" name="zip" id="" placeholder='Zip Code' onChange = {this.zipValue}/>
+                    <textarea style={color} className = "create-course-input-text-box" placeholder="Description" name="" id="" cols="40" rows="10" onChange={this.descriptionValue}></textarea>
+                    <br/>
+                    <input className = "create-course-input-button" type="button" value="Back" onClick={this.props.createCourse}/>
+                    <input className = "create-course-input-button" type="button" value="Create Course" onClick={this.createCourse}/>
                 </div>
             )
         } else {
             return (
-                <div>
-                    <input type="text" name="name" id="" placeholder='Course Name' onChange = {this.courseNameValue}/>
+                <div className = "create-course-box-container">
+                    <input style={color} className = "create-course-input" type="text" name="name" id="" placeholder='Course Name' onChange = {this.courseNameValue}/>
 
-                    <input type="text" name="image url" id="" placeholder='Image URL' onChange ={this.imageValue}/>
+                    <input style={color} className = "create-course-input" type="text" name="image url" id="" placeholder='Image URL' onChange ={this.imageValue}/>
 
-                    <input type="text" name="address" id="" placeholder='Address' onChange={this.addressValue}/>
+                    <input style={color} className = "create-course-input" type="text" name="address" id="" placeholder='Address' onChange={this.addressValue}/>
 
-                    <SimpleSelect onValueChange={this.countryValue} options={countries} placeholder="Select Country"></SimpleSelect>
+                    <SimpleSelect style={simpleSelect} onValueChange={this.countryValue} options={countries} placeholder="Select Country"></SimpleSelect>
 
-                    <input type="text" name="city" id="" placeholder='City' onChange={this.cityValue}/>
+                    <input style={color} className = "create-course-input" type="text" name="city" id="" placeholder='City' onChange={this.cityValue}/>
 
-                    <input type="text" name="zip" id="" placeholder='Zip Code' onChange = {this.zipValue}/>
-
-                    <label htmlFor="">Description</label>
-                    <textarea name="" id="" cols="30" rows="10" onChange={this.descriptionValue}></textarea>
-
-                    <input type="button" value="Create Course" onClick={this.createCourse}/>
+                    <input style={color} className = "create-course-input" type="text" name="zip" id="" placeholder='Zip Code' onChange = {this.zipValue}/>
+                    <textarea style={color} className = "create-course-input-text-box" placeholder="Description" name="" id="" cols="50" rows="10" onChange={this.descriptionValue}></textarea>
+                    <br/>
+                    <input className = "create-course-input-button"type="button" value="Back" onClick={this.props.createCourse}/>
+                    <input className = "create-course-input-button"type="button" value="Create Course" onClick={this.createCourse}/>
                 </div>
             )
         }

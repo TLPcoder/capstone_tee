@@ -54,9 +54,14 @@ class SearchCourse extends Component {
         console.log("state main", this.state);
         return (
             <div>
+                <div id = "search-course-background-image"></div>
                 <MainNav/>
-                <SearchInfo updateSearchData={this.updateSearchData} courseSearch={true}/>
-                <DisplaySearch url={this.state.url} key={this.state.key}/>
+                <div id = 'search-course-search-box'>
+                    <SearchInfo updateSearchData={this.updateSearchData} courseSearch={true}/>
+                </div>
+                <div id = 'search-course-display'>
+                    <DisplaySearch url={this.state.url} key={this.state.key}/>
+                </div>
             </div>
         )
     }

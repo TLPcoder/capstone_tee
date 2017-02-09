@@ -34,28 +34,30 @@ class AuctionSearch extends Component {
         console.log("search data", data);
         var sortByDate = null;
         var location = data.location.run;
-        var price = data.priceSort.run;
         var name = data.courseName.name;
-        console.log("NAME ID ", name)
-        price ? price = data.priceSort.type : price = 'asc';
         if(name){
-            return `http://localhost:3000/course/name/id/${name}`
+            return `http://localhost:3000/course/name/id/${name}/asc`;
         }else if(data.location.type === 'zip'){
-            return `http://localhost:3000/tee_time/${data.location.value}/${data.location.radius}/asc/${price}`
+            console.log("i am here for zip")
+            return `http://localhost:3000/tee_time/${data.location.value}/${data.location.radius}/asc/asc`;
         }else  if(location){
-            return `http://localhost:3000/tee_time/${data.location.type}/${data.location.value}/asc/${price}`;
+            return `http://localhost:3000/tee_time/${data.location.type}/${data.location.value}/asc/asc`;
         }else{
-            location ? location = data.location.type : location = 'United States';
-            return `http://localhost:3000/tee_time/country/${location}/asc/${price}`;
+            return `http://localhost:3000/tee_time/country/United States/asc/asc`;
         }
     }
     render() {
         console.log("URL", this.state.url);
         return (
             <div>
+                <div id = "auction-search-background"></div>
                 <MainNav/>
-                <SearchInfo updateSearchData={this.updateSearchData} run={true} auctions={this.state.url}/>
-                <DisplayAuctions key ={this.state.key} url={this.state.url}/>
+                <div className="auction-search-search-box">
+                    <SearchInfo updateSearchData={this.updateSearchData} run={true} auctions={this.state.url}/>
+                </div>
+                <div className = "auction-search-display-container">
+                    <DisplayAuctions key ={this.state.key} url={this.state.url}/>
+                </div>
             </div>
         )
     }

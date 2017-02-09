@@ -29,9 +29,11 @@ class BidsMain extends Component {
         if (this.state.bidData) {
             return (
                 <div>
+                    <div id = 'bids-background-image'></div>
                     <MainNav/>
-                    <h1>Bids</h1>
-                    <GridDisplay courseData={this.state.bidData}/>
+                    <div className = 'bids-images'>
+                        <GridDisplay courseData={this.state.bidData}/>
+                    </div>
                 </div>
             )
         }else{

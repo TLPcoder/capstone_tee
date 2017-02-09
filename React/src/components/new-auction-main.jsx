@@ -10,9 +10,11 @@ class CreateAuction extends Component {
     }
     render() {
             return (
-                <div>
+                <div id = 'create-auction-container'>
                     <MainNav/>
-                    <AutoSelect/>
+                    <div className = "create-auction-body-container">
+                        <AutoSelect/>
+                    </div>
                 </div>
             )
     }

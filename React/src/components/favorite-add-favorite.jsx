@@ -23,7 +23,8 @@ class AddFavorite extends Component {
         return data;
     }
     getCourses() {
-        fetch(`http://localhost:3000/course`).then((promise) => {
+        var userID = this.getUserId();
+        fetch(`http://localhost:3000/user/favorites/not/${userID}`).then((promise) => {
             return promise.json();
         }).then((json) => {
             this.setState({courses: json});
@@ -61,6 +62,11 @@ class AddFavorite extends Component {
         });
     }
     render() {
+        var simpleSelect = {
+                top:'10',
+                left:'70',
+                width:'250px'
+            }
         if (!this.state.courses) {
             return (
                 <div></div>
@@ -72,9 +78,9 @@ class AddFavorite extends Component {
             var userId = this.getUserId();
             return (
                 <div>
-                    <SimpleSelect onValueChange={this.courseValue} options={selectOptions} placeholder="Select a Course"></SimpleSelect>
-                    <input type="button" value="Add to Favorites" onClick={this.addFavorite}/>
-                    <input type="button" value = 'Create Course'
+                    <SimpleSelect style={simpleSelect} className = "favorite-options-inputs" onValueChange={this.courseValue} options={selectOptions} placeholder="Select a Course"></SimpleSelect>
+                    <input className = "favorite-options-inputs favorite-options-inputs-buttons favorite-options-inputs-buttons-left" type="button" value="Add to Favorites" onClick={this.addFavorite}/>
+                    <input className = "favorite-options-inputs favorite-options-inputs-buttons" type="button" value = 'Create Course'
                     onClick = {this.props.addCourse}/>
                 </div>
             )

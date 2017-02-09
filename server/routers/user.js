@@ -84,24 +84,31 @@ router.get('/bids/:id', function(req, res) {
         console.log(err);
     });
 });
-// router.get('/bids/:id', function(req,res){
-//     var id = req.params.id;
-//     knex.select('bids.bid_amount','courses.image','bids.auction_id','auction.id','auction.course_id','bids.bider_id', 'auction.top_bid','courses.name','auction.tee_time').from('users')
-//     .max('bids.bid_amount')
-//     .innerJoin('bids', 'bids.bider_id', 'users.id')
-//     .innerJoin('auction', 'auction.id', 'bids.auction_id')
-//     .innerJoin('courses', 'courses.id', 'auction.course_id')
-//     .where('users.id', id)
-//     .where('bids.bider_id', id)
-//     .where('auction.auction_ends', '>',date)
-//     .groupBy('bids.bid_amount','courses.image','bids.auction_id','auction.id','auction.course_id','bids.bider_id', 'auction.top_bid','courses.name','auction.tee_time')
-//     .having('bids.bid_amount', '=',knex.raw('bids.bid_amount'))
-//     .then(function(data){
-//         res.json(data);
-//     }).catch(function(err){
-//         console.log(err);
-//     });
-// });
+
+router.get('/favorites/not/:id',function(req,res){
+    var allCourses = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1, knex('courses'));
+    });
+    var allFavorites = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1, knex('users')
+        .innerJoin('favorite', 'favorite.user_id', 'users.id')
+        .where('users.id', req.params.id));
+    });
+    Promise.all([allCourses, allFavorites]).then((data) => {
+        console.log(data);
+        var compareArray = [];
+        var resultArray = [];
+        for(var k = 0; k < data[1].length; k++){
+            compareArray.push(data[1][k].course_id);
+        }
+        for(var i = 0; i < data[0].length; i++){
+            if(compareArray.indexOf(data[0][i].id) === -1){
+                resultArray.push(data[0][i]);
+            }
+        }
+        res.json(resultArray);
+    });
+});
 
 router.get('/:id', function(req, res) {
     var id = req.params.id;

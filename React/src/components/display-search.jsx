@@ -29,7 +29,9 @@ class DisplaySearch extends Component{
     render(){
         var key = 0;
         var center = {
-            textAlign: 'center'
+            textAlign: 'center',
+            color:'white',
+            textDecoration: 'none'
         };
         var json = this.state.json;
         console.log("json", json);
@@ -38,9 +40,9 @@ class DisplaySearch extends Component{
             var url = `http://localhost:8080/#/course/${element.id}`
             key++;
                 return (
-                    <div>
-                        <img src={element.image} alt="" height="300px" width="300px"/>
-                        <p style={center}><a href={url}>{element.name}</a></p>
+                    <div className = "card">
+                        <img className = 'course-search-imgs'src={element.image} alt="" height="300px" width="300px"/>
+                        <p style={center}><a style={center}href={url}>{element.name}</a></p>
                     </div>
                 )
         })
