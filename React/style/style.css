@@ -388,15 +388,17 @@ border-radius: 10px;
 .create-auction-inputs {
     margin-top:20px;
 }
-#create-auction-container{
-    height:100vh;
-    background-image: url("http://www.golftripper.com/wp-content/uploads/2010/07/Olympic-Club-Lake-Hole-8-4-copy.jpg");
-    background-repeat: no-repeat;
-    /*background-size: 100%;*/
-    background-size: cover;
-    background-attachment: fixed;
-    text-align: center;
 
+#create-auction-container{
+    height: 100vh;
+    background: url("http://www.golftripper.com/wp-content/uploads/2010/07/Olympic-Club-Lake-Hole-8-4-copy.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    text-align: center;
 }
 .react-selectize.root-node{
     left:50px;
@@ -465,4 +467,125 @@ border-radius: 10px;
    color: #bababa;
     border: 1px solid #bababa;
     background-color: #f6f6f6;
+}
+
+.create-course-box-container{
+    margin: auto;
+    margin-left: 36%;
+    margin-right: 37%;
+    width:400px;
+    position: relative;
+    top:120px;
+    border-radius: 5px;
+    background-color: #F9F9FA;
+}
+
+.create-course-input{
+    color:#4CAF50;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 10px 10px 0px;
+    width:210px;
+}
+
+.create-course-input-button{
+    background-color: #4CAF50;
+    /* Green */
+    /*font-size: 16px;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid 1px #4CAF50;
+    margin: 10px 10px 10px 0px;
+}
+
+.create-course-input-button:hover{
+    background-color: white;
+    border: solid 1px #4CAF50;
+    color: #4CAF50;
+}
+
+.create-course-input-text-box {
+    color:#4CAF50;
+    font-size: 15px;
+    border-radius: 3px;
+    color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 10px 10px 0px;
+    width:300px;
+}
+
+#favorite-body-container{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://images.akamai.steamusercontent.com/ugc/1457265578250890272/9D1ED6455CF8BA295E64A2BF4F4773B2E512AF60/") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+
+.favorite-options{
+    margin: auto;
+    margin: 10px 36% 20px 37%;
+    height: 100px;
+    width:400px;
+    position: relative;
+    top:100px;
+    border-radius: 5px;
+    background-color: #F9F9FA;
+    text-align: center;
+}
+
+.favorite-options-create{
+    text-align: center;
+}
+
+.favorite-options-inputs{
+    margin-top: 20px;
+    text-align: center;
+}
+.favorite-options-inputs-buttons{
+    background-color: #4CAF50;
+    text-align: center;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid 1px #4CAF50;
+    margin: 20px 10px 10px 0px;
+}
+
+.favorite-images{
+    /*float:left;*/
+    margin:auto;
+    margin-top: 150px;
+    margin-left: 19%;
+}
+
+.card{
+    float:left;
+    margin: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
 }

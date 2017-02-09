@@ -27,7 +27,7 @@ class GridDisplay extends Component {
         });
         if(this.props.courseData){
             return(
-                <div>{favorites}</div>
+                <div className = "grid-display">{favorites}</div>
             )
         }
     }

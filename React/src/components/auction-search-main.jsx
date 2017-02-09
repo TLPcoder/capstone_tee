@@ -50,6 +50,7 @@ class AuctionSearch extends Component {
         console.log("URL", this.state.url);
         return (
             <div>
+                <div id = "auction-search-background"></div>
                 <MainNav/>
                 <SearchInfo updateSearchData={this.updateSearchData} run={true} auctions={this.state.url}/>
                 <DisplayAuctions key ={this.state.key} url={this.state.url}/>

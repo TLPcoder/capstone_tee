@@ -184,7 +184,7 @@ class AutoSelect extends Component {
         divKey++;
         console.log("course id", this.state.course_id);
         var key = 0;
-        var margin = {
+        var simpleSelect = {
             fontFamily:'Arial, Helvetica, sans-serif',
             width: '210px',
             top:'10px',
@@ -205,7 +205,7 @@ class AutoSelect extends Component {
         }
         if (this.state.courseNames && this.state.createCourse) {
             return (
-                <div key = {divKey} style={margin}>
+                <div key = {divKey}>
                     <CreateCourseForm createCourse = {this.createCourse}/>
                 </div>
             )
@@ -213,7 +213,7 @@ class AutoSelect extends Component {
         if (this.state.courseNames) {
             return (
                 <div className = "create-auction-box-container" key = {divKey}>
-                    <SimpleSelect style={margin}className = "create-auction-inputs create-auction-drop-down" onValueChange={this.courseValue} options={options} placeholder="Select a Course"></SimpleSelect>
+                    <SimpleSelect style={simpleSelect}className = "create-auction-inputs create-auction-drop-down" onValueChange={this.courseValue} options={options} placeholder="Select a Course"></SimpleSelect>
                     <br/>
                     <input style={color} className = "create-auction-inputs create-auction-tee-time" type="datetime-local" name="" id="" onChange={this.teeTime}/>
                     <br/>

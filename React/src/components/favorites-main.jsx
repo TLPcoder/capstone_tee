@@ -12,7 +12,7 @@ class FavoriteMain extends Component {
         super(props);
         this.state = {
             courses: [],
-            addCourse: false,
+            addCourse: false
         };
         this.getUserId = this.getUserId.bind(this);
         this.getFavorties = this.getFavorties.bind(this);
@@ -27,30 +27,21 @@ class FavoriteMain extends Component {
             return promise.json();
         }).then((json) => {
             console.log("api call", json);
-            this.setState({
-                courses: json,
-                addCourse: false,
-            });
+            this.setState({courses: json, addCourse: false});
         });
     }
-    addedFavorite(){
+    addedFavorite() {
         this.getFavorties();
     }
     getUserId() {
         var data = sessionStorage.getItem('golfMember');
         return data;
     }
-    addCourse(){
-        if(!this.state.addCourse){
-            this.setState({
-                courses: this.state.courses,
-                addCourse: true,
-            });
-        }else{
-            this.setState({
-                courses: this.state.courses,
-                addCourse: false,
-            });
+    addCourse() {
+        if (!this.state.addCourse) {
+            this.setState({courses: this.state.courses, addCourse: true});
+        } else {
+            this.setState({courses: this.state.courses, addCourse: false});
             this.getFavorties();
         }
     }
@@ -59,21 +50,29 @@ class FavoriteMain extends Component {
         console.log("add course", this.state.addCourse)
         if (this.state.courses && !this.state.addCourse) {
             return (
-                <div id="favorite-body-container">
+                <div>
+                    <div id="favorite-body-container"></div>
                     <MainNav/>
-                    <GridDisplay courseData = {this.state.courses} addCourse={this.addCourse}/>
-                    <AddFavorite addedFavorite={this.addedFavorite} addCourse={this.addCourse}/>
+                    <div className="favorite-options">
+                        <AddFavorite addedFavorite={this.addedFavorite} addCourse={this.addCourse}/>
+                    </div>
+                    <div className="favorite-images">
+                        <GridDisplay courseData={this.state.courses} addCourse={this.addCourse}/>
+                    </div>
                 </div>
             )
-        }else if (this.state.addCourse) {
+        } else if (this.state.addCourse) {
             return (
-                <div id="favorite-body-container">
+                <div>
+                    <div id="favorite-body-container"></div>
                     <MainNav/>
+                    <div className="favorite-options-create">
                         <CreateCourseForm createCourse={this.addCourse}/>
+                    </div>
                 </div>
             )
-        }else{
-            return(
+        } else {
+            return (
                 <div></div>
             )
         }
