@@ -36,6 +36,7 @@ class SearchInfo extends Component {
         this.getCourses = this.getCourses.bind(this);
         this.setState = this.setState.bind(this);
         this.radioButtonSearchBarText = this.radioButtonSearchBarText.bind(this);
+        this.zipDistance = this.zipDistance.bind(this);
         this.getCourses(`http://localhost:3000/course`);
         this.getCourseData();
 
@@ -67,10 +68,10 @@ class SearchInfo extends Component {
         console.log("radio button", event.target.value);
         var value;
         var run;
-        if(event.target.value === 'default'){
+        if (event.target.value === 'default') {
             value = null;
             run = false;
-        }else{
+        } else {
             value = event.target.value;
             run = true;
         }
@@ -93,7 +94,8 @@ class SearchInfo extends Component {
         });
 
     }
-    radioButtonSearchBarText(event){
+    radioButtonSearchBarText(event) {
+        console.log(event.target.value);
         this.setState({
             priceSort: {
                 run: this.state.priceSort.run,
@@ -112,7 +114,27 @@ class SearchInfo extends Component {
             courses: this.state.courses
         });
     }
-    radioButtonSearchBar(value) {
+    zipDistance(value) {
+        console.log('hello', value);
+        this.setState({
+            priceSort: {
+                run: this.state.priceSort.run,
+                type: this.state.priceSort.type
+            },
+            location: {
+                run: true,
+                type: this.state.location.type,
+                value: this.state.location.value,
+                radius: value.value
+            },
+            courseName: {
+                name: this.state.courseName.name
+            },
+            courseData: this.state.courseData,
+            courses: this.state.courses
+        });
+    }
+    radioButtonSearchBar(event) {
         console.log("radio bar", value);
         this.setState({
             priceSort: {
@@ -122,7 +144,7 @@ class SearchInfo extends Component {
             location: {
                 run: true,
                 type: this.state.location.type,
-                value: value.value,
+                value: event.target.value,
                 radius: this.state.location.radius
             },
             courseName: {
@@ -132,7 +154,7 @@ class SearchInfo extends Component {
             courses: this.state.courses
         });
     }
-    zipCodeRadius(event) {
+    zipCodeRadius(value) {
         console.log("zip value", event.target.value);
         this.setState({
             priceSort: {
@@ -143,7 +165,7 @@ class SearchInfo extends Component {
                 run: true,
                 type: this.state.location.type,
                 value: this.state.location.value,
-                radius: event.target.value
+                radius: value.value
             },
             courseName: {
                 name: this.state.courseName.name
@@ -278,9 +300,6 @@ class SearchInfo extends Component {
         this.props.updateSearchData(this.state);
     }
     render() {
-        var margin = {
-            marginTop: '100px'
-        };
         if (this.props.courseSearch) {
             var courses = this.state.courses.map((course) => {
                 return {value: course.id, label: course.name};
@@ -299,156 +318,165 @@ class SearchInfo extends Component {
             console.log('country');
             var countries = Countries();
         }
+        if (this.state.location.type === 'zip') {
+            var zip = ['10', '20', '30'].map((miles) => {
+                return {label: miles, value: miles};
+            });
+        }
+        var size = {
+            width:'100px',
+            top:'5px',
+            left:'145px',
+            color:'brown'
+        }
+        var color = {
+            color:'brown'
+        }
         if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'zip') {
             return (
-                <div className="search-courses-params" style={margin}>
+                <div className="search-courses-params">
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <input type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
-                        <select onChange={this.zipCodeRadius} name="distance" id="">
-                            <option value="0">Select Distance</option>
-                            <option value="10">10 Miles</option>
-                            <option value="20">20 Miles</option>
-                            <option value="30">30 Miles</option>
-                        </select>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <input className="search-zip" type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
+                        <SimpleSelect style={size} onValueChange={this.zipDistance} options={zip} placeholder="Select a Distance"></SimpleSelect>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
+            // <SimpleSelect style={color} onValueChange={this.zipCodeRadius} options={zipDitance} placeholder="Select a Distance"></SimpleSelect>
 
         } else if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'country') {
             return (
-                <div className="search-courses-params" style={margin}>
+                <div className="search-courses-params">
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <SimpleSelect onValueChange={this.radioButtonSearchBar} options={countries} placeholder="Select a Country"></SimpleSelect>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <SimpleSelect style={color} onValueChange={this.radioButtonSearchBar} options={countries} placeholder="Select a Country"></SimpleSelect>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
         } else if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'state') {
             return (
-                <div className="search-courses-params" style={margin}>
+                <div className="search-courses-params">
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <SimpleSelect onValueChange={this.radioButtonSearchBar} options={states} placeholder="Select a State"></SimpleSelect>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <SimpleSelect style={color} onValueChange={this.radioButtonSearchBar} options={states} placeholder="Select a State"></SimpleSelect>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
         } else if (this.props.courseSearch && this.state.courses.length && this.state.location.type === 'city') {
             return (
-                <div className="search-courses-params" style={margin}>
+                <div className="search-courses-params">
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <input type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <input className="search-zip" type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
-        }else if (this.props.courseSearch && this.state.courses.length) {
+        } else if (this.props.courseSearch && this.state.courses.length) {
             return (
-                <div className="search-courses-params" style={margin}>
+                <div className="search-courses-params">
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <SimpleSelect onValueChange={this.updateCourse} options={courses} placeholder="Select a Course"></SimpleSelect>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <SimpleSelect style={color} onValueChange={this.updateCourse} options={courses} placeholder="Select a Course"></SimpleSelect>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
         } else if (this.state.location.type === 'zip') {
             return (
-                <div style={margin}>
+                <div>
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <input type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
-                        <select onChange={this.zipCodeRadius} name="distance" id="">
-                            <option value="0">Select Distance</option>
-                            <option value="10">10 Miles</option>
-                            <option value="20">20 Miles</option>
-                            <option value="30">30 Miles</option>
-                        </select>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <input className="search-zip" type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
+                        <br/>
+                        <SimpleSelect style={size}onValueChange={this.zipDistance} options={zip} placeholder="Select a Distance"></SimpleSelect>
+                        <br/>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
+            // <SimpleSelect style={color} onValueChange={this.zipCodeRadius} options={zipDitance} placeholder="Select a Distance"></SimpleSelect>
         } else if (this.state.courseData && this.state.location.type === 'country') {
             return (
-                <div style={margin}>
+                <div>
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <SimpleSelect onValueChange={this.radioButtonSearchBar} options={countries} placeholder="Select a Country"></SimpleSelect>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <SimpleSelect style={color} onValueChange={this.radioButtonSearchBar} options={countries} placeholder="Select a Country"></SimpleSelect>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
         } else if (this.state.courseData && this.state.location.type === 'state') {
             return (
-                <div style={margin}>
+                <div>
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <SimpleSelect onValueChange={this.radioButtonSearchBar} options={states} placeholder="Select a Course"></SimpleSelect>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <SimpleSelect style={color} onValueChange={this.radioButtonSearchBar} options={states} placeholder="Select a Course"></SimpleSelect>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
         } else if (this.state.courseData && this.state.location.type === 'city') {
             return (
-                <div style={margin}>
+                <div>
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <input type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <input className="search-zip" type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
+                        <br/>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
         } else if (!this.props.courseSearch && this.state.courseData) {
             return (
-                <div style={margin}>
+                <div>
                     <form>
-                        <input type="radio" name='location' className ="radio" value='default' onClick ={this.radioButton}/>Default
-                        <input type="radio" name='location' className ="radio" value='country' onClick ={this.radioButton}/>Country
-                        <input type="radio" name='location' className ="radio" value='state' onClick ={this.radioButton}/>State
-                        <input type="radio" name='location' className ="radio" value='city' onClick ={this.radioButton}/>City
-                        <input type="radio" name='location' className ="radio" value='zip' onClick ={this.radioButton}/>Zip
-                        <SimpleSelect onValueChange={this.updateCourse} options={auctionCourses} placeholder="Select a Course"></SimpleSelect>
-                        <input type="submit" onClick={this.submitSearch}/>
+                        <input className="auction-search-inputs" type="radio" name='location' value='default' onClick ={this.radioButton}/>Default
+                        <input className="auction-search-inputs" type="radio" name='location' value='country' onClick ={this.radioButton}/>Country
+                        <input className="auction-search-inputs" type="radio" name='location' value='state' onClick ={this.radioButton}/>State
+                        <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
+                        <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
+                        <SimpleSelect style={color} onValueChange={this.updateCourse} options={auctionCourses} placeholder="Select a Course"></SimpleSelect>
+                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )

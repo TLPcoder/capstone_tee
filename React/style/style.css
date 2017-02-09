@@ -589,3 +589,127 @@ border-radius: 10px;
     color: white;
     text-align: center;
 }
+
+
+.auction-search-display-container{
+    margin:auto;
+    margin-top: 150px;
+    margin-left: 19%;
+}
+
+
+#auction-search-background{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://usgolftv.com/wp-content/uploads/Oakmont-3.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+.auction-search-inputs{
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color:white;
+}
+
+.auction-search-search-box{
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top:100px;
+    width: 400px;
+    background-color: #F9F9FA;
+    border: solid 1px #bababa;
+    border-radius: 5px;
+}
+
+.submit-search-button{
+    background-color: #4CAF50;
+    text-align: center;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid 1px #4CAF50;
+    margin: 15px 10px 10px 0px;
+}
+
+.search-zip {
+    color:#4CAF50;
+    height:35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+    color: brown;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 0px 10px 1px 0px;
+    width:250px;
+}
+
+#bids-background-image{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("https://static1.squarespace.com/static/557c64bae4b0fd931dc0fdf3/t/557c6c23e4b0c0319fa78c6e/1434217517285/Clubhouse+-+%232.jpg?format=2500w") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+.bids-images{
+    position: relative;
+    top:150px;
+    margin:auto;
+    margin-left: 19%;
+}
+
+#search-course-background-image{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("https://static1.squarespace.com/static/557c64bae4b0fd931dc0fdf3/t/557c6c23e4b0c0319fa78c6e/1434217517285/Clubhouse+-+%232.jpg?format=2500w") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+#search-course-search-box{
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top:100px;
+    width: 400px;
+    background-color: #F9F9FA;
+    border: solid 1px #bababa;
+    border-radius: 5px;
+}
+
+#search-course-display{
+    position: relative;
+    top:150px;
+    margin:auto;
+    margin-left: 19%;
+    color:white;
+    text-decoration: none;
+}
+
+.course-search-imgs{
+    border-radius: 5px;
+    border: solid 1px #b9bcc5;
+}

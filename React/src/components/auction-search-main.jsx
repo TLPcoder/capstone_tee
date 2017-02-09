@@ -52,8 +52,12 @@ class AuctionSearch extends Component {
             <div>
                 <div id = "auction-search-background"></div>
                 <MainNav/>
-                <SearchInfo updateSearchData={this.updateSearchData} run={true} auctions={this.state.url}/>
-                <DisplayAuctions key ={this.state.key} url={this.state.url}/>
+                <div className="auction-search-search-box">
+                    <SearchInfo updateSearchData={this.updateSearchData} run={true} auctions={this.state.url}/>
+                </div>
+                <div className = "auction-search-display-container">
+                    <DisplayAuctions key ={this.state.key} url={this.state.url}/>
+                </div>
             </div>
         )
     }

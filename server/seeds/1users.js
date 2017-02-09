@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
             last_name: 'Pellegrini',
             username: 'BP',
             email: 'brandon@gmail.com',
-            hashed_password: 'password',
+            hashed_password: '$2a$04$jJtfAhPhc/RpbObMyQH8j.6ieN6F3nJTQHXadiMPuDl/IR5GokIqq',
             zip:94030,
             image: "http://www.racingpal.com/images/nouser.png",
             created_at: new Date('2017-01-29 14:26:16 UTC'),

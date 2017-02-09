@@ -10,7 +10,9 @@ class CreateCard extends Component {
             border: 'solid 1px #b9bcc5'
         }
         var center = {
-            textAlign: 'center'
+            textAlign: 'center',
+            color:'white',
+            fontSize: '15px'
         };
         var textDecoration = {
             textDecoration: 'none',
