@@ -39,10 +39,30 @@ class DisplayWindow extends Component {
             width: '380px',
             margin: 'auto'
         };
-            var key = 0;
-            var json = this.state.json;
-            var user = this.props.user();
-            console.log("all images should beeeeeeee here", json)
+        var key = 0;
+        var json = this.state.json;
+        var user = this.props.user();
+        console.log("all images should beeeeeeee here", json)
+        if (this.props.profile) {
+            var all = json.map(function(element) {
+                key++;
+                if (element.owner_id === user * 1) {
+                    return;
+                } else if (element.auction_id) {
+                    return (
+                        <li><CreateCard key={key} profile={true} dataAuction={element}/></li>
+                    )
+                } else if (element.id) {
+                    return (
+                        <li><CreateCard key={key}  profile={true} dataAuction={element}/></li>
+                    )
+                } else {
+                    return (
+                        <li><CreateCard key={key}  profile={true} data={element}/></li>
+                    )
+                }
+            })
+        } else {
             var all = json.map(function(element) {
                 key++;
                 if (element.owner_id === user * 1) {
@@ -61,6 +81,7 @@ class DisplayWindow extends Component {
                     )
                 }
             })
+        }
         console.log("all images", all);
         var adjustedArray = []
         for (var i = 0; i < all.length; i++) {
