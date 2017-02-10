@@ -14,6 +14,7 @@ router.get('/userInfo/:id', function(req,res){
     console.log('sent some user info')
 });
 router.post('/newBid', function(req,res){
+    console.log(req.body)
     var bider_id = req.body.bider_id;
     var auction_id = req.body.auction_id;
     var bid_amount = req.body.bid_amount * 1;
@@ -24,6 +25,22 @@ router.post('/newBid', function(req,res){
     }).returning('*')
     .then(function(data){
         console.log("some data", data);
+        res.json(data);
+    });
+});
+router.post('/new/payment',function(req,res){
+    console.log(req.body);
+    var credit_card_number = req.body.credit_card_number;
+    var user_id = req.body.user_id;
+    var CVV = req.body.CVV;
+    var expiration = req.body.expiration;
+    knex('payment').insert({
+        credit_card_number:credit_card_number,
+        user_id:user_id,
+        CVV:CVV,
+        expiration:expiration
+    }).then((data) =>{
+        console.log(data);
         res.json(data);
     });
 });

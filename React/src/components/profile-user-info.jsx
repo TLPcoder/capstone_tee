@@ -107,6 +107,12 @@ class UserInfo extends Component {
             margin: 'auto',
             marginTop: '20px'
         };
+        var imgSource;
+        // if(!this.state.userInfo[0].image){
+        //     imgSource = "http://www.racingpal.com/images/nouser.png";
+        // }else{
+        //     imgSource = this.state.userInfo[0].image;
+        // }
         if (!this.state.userInfo.length) {
             return (
                 <div></div>
@@ -115,7 +121,7 @@ class UserInfo extends Component {
         if(this.props.updateWindow){
             return (
                 <div className="userInfor">
-                    <img className="headshot" height="250px" width="250px" style = {imageUpdate} src={this.state.userInfo[0].image} alt="Someone didnt upload an image :("/>
+                    <img className="headshot" height="250px" width="250px" style = {imageUpdate} src={this.state.userInfo[0].image} alt="http://www.racingpal.com/images/nouser.png"/>
                     <form onSubmit={this.changeUserData} className = "update-profile">
                         <input className = 'profile-inputs' type="password" placeholder="password" onChange ={this.changePassword}/>
                         <input className = 'profile-inputs' type="email" placeholder="email" onChange ={this.changeEmail}/>

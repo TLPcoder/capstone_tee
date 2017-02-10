@@ -55,7 +55,6 @@ class Payment extends Component {
                         </div>
                         <div>
                             <img className="payment-image" src={this.state.auctionData[0].image} alt="" height='400px' width='400px'/>
-                            <h4 style={center}>{this.state.auctionData[0].name}</h4>
                         </div>
                     </div>
                 </div>

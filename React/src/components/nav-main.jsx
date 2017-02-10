@@ -18,7 +18,7 @@ class MainNav extends Component {
         console.log(this.getUserId());
         return (
             <div id='main-nav'>
-                <h1>Tee-Ball</h1>
+                <h1>Tee-Bay</h1>
                 <ul id = "main-nav-buttons">
                     <li className = "main-nav-button">
                         <a href="http://localhost:8080/#/profile">Profile</a>

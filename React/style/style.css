@@ -20,78 +20,96 @@
 }
 
 .login {
-    width: 31%;
-    height: 20px;
-    margin: auto;
-    margin-top: 25px;
-    text-align: center;
-    margin-left: 34%;
-    margin-right: 32%;
-    border-radius: 50px;
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 10px 10px 0px;
+    width:210px;
+    color:brown;
 }
 
 
 .login-container {
+    text-align: center;
     background-color: white;
     /*margin-top: 270px;*/
     margin-left: 37%;
     margin-right: 37%;
     border-radius: 10px;
-    height: 220px;
+    width:300px;
+    height: 200px;
     border:black solid 1px;
     position: relative;
     top:270px;
 }
 
-.loginSubmit {
+.loginSubmit{
+    margin-top: 15px;
+    margin-bottom: 10px;
     background-color: #4CAF50;
-    /* Green */
-    /*font-size: 16px;*/
-    font-size: 1.0vw;
+    /*font-size: 1.0vw;*/
     border: none;
     color: white;
-    padding: 2% 8%;
+    padding: 8px 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin-top: 20px;
-    margin-left: 37%;
-    margin-right: 38%;
-    margin-bottom: 20px;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.loginSubmit:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
 }
 
 .create-account-a{
-    margin-left: 35%;
-    font-size: 1.3vw;
+    margin-top: 30px;
+    font-size: 20px;
 }
-
-.login-page-container {
-    height:100vh;
-    background-image: url('https://www.proceilingtiles.com/images/P/Cypress-Point-CA-08-003-001.jpg');
-    background-repeat: no-repeat;
-    /*background-size: 100%;*/
-    background-size: cover;
-    background-attachment: fixed;
-}
-
 .create-account-container{
+    text-align: center;
     background-color: white;
     /*margin-top: 270px;*/
     margin-left: 37%;
     margin-right: 37%;
     border-radius: 10px;
+    width:300px;
     height: 420px;
     border:black solid 1px;
     position: relative;
     top:200px;
 }
 
-.create-account-page-container{
+#profile-bakcground-image{
+    width:100%;
+    z-index: -5;
     height:100vh;
-    /*width:100%;*/
-    background-image: url('https://www.proceilingtiles.com/images/P/Cypress-Point-CA-08-003-001.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
+    position: fixed;
+
+    background: url("https://www.proceilingtiles.com/images/P/Cypress-Point-CA-08-003-001.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
 }
 
 body{
@@ -923,7 +941,6 @@ border-radius: 10px;
 }
 
 #payment-inputs{
-    color:#4CAF50;
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 15px;
@@ -937,6 +954,7 @@ border-radius: 10px;
     background-color: #f6f6f6;
     margin: 10px 10px 10px 0px;
     width:210px;
+    color:brown;
 }
 
 #payment-inputs-button{
@@ -977,8 +995,8 @@ border-radius: 10px;
 .payment-image:active{
     border-radius: 10px;
     width:50%;
-    height: 600px;
-    width: 600px;
+    height: 500px;
+    width: 500px;
     z-index: 10;
     position: relative;
     bottom:50px;

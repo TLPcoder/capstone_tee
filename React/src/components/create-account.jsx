@@ -149,7 +149,7 @@ class CreateAccount extends Component {
             }
         });
     }
-    getImageUrl(event){
+    getImageUrl(event) {
         this.setState({
             loginData: {
                 firstName: this.state.loginData.firstName,
@@ -172,17 +172,21 @@ class CreateAccount extends Component {
     }
     render() {
         return (
-            <div className="create-account-page-container">
-                <NavLogin/>
-                <div className='create-account-container'>
-                    <input className="login" type="text" placeholder="first name" onChange={this.getFirstName}/>
-                    <input className="login" type="text" placeholder="last name" onChange={this.getLastName}/>
-                    <input className="login" type="text" placeholder="email" onChange={this.getEmail}/>
-                    <input className="login" type="text" onChange={this.getDataFromUsername} placeholder="username"/>
-                    <input placeholder="password" className="login" type="password" onChange={this.getDataFromPassword}/>
-                    <input placeholder="zip" className="login" type="text" onChange={this.getZip}/>
-                    <input className="login" type="text" placeholder = "imageUrl" onChage ={this.getImageUrl}/>
-                    <input className='loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
+            <div>
+                <div id="profile-bakcground-image"></div>
+                <div className="create-account-page-container">
+                    <NavLogin/>
+                    <div className='create-account-container'>
+                        <input className="login" type="text" placeholder="first name" onChange={this.getFirstName}/>
+                        <input className="login" type="text" placeholder="last name" onChange={this.getLastName}/>
+                        <input className="login" type="text" placeholder="email" onChange={this.getEmail}/>
+                        <input className="login" type="text" onChange={this.getDataFromUsername} placeholder="username"/>
+                        <input placeholder="password" className="login" type="password" onChange={this.getDataFromPassword}/>
+                        <input placeholder="zip" className="login" type="text" onChange={this.getZip}/>
+                        <input className="login" type="text" placeholder="imageUrl" onChage ={this.getImageUrl}/>
+                        <br/>
+                        <input className='loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
+                    </div>
                 </div>
             </div>
         )

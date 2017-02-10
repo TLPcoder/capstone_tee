@@ -1,5 +1,7 @@
 'use strict';
 import React, {Component} from 'react';
+import ReactSelectize from "react-selectize";
+var SimpleSelect = ReactSelectize.SimpleSelect;
 
 class PaymentWindow extends Component {
     constructor(props) {
@@ -10,7 +12,10 @@ class PaymentWindow extends Component {
             bid: this.props.auctionData[0].top_bid,
             name: '',
             creditCard: '',
-            CVV: ''
+            CVV: '',
+            addPayment: false,
+            month: '',
+            year: ''
         };
         this.changeBidValue = this.changeBidValue.bind(this);
         this.changeBidData = this.changeBidData.bind(this);
@@ -19,75 +24,64 @@ class PaymentWindow extends Component {
         this.changeCreditCardValue = this.changeCreditCardValue.bind(this);
         this.changeCVVValue = this.changeCVVValue.bind(this);
         this.createBid = this.createBid.bind(this);
+        this.addNewPayment = this.addNewPayment.bind(this);
+        this.addPayment = this.addPayment.bind(this);
+        this.getMonthData = this.getMonthData.bind(this);
+        this.getYearData = this.getYearData.bind(this);
+        this.getUser = this.getUser.bind(this);
+    }
+    getMonthData(value){
+        this.setState({
+            month:value.value
+        });
+    }
+    getYearData(value){
+        this.setState({
+            year:value.value
+        });
     }
     changeBidValue(event) {
-        console.log(this.state.bid);
         this.setState({
-            userData: this.state.userData,
-            auctionData: this.state.auctionData,
             bid: event.target.value,
-            name: this.state.name,
-            creditCard: this.state.creditCard,
-            CVV: this.state.CVV
         });
     }
     changeNameValue(event) {
-        console.log(this.state.name);
         this.setState({
-            userData: this.state.userData,
-            auctionData: this.state.auctionData,
-            bid: this.state.bid,
             name: event.target.value,
-            creditCard: this.state.creditCard,
-            CVV: this.state.CVV
         });
     }
     changeCreditCardValue(event) {
-        console.log(this.state.creditCard);
         this.setState({
-            userData: this.state.userData,
-            auctionData: this.state.auctionData,
-            bid: this.state.bid,
-            name: this.state.name,
             creditCard: event.target.value,
-            CVV: this.state.CVV
         });
     }
     changeCVVValue(event) {
-        console.log(this.state.CVV);
         this.setState({
-            userData: this.state.userData,
-            auctionData: this.state.auctionData,
             bid: event.target.value,
-            name: this.state.name,
-            creditCard: this.state.creditCard,
             CVV: event.target.value
         });
     }
     changeBidData() {
-        if (this.allDataFilled()) {
             fetch(`http://localhost:3000/auction/changeBid`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({id: this.state.auctionData[0].id, newBid: this.state.bid})
+                body: JSON.stringify({
+                    id: this.state.auctionData[0].auction_id,
+                    newBid: this.state.bid
+                })
             }).then((promise) => {
                 return promise.json();
             }).then((json) => {
                 this.setState({currentBid: this.state.currentBid, bidData: this.state.currentBid});
                 this.createBid();
-                window.location.hash = '/success';
             });
-        }else{
-            console.log(this.state);
-            alert('your payment information is incorrect try again ;)');
-        }
     }
-    createBid(){
-        var bider_id = this.state.userData[0].user_id;
-        var auction_id = this.state.auctionData[0].id;
+    createBid() {
+        var bider_id = this.getUser();
+        var auction_id = this.state.auctionData[0].auction_id;
         var bid_amount = this.state.bid;
         fetch(`http://localhost:3000/payment/newBid`, {
             method: 'POST',
@@ -95,36 +89,133 @@ class PaymentWindow extends Component {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({bider_id: bider_id, auction_id: auction_id, bid_amount:bid_amount})
+            body: JSON.stringify({
+                bider_id: bider_id,
+                auction_id: auction_id,
+                bid_amount: bid_amount
+            })
         }).then((promise) => {
             return promise.json();
         }).then((json) => {
             console.log("created new Bid", json);
+            alert("you have made a bid!")
+            window.location.hash = '/profile';
         });
     }
-    allDataFilled(){
+    allDataFilled() {
         var userData = this.state.userData[0];
         var name = `${userData.first_name} ${userData.last_name}`;
-        if(this.state.name === name && this.state.creditCard === userData.credit_card_number.replace(/\s/g,'') && this.state.CVV === userData.CVV.replace(/\s/g,'')){
+        if (this.state.name === name && this.state.creditCard === userData.credit_card_number.replace(/\s/g, '') && this.state.CVV === userData.CVV.replace(/\s/g, '')) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+    getUser(){
+        var data = sessionStorage.getItem('golfMember');
+        return data;
+    }
+    addPayment() {
+        this.setState({
+            userData: this.props.userData,
+            auctionData: this.props.auctionData,
+            bid: '',
+            name: '',
+            creditCard: '',
+            CVV: '',
+            addPayment: !this.state.addPayment
+        });
+    }
+    addNewPayment(){
+        //2020-02-20 24:00:00 UTC
+        var expiration = `${this.state.year}-${this.state.month}-30 24:00:00 UTC`;
+        var user_id = this.getUser();
+        console.log("user id", user_id);
+        console.log("expiration", expiration);
+        fetch(`http://localhost:3000/payment/new/payment`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: user_id,
+                credit_card_number: this.state.creditCard,
+                CVV:this.state.CVV,
+                expiration:expiration
+            })
+        }).then((res) =>{
+            return res.json();
+        }).then((resData) =>{
+            this.addPayment();
+        }).catch(function(err) {
+            console.log("error", err);
+        });
+    }
     render() {
-        console.log("user data", this.state.userData);
-        console.log("auction data", this.state.auctionData);
-        return (
-            <div>
-                <h3>Current Bid: {this.props.auctionData[0].top_bid}</h3>
-                <input type="text" id='payment-inputs' placeholder='Name' onChange ={this.changeNameValue}/>
-                <input type="text" id='payment-inputs' placeholder='credit card number' onChange ={this.changeCreditCardValue}/>
-                <input type="text" id='payment-inputs' placeholder='CVV' onChange = {this.changeCVVValue}/>
-                <input type="text" id='payment-inputs' placeholder='bid' onChange={this.changeBidValue}/>
-                <br/>
-                <input id='payment-inputs-button' type="button" value="Place Bid" onClick={this.changeBidData}/>
-            </div>
-        )
+        console.log(this.state.addPayment);
+        var simpleSelect ={
+
+            width: '105px',
+            margin:'auto',
+            marginRight: '115px',
+            color:'brown'
+            // marginTop: '10px'
+        };
+        var position = {
+            width: '105px',
+            float:'left',
+            margin:'auto',
+            color:'brown',
+            marginLeft: '6px'
+        };
+        var top = {
+            marginTop:'9px',
+            marginBottom:'-15px'
+        };
+        if (this.state.addPayment) {
+            var years = [2017,2018,2019,2020,2021,2022,2023,2024,2025].map(function(year){
+                return {
+                    label:year.toString(),
+                    value:year
+                };
+            });
+            var months = [1,2,3,4,5,6,7,8,9,10,11,12].map(function(month){
+                return {
+                    label:month.toString(),
+                    value:month
+                };
+            });
+            console.log(months);
+            return (
+                <div>
+                    <h3>Add New Payment Method</h3>
+                    <input type="text" id='payment-inputs' name = "add-card" placeholder='Credit Card Number' onChange ={this.changeCreditCardValue}/>
+                    <input type="text" id='payment-inputs' placeholder='CVV' onChange ={this.changeCVVValue}/>
+                    <input type="text" id='payment-inputs' placeholder='Address'/>
+                    <div style={top}>
+                        <SimpleSelect style={position} onValueChange={this.getYearData} options={years} placeholder="Year"></SimpleSelect>
+                        <SimpleSelect  style={simpleSelect} onValueChange={this.getMonthData} options={months} placeholder="Month"></SimpleSelect>
+                    </div>
+                    <br/>
+                    <input id='payment-inputs-button' type="button" value="Back" onClick={this.addPayment}/>
+                    <input id='payment-inputs-button' type="button" value="Add Card" onClick={this.addNewPayment}/>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h3>Current Bid: ${this.props.auctionData[0].top_bid}</h3>
+                    <input type="text" id='payment-inputs' placeholder='Name' onChange ={this.changeNameValue}/>
+                    <input type="text" id='payment-inputs' placeholder='Credit Card Number' onChange ={this.changeCreditCardValue}/>
+                    <input type="text" id='payment-inputs' placeholder='CVV' onChange={this.changeCVVValue}/>
+                    <input type="text" id='payment-inputs' placeholder='Bid' onChange={this.changeBidValue}/>
+                    <br/>
+                    <input id='payment-inputs-button' type="button" value="Add Card" onClick={this.addPayment}/>
+                    <input id='payment-inputs-button' type="button" value="Place Bid" onClick={this.changeBidData}/>
+                </div>
+            )
+        }
     }
 }
 
