@@ -127,7 +127,6 @@ class PaymentWindow extends Component {
         });
     }
     addNewPayment(){
-        //2020-02-20 24:00:00 UTC
         var expiration = `${this.state.year}-${this.state.month}-30 24:00:00 UTC`;
         var user_id = this.getUser();
         console.log("user id", user_id);

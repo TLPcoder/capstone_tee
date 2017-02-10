@@ -10,6 +10,7 @@ class DisplayAuctions extends Component{
             json: []
         };
         this.getWindowData = this.getWindowData.bind(this);
+        this.getUser = this.getUser.bind(this);
         this.getWindowData();
     }
     getWindowData() {
@@ -26,12 +27,24 @@ class DisplayAuctions extends Component{
             console.log(err);
         });
     }
+    getUser() {
+        return sessionStorage.getItem('golfMember');
+    }
     render(){
         var key = 0;
         var json = this.state.json;
         console.log("json", json);
         var length = json.length;
-        var all = json.map(function(element) {
+        var allAuctions = [];
+        var user = this.getUser();
+        json.forEach((auction) =>{
+            if(auction.owner_id !== this.getUser() * 1 || this.props.run){;
+                console.log(this.getUser());
+                allAuctions.push(auction);
+            }
+        });
+        console.log("allAuctions", allAuctions)
+        var all = allAuctions.map(function(element) {
             key++;
                 return (
                     <div className = "auction-Card"><CreateCard key={key} dataAuction={element}/></div>

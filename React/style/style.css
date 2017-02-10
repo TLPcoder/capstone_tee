@@ -228,17 +228,25 @@ border-radius: 10px;
     border:2px #B4B7C0 solid;
     float: right;
     margin-top: 20px;
+    text-align: center;
 }
 
 .profile-inputs{
-    width: 80%;
-    height: 20px;
-    margin: auto;
-    margin-top: 25px;
-    text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 50px;
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 0px 10px 0px;
+    width:180px;
+    color:brown;
 }
 
 .profile-update-button{
