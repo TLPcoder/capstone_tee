@@ -34,6 +34,7 @@ class CourseProfile extends Component {
             courseData: this.state.courseData,
             addComment: !this.state.addComment
         });
+        this.getCourse();
     }
     getUser() {
         var data = sessionStorage.getItem('golfMember');
@@ -79,8 +80,8 @@ class CourseProfile extends Component {
             console.log("comments here", commentInfo);
             return <Comments comments={commentInfo}/>
         });
-        var rating = this.rating()
-
+        var rating = Math.round(this.rating());
+        console.log("rating", rating);
         if (this.state.courseData.length && !this.state.addComment) {
             console.log("help", this.state.courseData[0].image)
             return (
@@ -93,7 +94,7 @@ class CourseProfile extends Component {
                         <div>
                             <img src={this.state.courseData[0].image} alt="" height="300px" width = "300px"/>
                             <br/>
-                            <StarRating name="airbnb-rating" caption="Course Rating" rating={rating} size={17}/>
+                            <StarRating name="airbnb-rating" caption="Course Rating: " rating={rating} size={17}/>
                         </div>
                         <div>
                             <h3>{this.state.courseData[0].name}</h3>
@@ -120,7 +121,7 @@ class CourseProfile extends Component {
                         <MainNav/>
                     </div>
                     <div>
-                        <AddComment back={this.commentBoolean}/>
+                        <AddComment data={this.state.courseData} back={this.commentBoolean}/>
                     </div>
                 </div>
             )

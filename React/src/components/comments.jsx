@@ -10,8 +10,8 @@ class Comments extends Component {
         if (this.props.comments) {
             return (
                 <div className="comments">
-                     <StarRating name="airbnb-rating" caption="Rate your stay!" rating={this.props.comments.rating} size={17}/>
                     <h4 className = 'commenter-username'>{this.props.comments.username}</h4>
+                    <StarRating name="airbnb-rating" caption='' rating={this.props.comments.rating} size={17}/>
                     <p className = 'comment-comment-body'>{this.props.comments.comment}</p>
                 </div>
             )

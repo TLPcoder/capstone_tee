@@ -22,7 +22,7 @@ router.get('/:course_id', function(req,res){
 });
 
 router.get('/:course_id/comments', function(req,res){
-    knex.select('courses.image','courses.description','courses.name','courses.address','courses.city','courses.country','courses.state','users.username','comments.comment','comments.rating').from('courses')
+    knex.select('courses.image','courses.description','courses.name','courses.address','courses.city','courses.country','courses.state','users.username','comments.comment','comments.rating','comments.course_id').from('courses')
     .innerJoin('comments', 'comments.course_id','courses.id')
     .innerJoin('users','users.id','comments.commenter_id')
     .where('courses.id', req.params.course_id)
@@ -34,8 +34,18 @@ router.get('/:course_id/comments', function(req,res){
 });
 
 router.post('/comments', function(req,res){
-    knex('courses').returning('*')
-    .where('courses.id', req.params.course_id)
+    var commenter_id = req.body.commenter_id;
+    var comment = req.body.comment;
+    var course_id = req.body.course_id;
+    var rating = req.body.rating;
+    console.log(req.body);
+    knex('comments').returning('*')
+    .insert({
+        commenter_id:commenter_id,
+        comment:comment,
+        course_id:course_id,
+        rating:rating
+    })
     .then((data) =>{
         res.json(data);
     }).catch((err) =>{
