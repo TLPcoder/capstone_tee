@@ -20,11 +20,11 @@ class BiddingBox extends Component {
         var courseId = `http://localhost:8080/#/course/${this.props.data.course_id}`
         return (
             <div className="auction-bidding-box">
-                <h4 className="course-auction-text">{this.props.data.name}</h4>
-                <h5 className="course-auction-text">Tee Time: {this.props.data.tee_time.slice(this.props.data.tee_time.indexOf('T') + 1, this.props.data.tee_time.length - 5)}
-                     on {this.props.data.tee_time.slice(0, this.props.data.tee_time.indexOf('T'))}</h5>
-                <h5 className="course-auction-text">Auction Ends: Midnight on {this.props.data.auction_ends.slice(0, this.props.data.auction_ends.indexOf('T'))}</h5>
-                <h5 className="course-auction-text">Current Bid ${this.props.data.top_bid}</h5>
+                <h3 className="course-auction-text">{this.props.data.name}</h3>
+                <p className="course-auction-text">Tee Time: {this.props.data.tee_time.slice(this.props.data.tee_time.indexOf('T') + 1, this.props.data.tee_time.length - 5)}
+                     on {this.props.data.tee_time.slice(0, this.props.data.tee_time.indexOf('T'))}</p>
+                 <p className="course-auction-text">Auction Ends: Midnight on {this.props.data.auction_ends.slice(0, this.props.data.auction_ends.indexOf('T'))}</p>
+                <p className="course-auction-text">Current Bid ${this.props.data.top_bid}</p>
                 <ul id = 'course-auction-bid-button'>
                     <li  className="course-auction-bid-buttons"><a href="" onClick={this.payment}>Make Bid</a></li>
                 <li className="course-auction-bid-buttons"><a href={courseId} onClick = {this.checkoutCourse}>View Course</a></li>

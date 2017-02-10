@@ -117,11 +117,12 @@ class PaymentWindow extends Component {
         return (
             <div>
                 <h3>Current Bid: {this.props.auctionData[0].top_bid}</h3>
-                <input type="text" clasdName='payment-inputs' placeholder='Name' onChange ={this.changeNameValue}/>
-                <input type="text" clasdName='payment-inputs' placeholder='credit card number' onChange ={this.changeCreditCardValue}/>
-                <input type="text" clasdName='payment-inputs' placeholder='CVV' onChange = {this.changeCVVValue}/>
-                <input type="text" clasdName='payment-inputs' placeholder='bid' onChange={this.changeBidValue}/>
-                <input type="button" value="Place Bid" onClick={this.changeBidData}/>
+                <input type="text" id='payment-inputs' placeholder='Name' onChange ={this.changeNameValue}/>
+                <input type="text" id='payment-inputs' placeholder='credit card number' onChange ={this.changeCreditCardValue}/>
+                <input type="text" id='payment-inputs' placeholder='CVV' onChange = {this.changeCVVValue}/>
+                <input type="text" id='payment-inputs' placeholder='bid' onChange={this.changeBidValue}/>
+                <br/>
+                <input id='payment-inputs-button' type="button" value="Place Bid" onClick={this.changeBidData}/>
             </div>
         )
     }

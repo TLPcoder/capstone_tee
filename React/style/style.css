@@ -294,6 +294,7 @@ border-radius: 10px;
     border-radius: 5px;
     padding-bottom: 50px;
     background-color: rgba(249, 249, 250, 0.90);
+    border: 2px solid #b6b9c2;
 }
 /*#auction-container{
     position: relative;
@@ -365,7 +366,6 @@ border-radius: 10px;
 
 .course-auction-text{
     text-align: center;
-    font-size: 15px;
 }
 
 #auction-image{
@@ -744,4 +744,257 @@ border-radius: 10px;
     padding:5px;
     margin-bottom: 20px;
     color:black;
+    border: 2px solid #b6b9c2;
+}
+
+.comments-text{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.course-profile-info-box{
+    margin:auto;
+    position:relative;
+    top:120px;
+
+    margin-left:10%;
+    margin-right:10%;
+    background-color: white;
+    border-radius: 5px;
+    padding-bottom: 50px;
+    background-color: rgba(249, 249, 250, 0.90);
+    border: 2px solid #b6b9c2;
+}
+.course-profile-course-info{
+    float:right;
+    border: 1px solid;
+    margin:auto;
+    width: 330px;
+    height: 200px;
+    margin-top:70px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 2px #B4B7C0 solid;
+    margin-right:10%;
+    text-align: center;
+}
+.course-profile-img{
+    margin-left: 1%;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.course-profile-img:active{
+    border-radius: 20px;
+    width:50%;
+    height: 500px;
+    z-index: 10;
+    position: relative;
+    left: 25%;
+}
+.course-profile-button{
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.course-profile-button:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.course-profile-comments{
+    margin-top: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.course-profile-background-image{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://ncga.org/wp-content/uploads/2013/10/PGC1602-4368x2912.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+
+.course-profile-description{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.course-profile-rating{
+    margin-left: 1%;
+}
+.create-comment{
+    margin: auto;
+    background-color: rgba(249, 249, 250, 0.90);
+    width:400px;
+    position: relative;
+    top:300px;
+    text-align: center;
+    border-radius: 5px;
+    height: 300px;
+}
+.create-comment-textarea{
+    margin-top: 25px;
+    color:#4CAF50;
+    font-size: 15px;
+    border-radius: 3px;
+    color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    /*margin: 10px 10px 10px 0px;*/
+    width:300px;
+    text-align: left;
+    color: brown;
+}
+
+.create-comment-buttons{
+    margin-top: 20px;
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.create-comment-buttons:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+.create-comment-rating{
+    position: relative;
+    top: 15px;
+}
+.payment-window-container{
+    position: relative;
+    top: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.payment-window{
+    float:right;
+    border: 1px solid;
+    margin:auto;
+    width: 330px;
+    height: 320px;
+    margin-top:90px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 2px #B4B7C0 solid;
+    margin-right:10%;
+    text-align: center;
+}
+
+#payment-inputs{
+    color:#4CAF50;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 10px 10px 0px;
+    width:210px;
+}
+
+#payment-inputs-button{
+    margin-top: 15px;
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+#payment-inputs-button:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.payment-image{
+    margin-left: 1%;
+    margin-top: 60px;
+    border-radius: 10px;
+    border: 2px solid #bababa;
+}
+
+.payment-image:active{
+    border-radius: 10px;
+    width:50%;
+    height: 600px;
+    width: 600px;
+    z-index: 10;
+    position: relative;
+    bottom:50px;
+    left: 25%;
+}
+
+
+#payment-background{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://ww1.prweb.com/prfiles/2014/01/05/11462941/photo%20-%20Poppy%20Hills%2015.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
 }

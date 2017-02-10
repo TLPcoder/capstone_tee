@@ -40,8 +40,7 @@ class CreateCard extends Component {
                 <div className="card">
                     <img style={bidBoarder} className="courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                     <a href={url} style={textDecoration}>
-                        <p style={center}>{this.props.dataAuction.name}
-                            Current Bid: ${this.props.dataAuction.top_bid}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                     </a>
                 </div>
             )
@@ -51,8 +50,7 @@ class CreateCard extends Component {
                 <div className="card">
                     <img style={bidBoarder} className="courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                     <a href={url} style={textDecoration}>
-                        <p style={center}>{this.props.dataAuction.name}
-                            Current Bid: ${this.props.dataAuction.top_bid}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                     </a>
                 </div>
             )
@@ -73,8 +71,7 @@ class CreateCard extends Component {
                 <div className="card">
                     <img style={border} className="courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                     <a href={url} style={textDecoration}>
-                        <p style={center}>{this.props.dataAuction.name}
-                            Current Bid: ${this.props.dataAuction.top_bid}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                     </a>
                 </div>
             )
@@ -84,8 +81,7 @@ class CreateCard extends Component {
                 <div className="card">
                     <img style={border} className="courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                     <a href={url} style={textDecoration}>
-                        <p style={center}>{this.props.dataAuction.name}
-                            Current Bid: ${this.props.dataAuction.top_bid}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                     </a>
                 </div>
             )

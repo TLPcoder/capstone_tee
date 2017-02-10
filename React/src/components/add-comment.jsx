@@ -64,11 +64,14 @@ class AddComment extends Component{
         console.log(this.state);
         return(
             <form className = "create-comment">
+                <div className="create-comment-rating" >
                 <label htmlFor="">Place your Rating: </label>
                 <StarRating name="airbnb-rating" totalStars={5} size={17} rating={this.state.rating} onRatingClick={this.getRating}/>
-                <textarea onChange = {this.comment} name="" id="" cols="30" rows="10"></textarea>
-                <input type="button" value = "Back" onClick={this.back}/>
-                <input type="button" value = "Add Comment" onClick={this.addComment}/>
+                </div>
+                <textarea className="create-comment-textarea" onChange = {this.comment} name="" id="" cols="30" rows="10"></textarea>
+                <br/>
+                <input className="create-comment-buttons" type="button" value = "Back" onClick={this.back}/>
+                <input className="create-comment-buttons" type="button" value = "Add Comment" onClick={this.addComment}/>
             </form>
         )
     }

@@ -23,13 +23,10 @@ class CourseProfile extends Component {
             return promise.json();
         }).then((json) => {
             console.log(json);
-            this.setState({
-                courseData: json,
-                addComment: this.state.addComment
-            });
+            this.setState({courseData: json, addComment: this.state.addComment});
         });
     }
-    commentBoolean(){
+    commentBoolean() {
         this.setState({
             courseData: this.state.courseData,
             addComment: !this.state.addComment
@@ -40,10 +37,10 @@ class CourseProfile extends Component {
         var data = sessionStorage.getItem('golfMember');
         return data;
     }
-    rating(){
+    rating() {
         var ratings = 0;
         var numberOfRatings = 0;
-        this.state.courseData.forEach((rating)=>{
+        this.state.courseData.forEach((rating) => {
             numberOfRatings++;
             ratings += rating.rating;
         });
@@ -53,14 +50,17 @@ class CourseProfile extends Component {
     addToFavorites() {
         console.log(this.state);
         var user_id = this.getUser();
-        var course_id = this.state.courseData[0].id;
+        var course_id = this.state.courseData[0].course_id;
+        console.log("course id mother fucker ", this.state.courseData[0]);
         fetch(`http://localhost:3000/user/favorite`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({user_id: user_id, course_id: course_id})
+            body: JSON.stringify({
+                user_id: user_id,
+                course_id: course_id})
         }).then((res) => {
             return res.json();
         }).then((resData) => {
@@ -72,11 +72,14 @@ class CourseProfile extends Component {
         });
     }
     render() {
-        console.log("hello there", this.state.courseData);
-        var margin = {
-            marginTop: '100px'
+        var center = {
+            textAlign:'center'
         };
-        var comments = this.state.courseData.map((commentInfo)=>{
+        var rating = {
+            marginLeft: '1%'
+        };
+        console.log("hello there", this.state.courseData);
+        var comments = this.state.courseData.map((commentInfo) => {
             console.log("comments here", commentInfo);
             return <Comments comments={commentInfo}/>
         });
@@ -86,37 +89,41 @@ class CourseProfile extends Component {
             console.log("help", this.state.courseData[0].image)
             return (
                 <div>
-                    <div className = "course-profile-background-image"></div>
+                    <div className="course-profile-background-image"></div>
                     <div>
                         <MainNav/>
                     </div>
-                    <div style = {margin}>
-                        <div>
-                            <img src={this.state.courseData[0].image} alt="" height="300px" width = "300px"/>
-                            <br/>
-                            <StarRating name="airbnb-rating" caption="Course Rating: " rating={rating} size={17}/>
+                    <div>
+                        <div className ="course-profile-info-box">
+                            <div className="course-profile-course-info">
+                                <h3>{this.state.courseData[0].name}</h3>
+                                <p>State: {this.state.courseData[0].state}</p>
+                                <p>City: {this.state.courseData[0].city}</p>
+                                <p>Address: {this.state.courseData[0].address}</p>
+                                <input className= "course-profile-button" type="button" value="Add to Favorites" onClick={this.addToFavorites}/>
+                                <input className= "course-profile-button" type="button" value="Add Comment" onClick={this.commentBoolean}/>
+                            </div>
+                            <div className="course-profile-img-rating">
+                                <img className = "course-profile-img" src={this.state.courseData[0].image} alt="" height="400px" width="400px"/>
+                                <br/>
+                                <div className = "course-profile-rating">Course Rating:
+                                <StarRating className = "course-profile-rating" name="airbnb-rating" rating={rating} size={17}/>
+                                </div>
+                            </div>
+                            <div className="course-profile-description">
+                                <h3 style={center}>Description of {this.state.courseData[0].name}</h3>
+                                <p>{this.state.courseData[0].description}</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3>{this.state.courseData[0].name}</h3>
-                            <p>{this.state.courseData[0].state}</p>
-                            <p>{this.state.courseData[0].city}</p>
-                            <p>{this.state.courseData[0].address}</p>
-                            <input type="button" value = "Add to Favorites" onClick={this.addToFavorites}/>
-                            <input type="button" value = "Add Comment" onClick={this.commentBoolean}/>
-                        </div>
-                        <div>
-                            <p>{this.state.courseData[0].description}</p>
-                        </div>
-                        <div>{comments}</div>
+                        <div className="course-profile-comments">{comments}</div>
                     </div>
                 </div>
             )
-        }
-        else if(this.state.addComment){
+        } else if (this.state.addComment) {
             console.log("hello there from add comment")
-            return(
-                <div style={margin}>
-                    <div className = "course-profile-background-image"></div>
+            return (
+                <div>
+                    <div className="course-profile-background-image"></div>
                     <div>
                         <MainNav/>
                     </div>
@@ -125,8 +132,7 @@ class CourseProfile extends Component {
                     </div>
                 </div>
             )
-        }
-        else {
+        } else {
             return (
                 <div></div>
             )

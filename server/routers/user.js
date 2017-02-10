@@ -143,6 +143,7 @@ router.put('/update', function(req, res) {
 });
 
 router.post('/favorite', function(req, res) {
+    console.log("hello there", req.body)
     var user_id = req.body.user_id;
     var course_id = req.body.course_id;
     knex('favorite').returning('*').insert({
