@@ -10,10 +10,11 @@ class BiddingBox extends Component {
     payment() {
         console.log('course data', this.props.data)
         var auctionId = this.props.data.auction_id;
+        console.log('auction ID', this.props.data.auction_id);
         window.location.hash = `/payment/${auctionId}`;
     }
     checkoutCourse(){
-        //window.location.hash = `/course/${this.props.data.course_id}`;
+        window.location.hash = `/course/${this.props.data.course_id}`;
     }
     render() {
         console.log("course id", this.props.data);

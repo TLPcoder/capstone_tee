@@ -15,7 +15,7 @@ class Payment extends Component {
         this.getUserData = this.getUserData.bind(this);
         this.getUser = this.getUser.bind(this);
         this.getAuctionData = this.getAuctionData.bind(this);
-        this.getUserData();
+        // this.getUserData();
         this.getAuctionData();
     }
     getAuctionData() {
@@ -42,7 +42,7 @@ class Payment extends Component {
             color:'white'
             // marginLeft:'10%'
         };
-        if (this.state.userData.length > 0 && this.state.auctionData.length > 0) {
+        if (this.state.auctionData.length > 0) {
             console.log("auction data", this.state.auctionData);
             console.log("user data", this.state.userData);
             return (
