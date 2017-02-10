@@ -11,7 +11,8 @@ class Comments extends Component {
             return (
                 <div className="comments">
                     <h4 className = 'commenter-username'>{this.props.comments.username}</h4>
-                    <StarRating name="airbnb-rating" caption='' rating={this.props.comments.rating} size={17}/>
+                    <div>Review: <StarRating name="airbnb-rating" caption='' rating={this.props.comments.rating} size={17}/>
+                    </div>
                     <p className = 'comment-comment-body'>{this.props.comments.comment}</p>
                 </div>
             )

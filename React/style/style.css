@@ -287,22 +287,34 @@ border-radius: 10px;
 #auction-body-container{
     margin:auto;
     position:relative;
-    bottom:100px;
-    margin-top: 100px;
+    top:120px;
     margin-left:10%;
     margin-right:10%;
     background-color: white;
-    border-radius: 30px;
+    border-radius: 5px;
     padding-bottom: 50px;
+    background-color: rgba(249, 249, 250, 0.90);
 }
-#auction-container{
+/*#auction-container{
     position: relative;
     top: 50px;
     background-image: url('https://static1.squarespace.com/static/5436f6f4e4b07f1e91b331eb/t/557a259be4b028e09773e6ba/1434068393556/mlsouth.jpg?format=1500w');
-    /*background-repeat: no-repeat;*/
     background-size:cover;
     background-attachment: fixed;
     padding-top: 100px;
+}*/
+
+#auction-background{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://media.golfdigest.com/photos/585054bdba03cefc46ca21c1/master/pass/2017-01-Pine-Valley-GC-hole-11.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
 }
 
 .auction-bidding-box{
@@ -369,6 +381,11 @@ border-radius: 10px;
     z-index: 10;
     position: relative;
     left: 25%;
+}
+.auction-rating{
+    margin:auto;
+    margin-left: 15px;
+    margin-top: 10px;
 }
 .course-auction-description{
 
@@ -712,4 +729,19 @@ border-radius: 10px;
 .course-search-imgs{
     border-radius: 5px;
     border: solid 1px #b9bcc5;
+}
+
+.auction-comments{
+    margin-top: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.comments {
+    margin:auto;
+    background-color: rgba(249, 249, 250, 0.90);
+    border-radius: 5px;
+    padding:5px;
+    margin-bottom: 20px;
+    color:black;
 }

@@ -4,15 +4,21 @@ import MainNav from './nav-main';
 import AuctionImage from './course-auction-img';
 import BiddingBox from './course-auction-bidding-box';
 import CourseAuctionBody from './course-auction-body';
+import Comments from './comments'
+import StarRating from 'react-star-rating';
 
 class CourseAuction extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: true,
-            data: {}
+            data: [],
+            courseComments: [],
+            run: false
         };
         this.fetchInfo = this.fetchInfo.bind(this);
+        this.getComments = this.getComments.bind(this);
+        this.rating = this.rating.bind(this);
         this.fetchInfo();
     }
     fetchInfo() {
@@ -20,11 +26,50 @@ class CourseAuction extends Component {
             return promise.json();
         }).then((json) => {
             console.log("course info", json);
-            this.setState({loading: false, data: json});
+            this.setState({
+                loading: false,
+                data: json,
+                courseComments: this.state.courseComments,
+                run:true
+            });
         });
     }
+    getComments() {
+        fetch(`http://localhost:3000/course/${this.state.data[0].course_id}/comments`).then((promise) => {
+            return promise.json();
+        }).then((json) => {
+            console.log(json);
+            this.setState({
+                loading: this.state.loading,
+                data: this.state.data,
+                courseComments: json,
+                run:false
+            });
+        });
+    }
+    rating(){
+        var ratings = 0;
+        var numberOfRatings = 0;
+        this.state.courseComments.forEach((rating)=>{
+            numberOfRatings++;
+            ratings += rating.rating;
+        });
+        ratings = ratings / numberOfRatings;
+        return ratings;
+    }
     render() {
-        console.log("CourseAuction  props", this.props.params.id);
+        var rating = this.rating();
+
+        if(this.state.run){
+                this.getComments();
+        }
+        var comments = this.state.courseComments.map((commentInfo)=>{
+            console.log("comments here", commentInfo);
+            return <Comments comments={commentInfo}/>
+        });
+        console.log("comments", this.state.courseComments);
+        console.log("auction info", this.state.data);
+
         if (this.state.loading) {
             return (
                 <div></div>
@@ -32,11 +77,18 @@ class CourseAuction extends Component {
         } else {
             return (
                 <div id = "auction-container">
+                    <div id = "auction-background"></div>
                     <MainNav/>
                     <div id = "auction-body-container">
                         <AuctionImage image={this.state.data[0].image}/>
                         <BiddingBox data = {this.state.data[0]}/>
+                        <div className = "auction-rating">Course Rating:
+                            <StarRating name="course-rating" caption='' rating={rating} size={17}/>
+                        </div>
                         <CourseAuctionBody data = {this.state.data[0]}/>
+                    </div>
+                    <div className = "auction-comments">
+                        {comments}
                     </div>
                 </div>
             )
