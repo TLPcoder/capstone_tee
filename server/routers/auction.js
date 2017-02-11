@@ -17,6 +17,20 @@ router.get('/', function(req, res) {
             res.json(data);
         });
 });
+router.put('/delete', function(req,res){
+    var yesterday = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()-1} 24:00:00 UTC`;
+    console.log(yesterday);
+    var auction_id = req.body.auction_id;
+    knex('auction')
+    .update({
+        auction_ends: yesterday
+    })
+    .where('auction.id', auction_id)
+    .then((data)=>{
+        console.log(data);
+        res.json(data);
+    });
+});
 router.get('/course', function(req,res){
     knex.select('name').from('courses')
     .then(function(data){

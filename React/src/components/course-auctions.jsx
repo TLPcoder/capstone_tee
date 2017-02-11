@@ -19,6 +19,7 @@ class CourseAuction extends Component {
         this.fetchInfo = this.fetchInfo.bind(this);
         this.getComments = this.getComments.bind(this);
         this.rating = this.rating.bind(this);
+        this.getUser = this.getUser.bind(this);
         this.fetchInfo();
     }
     fetchInfo() {
@@ -57,6 +58,9 @@ class CourseAuction extends Component {
         ratings = ratings / numberOfRatings;
         return ratings;
     }
+    getUser() {
+        return sessionStorage.getItem('golfMember');
+    }
     render() {
         var rating = this.rating();
 
@@ -64,7 +68,6 @@ class CourseAuction extends Component {
                 this.getComments();
         }
         var comments = this.state.courseComments.map((commentInfo)=>{
-            console.log("comments here", commentInfo);
             return <Comments comments={commentInfo}/>
         });
         console.log("comments", this.state.courseComments);
@@ -74,7 +77,25 @@ class CourseAuction extends Component {
             return (
                 <div></div>
             )
-        } else {
+        } else if(this.state.data[0].owner_id === this.getUser()*1){
+            return (
+                <div id = "auction-container">
+                    <div id = "auction-background"></div>
+                    <MainNav/>
+                    <div id = "auction-body-container">
+                        <AuctionImage image={this.state.data[0].image}/>
+                        <BiddingBox owner={true} data = {this.state.data[0]}/>
+                        <div className = "auction-rating">Course Rating:
+                            <StarRating name="course-rating" caption='' rating={rating} size={17}/>
+                        </div>
+                        <CourseAuctionBody data = {this.state.data[0]}/>
+                    </div>
+                    <div className = "auction-comments">
+                        {comments}
+                    </div>
+                </div>
+            )
+        }else {
             return (
                 <div id = "auction-container">
                     <div id = "auction-background"></div>

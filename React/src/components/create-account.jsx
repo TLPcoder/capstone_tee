@@ -116,8 +116,7 @@ class CreateAccount extends Component {
                 email: event.target.value,
                 zip: this.state.loginData.zip,
                 image: this.state.loginData.image,
-                password: this.state.loginData.password,
-                image: this.state.loginData.image
+                password: this.state.loginData.password
             }
         });
     }
@@ -157,8 +156,8 @@ class CreateAccount extends Component {
                 userName: this.state.loginData.userName,
                 email: this.state.loginData.email,
                 password: this.state.loginData.password,
-                zip: event.target.value,
-                image: this.state.loginData.image
+                zip: this.state.loginData.zip,
+                image: event.target.value,
             }
         });
     }
@@ -183,7 +182,7 @@ class CreateAccount extends Component {
                         <input className="login" type="text" onChange={this.getDataFromUsername} placeholder="username"/>
                         <input placeholder="password" className="login" type="password" onChange={this.getDataFromPassword}/>
                         <input placeholder="zip" className="login" type="text" onChange={this.getZip}/>
-                        <input className="login" type="text" placeholder="imageUrl" onChage ={this.getImageUrl}/>
+                        <input className="login" type="text" placeholder="imageUrl" onChange ={this.getImageUrl}/>
                         <br/>
                         <input className='loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
                     </div>

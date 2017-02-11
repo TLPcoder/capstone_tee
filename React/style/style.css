@@ -24,6 +24,8 @@
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 15px;
+    position: relative;
+    top:15px;
     border-radius: 3px;
     box-sizing: border-box;
     padding: 4px;
@@ -46,14 +48,14 @@
     margin-right: 37%;
     border-radius: 10px;
     width:300px;
-    height: 200px;
+    height: 210px;
     border:black solid 1px;
     position: relative;
     top:270px;
 }
 
 .loginSubmit{
-    margin-top: 15px;
+    margin-top: 20px;
     margin-bottom: 10px;
     background-color: #4CAF50;
     /*font-size: 1.0vw;*/
@@ -105,7 +107,7 @@
     height:100vh;
     position: fixed;
 
-    background: url("https://www.proceilingtiles.com/images/P/Cypress-Point-CA-08-003-001.jpg") no-repeat center center fixed;
+    background: url("http://www.golfchannel.com/sites/golfchannel.prod.acquia-sites.com/files/cypress_point_1920_file.jpg") no-repeat center center fixed;
     background-size:cover;
     background-position:center center;
     background-attachment:fixed;
@@ -354,6 +356,7 @@ border-radius: 10px;
     border-radius: 10px;
     border: 2px #B4B7C0 solid;
     margin-right:10%;
+    text-align: center;
 }
 
 #course-auction-bid-button{
@@ -363,6 +366,35 @@ border-radius: 10px;
     display: inline-block;
 }
 
+
+.course-auction-delete{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.course-auction-delete:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
 
 .course-auction-bid-buttons a{
     background-color: #4CAF50;
