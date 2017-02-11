@@ -9,21 +9,45 @@ class CourseProfile extends Component {
         super(props);
         this.state = {
             courseData: [],
-            addComment: false
+            addComment: false,
+            noComments: null,
         };
         this.getCourse = this.getCourse.bind(this);
         this.getUser = this.getUser.bind(this);
         this.addToFavorites = this.addToFavorites.bind(this);
         this.rating = this.rating.bind(this);
         this.commentBoolean = this.commentBoolean.bind(this);
+        this.getCourseWithOutComment = this.getCourseWithOutComment.bind(this);
         this.getCourse();
     }
     getCourse() {
-        fetch(`http://localhost:3000/course/${this.props.params.id}/comments`).then((promise) => {
+        fetch(`http://localhost:3000/course/${this.props.params.id}/comments`)
+        .then((promise) => {
             return promise.json();
         }).then((json) => {
-            console.log(json);
-            this.setState({courseData: json, addComment: this.state.addComment});
+            console.log("hello there bitch", json);
+            if (json.length === 0) {
+                this.getCourseWithOutComment();
+            } else {
+                this.setState({
+                    courseData: json,
+                    addComment: this.state.addComment,
+                    noComments:false
+                });
+            }
+        });
+    }
+    getCourseWithOutComment() {
+        fetch(`http://localhost:3000/course/${this.props.params.id}`)
+        .then((promise) => {
+            return promise.json();
+        }).then((json) => {
+            console.log("hello there bitch", json);
+            this.setState({
+                courseData: json,
+                addComment: this.state.addComment,
+                noComments:true
+            });
         });
     }
     commentBoolean() {
@@ -58,9 +82,7 @@ class CourseProfile extends Component {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                user_id: user_id,
-                course_id: course_id})
+            body: JSON.stringify({user_id: user_id, course_id: course_id})
         }).then((res) => {
             return res.json();
         }).then((resData) => {
@@ -73,7 +95,7 @@ class CourseProfile extends Component {
     }
     render() {
         var center = {
-            textAlign:'center'
+            textAlign: 'center'
         };
         var rating = {
             marginLeft: '1%'
@@ -85,6 +107,39 @@ class CourseProfile extends Component {
         });
         var rating = Math.round(this.rating());
         console.log("rating", rating);
+        if(this.state.courseData.length && this.state.noComments && !this.state.addComment){
+            return (
+                <div>
+                    <div className="course-profile-background-image"></div>
+                    <div>
+                        <MainNav/>
+                    </div>
+                    <div>
+                        <div className="course-profile-info-box">
+                            <div className="course-profile-course-info">
+                                <h3>{this.state.courseData[0].name}</h3>
+                                <p>State: {this.state.courseData[0].state}</p>
+                                <p>City: {this.state.courseData[0].city}</p>
+                                <p>Address: {this.state.courseData[0].address}</p>
+                                <input className="course-profile-button" type="button" value="Add to Favorites" onClick={this.addToFavorites}/>
+                                <input className="course-profile-button" type="button" value="Add Comment" onClick={this.commentBoolean}/>
+                            </div>
+                            <div className="course-profile-img-rating">
+                                <img className="course-profile-img" src={this.state.courseData[0].image} alt="" height="400px" width="400px"/>
+                                <br/>
+                                <div className="course-profile-rating">Course Rating:
+                                    <StarRating className="course-profile-rating" name="airbnb-rating" totalStars={5}  rating={rating} size={17}/>
+                                </div>
+                            </div>
+                            <div className="course-profile-description">
+                                <h3 style={center}>Description of {this.state.courseData[0].name}</h3>
+                                <p>{this.state.courseData[0].description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
         if (this.state.courseData.length && !this.state.addComment) {
             console.log("help", this.state.courseData[0].image)
             return (
@@ -94,20 +149,20 @@ class CourseProfile extends Component {
                         <MainNav/>
                     </div>
                     <div>
-                        <div className ="course-profile-info-box">
+                        <div className="course-profile-info-box">
                             <div className="course-profile-course-info">
                                 <h3>{this.state.courseData[0].name}</h3>
                                 <p>State: {this.state.courseData[0].state}</p>
                                 <p>City: {this.state.courseData[0].city}</p>
                                 <p>Address: {this.state.courseData[0].address}</p>
-                                <input className= "course-profile-button" type="button" value="Add to Favorites" onClick={this.addToFavorites}/>
-                                <input className= "course-profile-button" type="button" value="Add Comment" onClick={this.commentBoolean}/>
+                                <input className="course-profile-button" type="button" value="Add to Favorites" onClick={this.addToFavorites}/>
+                                <input className="course-profile-button" type="button" value="Add Comment" onClick={this.commentBoolean}/>
                             </div>
                             <div className="course-profile-img-rating">
-                                <img className = "course-profile-img" src={this.state.courseData[0].image} alt="" height="400px" width="400px"/>
+                                <img className="course-profile-img" src={this.state.courseData[0].image} alt="" height="400px" width="400px"/>
                                 <br/>
-                                <div className = "course-profile-rating">Course Rating:
-                                <StarRating className = "course-profile-rating" name="airbnb-rating" rating={rating} size={17}/>
+                                <div className="course-profile-rating">Course Rating:
+                                    <StarRating className="course-profile-rating" name="airbnb-rating" totalStars={5}  rating={rating} size={17}/>
                                 </div>
                             </div>
                             <div className="course-profile-description">

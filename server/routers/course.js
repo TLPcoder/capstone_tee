@@ -15,7 +15,17 @@ router.get('/:course_id', function(req,res){
     knex('courses').returning('*')
     .where('courses.id', req.params.course_id)
     .then((data) =>{
-        res.json(data);
+        res.json([{
+            course_id: data[0].id,
+            description: data[0].description,
+            image: data[0].image,
+            address: data[0].address,
+            city: data[0].city,
+            country: data[0].country,
+            state: data[0].state,
+            zip: data[0].zip,
+            name: data[0].name
+        }]);
     }).catch((err) =>{
         console.log(err);
     });
