@@ -33,7 +33,8 @@ class CreateCard extends Component {
         if (this.props.dataAuction.top_bid) {
             console.log("shit");
         }
-        if (this.props.dataAuction.auction_id && this.props.dataAuction.top_bid && this.props.dataAuction.max < this.props.dataAuction.top_bid) {
+        console.log("check this shit out", this.props.dataAuction)
+        if (this.props.dataAuction.auction_id && this.props.dataAuction.top_bid && this.props.dataAuction.bid_amount < this.props.dataAuction.top_bid) {
             console.log("skljflksadjf;klafjkl;asjfl;ksadjf;lkadsjf;", this.props.dataAuction);
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.auction_id}`;
             return (
@@ -44,7 +45,7 @@ class CreateCard extends Component {
                     </a>
                 </div>
             )
-        } else if (this.props.dataAuction.id && this.props.dataAuction.top_bid && this.props.dataAuction.max < this.props.dataAuction.top_bid) {
+        } else if (this.props.dataAuction.id && this.props.dataAuction.top_bid && this.props.dataAuction.bid_amount < this.props.dataAuction.top_bid) {
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.id}`;
             return (
                 <div className="card">
@@ -54,7 +55,7 @@ class CreateCard extends Component {
                     </a>
                 </div>
             )
-        } else if (this.props.dataAuction.course_id && this.props.dataAuction.max < this.props.dataAuction.top_bid) {
+        } else if (this.props.dataAuction.course_id && this.props.dataAuction.bid_amount < this.props.dataAuction.top_bid) {
             var courseURL = `http://localhost:8080/#/course/${this.props.dataAuction.course_id}`
             return (
                 <div className="card">
