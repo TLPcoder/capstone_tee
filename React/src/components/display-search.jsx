@@ -34,10 +34,15 @@ class DisplaySearch extends Component{
             textDecoration: 'none'
         };
         var json = this.state.json;
-        console.log("json", json);
         var length = json.length;
+        console.log("all courses", json);
         var all = json.map(function(element) {
-            var url = `http://localhost:8080/#/course/${element.id}`
+            var url;
+            if(element.course_id){
+                url = `http://localhost:8080/#/course/${element.course_id}`;
+            }else{
+                url = `http://localhost:8080/#/course/${element.id}`;
+            }
             key++;
                 return (
                     <div className = "card">

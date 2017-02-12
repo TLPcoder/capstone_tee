@@ -134,8 +134,8 @@ class SearchInfo extends Component {
             courses: this.state.courses
         });
     }
-    radioButtonSearchBar(event) {
-        console.log("radio bar", value);
+    radioButtonSearchBar(value) {
+        //console.log("radio bar", value);
         this.setState({
             priceSort: {
                 run: this.state.priceSort.run,
@@ -144,7 +144,7 @@ class SearchInfo extends Component {
             location: {
                 run: true,
                 type: this.state.location.type,
-                value: event.target.value,
+                value: value.value,
                 radius: this.state.location.radius
             },
             courseName: {
