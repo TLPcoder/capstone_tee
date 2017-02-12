@@ -6,18 +6,22 @@ var SimpleSelect = ReactSelectize.SimpleSelect;
 import GridDisplay from './grid-display';
 import AddFavorite from './favorite-add-favorite';
 import CreateCourseForm from './create-course-form';
+import DeleteFavorite from './favorite-delete';
 
 class FavoriteMain extends Component {
     constructor(props) {
         super(props);
         this.state = {
             courses: [],
-            addCourse: false
+            addCourse: false,
+            deleteFavorite: false
         };
         this.getUserId = this.getUserId.bind(this);
         this.getFavorties = this.getFavorties.bind(this);
         this.addCourse = this.addCourse.bind(this);
         this.addedFavorite = this.addedFavorite.bind(this);
+        this.deleteFavorite = this.deleteFavorite.bind(this);
+        this.deleteFavoriteCourse = this.deleteFavoriteCourse.bind(this);
         this.getFavorties();
     }
     getFavorties() {
@@ -28,6 +32,15 @@ class FavoriteMain extends Component {
         }).then((json) => {
             console.log("api call", json);
             this.setState({courses: json, addCourse: false});
+        });
+    }
+    deleteFavoriteCourse(){
+        console.log('deleteFavoriteCourse')
+    }
+    deleteFavorite(){
+        console.log("delete")
+        this.setState({
+            deleteFavorite: !this.state.deleteFavorite
         });
     }
     addedFavorite() {
@@ -48,13 +61,26 @@ class FavoriteMain extends Component {
     render() {
         var userId = this.getUserId();
         console.log("add course", this.state.addCourse)
-        if (this.state.courses && !this.state.addCourse) {
+        if(this.state.deleteFavorite){
             return (
                 <div>
                     <div id="favorite-body-container"></div>
                     <MainNav/>
                     <div className="favorite-options">
-                        <AddFavorite addedFavorite={this.addedFavorite} addCourse={this.addCourse}/>
+                        <DeleteFavorite addedFavorite={this.addedFavorite} deleteFavorite={this.deleteFavorite} deleteFavoriteCourse={this.deleteFavoriteCourse}/>
+                    </div>
+                    <div className="favorite-images">
+                        <GridDisplay courseData={this.state.courses} addCourse={this.addCourse}/>
+                    </div>
+                </div>
+            )
+        }else if (this.state.courses && !this.state.addCourse) {
+            return (
+                <div>
+                    <div id="favorite-body-container"></div>
+                    <MainNav/>
+                    <div className="favorite-options">
+                        <AddFavorite deleteFavorite={this.deleteFavorite} addedFavorite={this.addedFavorite} addCourse={this.addCourse}/>
                     </div>
                     <div className="favorite-images">
                         <GridDisplay courseData={this.state.courses} addCourse={this.addCourse}/>

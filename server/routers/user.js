@@ -21,6 +21,18 @@ router.get('/favorites/:id', function(req, res) {
         });
 });
 
+router.get('/auctions/:id',function(req,res){
+    var user_id = req.params.id;
+    knex("courses")
+    .innerJoin('auction', 'auction.course_id', 'courses.id')
+    .where('auction.owner_id',user_id)
+    .where('auction.auction_ends', '>', date)
+    .then((data)=>{
+        console.log(data);
+        res.json(data);
+    });
+});
+
 router.get('/favorites/courses/:id', function(req, res) {
     var id = req.params.id;
     knex.select("*")
@@ -51,8 +63,10 @@ router.get('/favorites/courses/:id', function(req, res) {
 //         console.log(err);
 //     });
 // });
+
 router.get('/bids/:id', function(req, res) {
     var id = req.params.id;
+    console.log("hello")
     var maxBid = new Promise((resolve, reject) => {
         setTimeout(resolve, 1, knex.select('bids.bider_id', 'bids.auction_id').from('bids').max('bids.bid_amount')
             .innerJoin('auction', 'auction.id', 'bids.auction_id')
@@ -69,6 +83,7 @@ router.get('/bids/:id', function(req, res) {
     });
 
     Promise.all([maxBid,CourseData]).then(function(data) {
+        console.log("data[0]", data[0]);
         var relevantBids = [];
 
         for(var i = 0; i < data[1].length; i++){
@@ -78,7 +93,7 @@ router.get('/bids/:id', function(req, res) {
                 }
             }
         }
-        console.log(relevantBids);
+        // console.log(relevantBids);
         res.json(relevantBids);
     }).catch(function(err) {
         console.log(err);
@@ -110,6 +125,18 @@ router.get('/favorites/not/:id',function(req,res){
     });
 });
 
+router.delete('/delete/favorite',function(req,res){
+    var user_id = req.body.user_id;
+    var course_id = req.body.course_id;
+    knex('favorite')
+    .where('user_id', user_id)
+    .where('course_id', course_id)
+    .del()
+    .then((data) =>{
+        console.log(data);
+        res.json(data);
+    });
+});
 router.get('/:id', function(req, res) {
     var id = req.params.id;
     knex('users').where('users.id', id)
@@ -143,6 +170,7 @@ router.put('/update', function(req, res) {
 });
 
 router.post('/favorite', function(req, res) {
+    console.log("hello there", req.body)
     var user_id = req.body.user_id;
     var course_id = req.body.course_id;
     knex('favorite').returning('*').insert({

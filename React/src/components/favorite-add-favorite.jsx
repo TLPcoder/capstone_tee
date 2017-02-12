@@ -55,7 +55,8 @@ class AddFavorite extends Component {
         }).then((res) => {
             return res.json();
         }).then((resData) => {
-            console.log(resData);
+            console.log(resData.name);
+            this.getCourses();
             this.props.addedFavorite();
         }).catch(function(res) {
             console.log(res);
@@ -82,6 +83,8 @@ class AddFavorite extends Component {
                     <input className = "favorite-options-inputs favorite-options-inputs-buttons favorite-options-inputs-buttons-left" type="button" value="Add to Favorites" onClick={this.addFavorite}/>
                     <input className = "favorite-options-inputs favorite-options-inputs-buttons" type="button" value = 'Create Course'
                     onClick = {this.props.addCourse}/>
+                    <input className = "favorite-options-inputs favorite-options-inputs-buttons" type="button" value = 'Delete Favorite'
+                    onClick = {this.props.deleteFavorite}/>
                 </div>
             )
         }

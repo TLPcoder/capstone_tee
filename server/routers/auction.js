@@ -6,7 +6,7 @@ var fetch = require('node-fetch');
 const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
 
 router.get('/', function(req, res) {
-    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount', 'bids.auction_id')
+    knex.select('courses.name', 'courses.description', 'courses.city', 'courses.country', 'courses.state', 'auction.course_id', 'auction.tee_time', 'auction.auction_ends', 'auction.owner_id','auction.top_bid','courses.image', 'users.username', 'bids.bider_id', 'bids.bid_amount', 'bids.auction_id', 'auction.course_id')
         .from('auction')
         .innerJoin('courses', 'courses.id', 'auction.course_id')
         .innerJoin('users', 'users.id', 'auction.owner_id')
@@ -16,6 +16,20 @@ router.get('/', function(req, res) {
         .then(function(data) {
             res.json(data);
         });
+});
+router.put('/delete', function(req,res){
+    var yesterday = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()-1} 24:00:00 UTC`;
+    console.log(yesterday);
+    var auction_id = req.body.auction_id;
+    knex('auction')
+    .update({
+        auction_ends: yesterday
+    })
+    .where('auction.id', auction_id)
+    .then((data)=>{
+        console.log(data);
+        res.json(data);
+    });
 });
 router.get('/course', function(req,res){
     knex.select('name').from('courses')

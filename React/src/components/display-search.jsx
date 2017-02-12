@@ -34,15 +34,24 @@ class DisplaySearch extends Component{
             textDecoration: 'none'
         };
         var json = this.state.json;
-        console.log("json", json);
         var length = json.length;
+        console.log("all courses", json);
         var all = json.map(function(element) {
-            var url = `http://localhost:8080/#/course/${element.id}`
+            var url;
+            if(element.course_id){
+                url = `http://localhost:8080/#/course/${element.course_id}`;
+            }else{
+                url = `http://localhost:8080/#/course/${element.id}`;
+            }
             key++;
                 return (
                     <div className = "card">
+                        <div className = "shadowCard">
+                        <a style={center}href={url}>
                         <img className = 'course-search-imgs'src={element.image} alt="" height="300px" width="300px"/>
-                        <p style={center}><a style={center}href={url}>{element.name}</a></p>
+                        </a>
+                        </div>
+                        <p style={center}>{element.name}</p>
                     </div>
                 )
         })

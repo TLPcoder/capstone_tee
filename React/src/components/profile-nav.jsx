@@ -12,7 +12,7 @@ class ProfileNav extends Component{
     render(){
         return(
             <div id = 'profile-nav'>
-                <h1>Tee-Ball</h1>
+                <h1>Tee-Bay</h1>
                 <ul id = "profile-nav-buttons-ul">
                     <li className = "profile-nav-button">
                         <a href="http://localhost:8080/#/auctionSearch">Auctions</a>

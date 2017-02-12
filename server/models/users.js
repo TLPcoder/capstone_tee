@@ -13,8 +13,8 @@ class User {
         this.passwordHash(this.hashed_password);
     }
     passwordHash(password) {
-        //const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(password, 1);
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(password, salt);
         this.hashed_password = hash;
     }
     unhashPassword(password) {

@@ -63,14 +63,19 @@ class Login extends Component {
     }
     render() {
         return (
+            <div>
+            <div id = "profile-bakcground-image"></div>
             <div className = "login-page-container">
                 <NavLogin/>
                 <div className = 'login-container'>
                     <input className = "login" type="text" onChange={this.getDataFromUsername} placeholder= "username"/>
                     <input className = "login" type="password" onChange={this.getDataFromPassword}placeholder="password"/>
+                    <br/>
                     <input className = 'loginSubmit' type="submit" value="Login" onClick={this.fetchJWT}/>
+                    <br/>
                     <a className = "create-account-a" href="http://localhost:8080/#/createAccount">Create Account</a>
                 </div>
+            </div>
             </div>
         )
     }
