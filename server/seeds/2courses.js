@@ -81,7 +81,7 @@ exports.seed = function(knex, Promise) {
             country:'United States',
             state:'California',
             zip:94015
-        }).
+        }),
         knex('courses').insert({
             //id: 3,
             name: 'Burlingame Country Club',

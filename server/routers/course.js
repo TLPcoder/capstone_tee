@@ -65,7 +65,7 @@ router.post('/comments', function(req,res){
 
 router.get('/name/id/:id/:sort', function(req,res){
     var courseId = req.params.id;
-    knex.select('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id').from('courses').max('bids.bid_amount')
+    knex.select('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id','auction.tee_time','auction.auction_ends').from('courses').max('bids.bid_amount')
     .returning('auction.id')
     .innerJoin('auction', 'courses.id', 'auction.course_id')
     .innerJoin('bids', 'bids.auction_id','auction.id')
@@ -73,7 +73,7 @@ router.get('/name/id/:id/:sort', function(req,res){
     .where('bids.bid_amount', knex.raw('auction.top_bid'))
     .where('auction.auction_ends', '>',date)
     .orderBy('auction.top_bid', req.params.sort)
-    .groupBy('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id')
+    .groupBy('auction.id','courses.name','courses.description','courses.image','courses.address','courses.city','courses.country','courses.zip','courses.state','auction.course_id','auction.top_bid','bids.auction_id','auction.tee_time','auction.auction_ends')
     .then((data) => {
         res.json(data);
     }).catch((err) => {

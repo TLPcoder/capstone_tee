@@ -46,8 +46,12 @@ class DisplaySearch extends Component{
             key++;
                 return (
                     <div className = "card">
+                        <div className = "shadowCard">
+                        <a style={center}href={url}>
                         <img className = 'course-search-imgs'src={element.image} alt="" height="300px" width="300px"/>
-                        <p style={center}><a style={center}href={url}>{element.name}</a></p>
+                        </a>
+                        </div>
+                        <p style={center}>{element.name}</p>
                     </div>
                 )
         })

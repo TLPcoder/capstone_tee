@@ -48,8 +48,7 @@ class BiddingBox extends Component {
             return (
                 <div className="auction-bidding-box">
                     <h3 className="course-auction-text">{this.props.data.name}</h3>
-                    <p className="course-auction-text">Tee Time: {this.props.data.tee_time.slice(this.props.data.tee_time.indexOf('T') + 1, this.props.data.tee_time.length - 5)}
-                        on {this.props.data.tee_time.slice(0, this.props.data.tee_time.indexOf('T'))}</p>
+                    <p className="course-auction-text">Tee Time: {this.props.data.tee_time.slice(this.props.data.tee_time.indexOf('T') + 1, this.props.data.tee_time.length - 5)} on {this.props.data.tee_time.slice(0, this.props.data.tee_time.indexOf('T'))}</p>
                     <p className="course-auction-text">Auction Ends: Midnight on {this.props.data.auction_ends.slice(0, this.props.data.auction_ends.indexOf('T'))}</p>
                     <p className="course-auction-text">Current Bid ${this.props.data.top_bid}</p>
                     <input type="button" onClick={this.deleteAuction}className="course-auction-delete" value = "Delete"/>
@@ -59,8 +58,7 @@ class BiddingBox extends Component {
             return (
                 <div className="auction-bidding-box">
                     <h3 className="course-auction-text">{this.props.data.name}</h3>
-                    <p className="course-auction-text">Tee Time: {this.props.data.tee_time.slice(this.props.data.tee_time.indexOf('T') + 1, this.props.data.tee_time.length - 5)}
-                        on {this.props.data.tee_time.slice(0, this.props.data.tee_time.indexOf('T'))}</p>
+                    <p className="course-auction-text">Tee Time: {this.props.data.tee_time.slice(this.props.data.tee_time.indexOf('T') + 1, this.props.data.tee_time.length - 5)} on {this.props.data.tee_time.slice(0, this.props.data.tee_time.indexOf('T'))}</p>
                     <p className="course-auction-text">Auction Ends: Midnight on {this.props.data.auction_ends.slice(0, this.props.data.auction_ends.indexOf('T'))}</p>
                     <p className="course-auction-text">Current Bid ${this.props.data.top_bid}</p>
                     <ul id='course-auction-bid-button'>

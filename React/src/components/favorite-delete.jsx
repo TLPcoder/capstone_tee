@@ -4,7 +4,7 @@ import ReactSelectize from "react-selectize";
 import CreateCourseForm from "./create-course-form";
 var SimpleSelect = ReactSelectize.SimpleSelect;
 
-class AddFavorite extends Component {
+class DeleteFavorite extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,8 +14,9 @@ class AddFavorite extends Component {
         };
         this.getUserId = this.getUserId.bind(this);
         this.getCourses = this.getCourses.bind(this);
-        this.addFavorite = this.addFavorite.bind(this);
+        this.deleteFavorite = this.deleteFavorite.bind(this);
         this.courseValue = this.courseValue.bind(this);
+        this.deleteFavoriteCourse = this.deleteFavoriteCourse.bind(this);
         this.getCourses();
     }
     getUserId() {
@@ -24,7 +25,7 @@ class AddFavorite extends Component {
     }
     getCourses() {
         var userID = this.getUserId();
-        fetch(`http://localhost:3000/user/favorites/not/${userID}`).then((promise) => {
+        fetch(`http://localhost:3000/user/favorites/courses/${userID}`).then((promise) => {
             return promise.json();
         }).then((json) => {
             this.setState({courses: json});
@@ -38,12 +39,12 @@ class AddFavorite extends Component {
             selectedCourseId: value.value
         });
     }
-    addFavorite() {
+    deleteFavorite() {
         console.log(this.state);
         var user_id = this.getUserId();
         var course_id = this.state.selectedCourseId;
-        fetch(`http://localhost:3000/user/favorite`, {
-            method: "POST",
+        fetch(`http://localhost:3000/user/delete/favorite`, {
+            method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -58,16 +59,20 @@ class AddFavorite extends Component {
             console.log(resData.name);
             this.getCourses();
             this.props.addedFavorite();
+            this.props.deleteFavorite();
         }).catch(function(res) {
             console.log(res);
         });
+    }
+    deleteFavoriteCourse(courseId){
+        this.props.deleteFavoriteCourse(courseId);
     }
     render() {
         var simpleSelect = {
                 top:'10',
                 left:'70',
                 width:'250px'
-            }
+            };
         if (!this.state.courses) {
             return (
                 <div></div>
@@ -80,15 +85,13 @@ class AddFavorite extends Component {
             return (
                 <div>
                     <SimpleSelect style={simpleSelect} className = "favorite-options-inputs" onValueChange={this.courseValue} options={selectOptions} placeholder="Select a Course"></SimpleSelect>
-                    <input className = "favorite-options-inputs favorite-options-inputs-buttons favorite-options-inputs-buttons-left" type="button" value="Add to Favorites" onClick={this.addFavorite}/>
-                    <input className = "favorite-options-inputs favorite-options-inputs-buttons" type="button" value = 'Create Course'
-                    onClick = {this.props.addCourse}/>
+                    <input className = "favorite-options-inputs favorite-options-inputs-buttons favorite-options-inputs-buttons-left" type="button" value="Back to Favorites" onClick={this.props.deleteFavorite}/>
                     <input className = "favorite-options-inputs favorite-options-inputs-buttons" type="button" value = 'Delete Favorite'
-                    onClick = {this.props.deleteFavorite}/>
+                    onClick = {this.deleteFavorite}/>
                 </div>
             )
         }
     }
 }
 
-export default AddFavorite;
+export default DeleteFavorite;

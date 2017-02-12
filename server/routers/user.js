@@ -63,6 +63,7 @@ router.get('/favorites/courses/:id', function(req, res) {
 //         console.log(err);
 //     });
 // });
+
 router.get('/bids/:id', function(req, res) {
     var id = req.params.id;
     console.log("hello")
@@ -124,6 +125,18 @@ router.get('/favorites/not/:id',function(req,res){
     });
 });
 
+router.delete('/delete/favorite',function(req,res){
+    var user_id = req.body.user_id;
+    var course_id = req.body.course_id;
+    knex('favorite')
+    .where('user_id', user_id)
+    .where('course_id', course_id)
+    .del()
+    .then((data) =>{
+        console.log(data);
+        res.json(data);
+    });
+});
 router.get('/:id', function(req, res) {
     var id = req.params.id;
     knex('users').where('users.id', id)
