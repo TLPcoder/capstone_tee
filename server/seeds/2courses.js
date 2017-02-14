@@ -103,6 +103,83 @@ exports.seed = function(knex, Promise) {
             country:'United States',
             state:'California',
             zip:94080
+        }),
+        knex('courses').insert({
+            //id: 3,
+            name: 'Peninsula Golf & Country Club',
+            description:"The 18-hole 'Peninsula' course at the Peninsula Golf & Country Club facility in San Mateo, California features 6,579 yards of golf from the longest tees for a par of 71 . The course rating is 72.8 and it has a slope rating of 132 on Rye grass.  Designed by Donald J. Ross, ASGCA, the Peninsula golf course opened in 1920. David Nightengale manages the course as the General Manager.",
+            image:'http://thepgcc.org/getattachment/e17304ea-6799-48de-ac1a-9e7d1aa54c7e/18.aspx',
+            address:'701 Madera Dr',
+            city:'San Mateo',
+            country:'United States',
+            state:'California',
+            zip:94403
+        }),
+        knex('courses').insert({
+            //id: 3,
+            name: 'Menlo Country Club',
+            description:"Not far from Redwood City, Menlo Country Club offers terrific views and challenging play for golfers at every skill level. Well-groomed fairways and greens keep Menlo Country Club difficult yet friendly, and the staff can offer tips and tricks for playing your best round. Menlo Country Club is a terrific choice for your regular rounds of golf or a new destination for you and friends when visiting Redwood City.",
+            image:'https://www.golfcourseranking.com/pics/2067588627.jpg',
+            address:'2300 Woodside Rd',
+            city:'Woodside',
+            country:'United States',
+            state:'California',
+            zip:94062
+        }),
+        knex('courses').insert({
+            //id: 3,
+            name: 'Sharon Heights Golf & Country Club',
+            description:"Sharon Heights Golf & Country Club began in 1961, the shared vision of a group of local golfers. Empty rolling hills, dotted with a few roaming cows, became their canvas for creating an outstanding golf course and country club facility. The aerospace and electronics boom supplied the families, the land was acquired and ground was broken. In 1962, Sharon Heights opened with a full roster of members, and a waiting list. For more than 50 years, Sharon Heights has enjoyed a thriving membership that shares a social synergy, and passions for excellence in golf, dining and recreational opportunities.",
+            image:'http://res.gdol.com/app/courses/image/preview/33438.jpg',
+            address:'2900 Sand Hill Rd',
+            city:'Menlo Park',
+            country:'United States',
+            state:'California',
+            zip:94025
+        }),
+        knex('courses').insert({
+            //id: 3,
+            name: 'Palo Alto Hills Golf & Country Club',
+            description:"Stepping onto the first tee will take your breath away with sweeping views of the San Francisco Bay to your right and the rolling hills of Palo Alto and the Arastradero Wild Life Preserve to your left. The par 72, 18 hole course is immersed in this unique and beautiful setting which makes for an unforgettable round of golf for Members and Guests.",
+            image:'http://res.gdol.com/app/courses/image/preview/14948.jpg',
+            address:'3000 Alexis Dr',
+            city:'Palo Alto',
+            country:'United States',
+            state:'California',
+            zip:94304
+        }),
+        knex('courses').insert({
+            //id: 3,
+            name: 'Los Altos Golf & Country Club',
+            description:"With nearly a century of rich golfing history and tradition, LAGCC proudly offers one of the most beautiful, challenging and well-maintained golf courses in the Bay Area.  The serene, picturesque setting with the Santa Cruz Mountain Costal Range as a backdrop appeals to golfers of all levels and ages.  Originally designed in 1923 by Tom Nicoll, the 18-hole, par 71 course underwent a complete renovation in 2004 and is meticulously maintained to ensure access and enjoyment regardless of weather conditions. ",
+            image:'http://tours.tourfactory.com/tours/media/scene/big2/00/27/05/07/27050782.jpg',
+            address:'1560 Country Club Dr',
+            city:'Los Altos',
+            country:'United States',
+            state:'California',
+            zip:94024
+        }),
+        knex('courses').insert({
+            //id: 3,
+            name: 'San Jose Country Club',
+            description:"Enjoy showcase golf on our 6,921 yard, 18 hole course designed in 1925 by the renowned architect Donald Ross. Bob Walker did a redesign in 1989, and in 2006 golf course architect Dan Schlegel researched the original Donald Ross plans and updated the course once again, increasing the total yardage to 6,921.",
+            image:'http://www.sanjosecountryclub.org/images/dynamic/getImage.gif?ID=100215',
+            address:'15571 Alum Rock Ave',
+            city:'San Jose',
+            country:'United States',
+            state:'California',
+            zip:95127
+        }),
+        knex('courses').insert({
+            //id: 3,
+            name: 'silver creek valley country club',
+            description:"The golf experience at Silver Creek Valley Country Club is arguably the best in the area since the 2002 renovation by Mike Strantz, deemed the 'Hottest Golf Architect in the country' by Golf Digest and 'Architect of the Year' by Golf World magazine. Five sets of tee boxes ranging from 5,200 to nearly 7,000 yards provide beauty and challenge to top players with plenty of playability for higher handicappers. ",
+            image:'https://s3-media1.fl.yelpcdn.com/bphoto/DorTi12fYR-woHi2ijzYJA/o.jpg',
+            address:'5460 Country Club Pkwy',
+            city:'San Jose',
+            country:'United States',
+            state:'California',
+            zip:95127
         })
       ]);
     });

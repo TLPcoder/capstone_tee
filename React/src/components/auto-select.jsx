@@ -153,7 +153,7 @@ class AutoSelect extends Component {
             return promise.json();
         }).then((json) => {
             console.log("created new Bid", json);
-            alert("You hvae created a bid :)");
+            alert("You have created a bid :)");
             window.location.hash = '/profile';
         });
     }

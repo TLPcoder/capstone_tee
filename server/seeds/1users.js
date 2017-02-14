@@ -40,6 +40,78 @@ exports.seed = function(knex, Promise) {
             image: "http://www.racingpal.com/images/nouser.png",
             created_at: new Date('2017-01-29 14:26:16 UTC'),
             updated_at: new Date('2017-01-29 14:26:16 UTC')
+        }),
+        knex('users').insert({
+            // id: 3,
+            first_name: 'Victor',
+            last_name: 'Constantino',
+            username: 'VC',
+            email: 'victor@gmail.com',
+            hashed_password: '$2a$04$jJtfAhPhc/RpbObMyQH8j.6ieN6F3nJTQHXadiMPuDl/IR5GokIqq',
+            zip:94132,
+            image: "http://www.racingpal.com/images/nouser.png",
+            created_at: new Date('2017-01-29 14:26:16 UTC'),
+            updated_at: new Date('2017-01-29 14:26:16 UTC')
+        }),
+        knex('users').insert({
+            // id: 3,
+            first_name: 'Namkai',
+            last_name: 'Fairfield',
+            username: 'Namski',
+            email: 'Namkai@gmail.com',
+            hashed_password: '$2a$04$jJtfAhPhc/RpbObMyQH8j.6ieN6F3nJTQHXadiMPuDl/IR5GokIqq',
+            zip:94015,
+            image: "http://www.racingpal.com/images/nouser.png",
+            created_at: new Date('2017-01-29 14:26:16 UTC'),
+            updated_at: new Date('2017-01-29 14:26:16 UTC')
+        }),
+        knex('users').insert({
+            // id: 3,
+            first_name: 'Eleanor',
+            last_name: 'Howard',
+            username: 'Ellie Help',
+            email: 'help@hurry.com',
+            hashed_password: '$2a$04$jJtfAhPhc/RpbObMyQH8j.6ieN6F3nJTQHXadiMPuDl/IR5GokIqq',
+            zip:94030,
+            image: "http://www.racingpal.com/images/nouser.png",
+            created_at: new Date('2017-01-29 14:26:16 UTC'),
+            updated_at: new Date('2017-01-29 14:26:16 UTC')
+        }),
+        knex('users').insert({
+            // id: 3,
+            first_name: 'David',
+            last_name: 'Shin',
+            username: 'Dave',
+            email: 'david@gmail.com',
+            hashed_password: '$2a$04$jJtfAhPhc/RpbObMyQH8j.6ieN6F3nJTQHXadiMPuDl/IR5GokIqq',
+            zip:94030,
+            image: "http://www.racingpal.com/images/nouser.png",
+            created_at: new Date('2017-01-29 14:26:16 UTC'),
+            updated_at: new Date('2017-01-29 14:26:16 UTC')
+        }),
+        knex('users').insert({
+            // id: 3,
+            first_name: 'Rob',
+            last_name: 'Conner',
+            username: 'Big Rob',
+            email: 'bigrob@gmail.com',
+            hashed_password: '$2a$04$jJtfAhPhc/RpbObMyQH8j.6ieN6F3nJTQHXadiMPuDl/IR5GokIqq',
+            zip:94030,
+            image: "http://www.racingpal.com/images/nouser.png",
+            created_at: new Date('2017-01-29 14:26:16 UTC'),
+            updated_at: new Date('2017-01-29 14:26:16 UTC')
+        }),
+        knex('users').insert({
+            // id: 3,
+            first_name: 'Yubo',
+            last_name: 'Diwu',
+            username: 'YD',
+            email: 'diwu@gmail.com',
+            hashed_password: '$2a$04$jJtfAhPhc/RpbObMyQH8j.6ieN6F3nJTQHXadiMPuDl/IR5GokIqq',
+            zip:94030,
+            image: "http://www.racingpal.com/images/nouser.png",
+            created_at: new Date('2017-01-29 14:26:16 UTC'),
+            updated_at: new Date('2017-01-29 14:26:16 UTC')
         })
       ]);
     });
