@@ -33,26 +33,15 @@ class AutoSelect extends Component {
             return promise.json();
         }).then((json) => {
             this.setState({
-                courseNames: json,
-                course_name: this.state.course_name,
-                course_id: this.state.course_id,
-                tee_time: this.state.tee_time,
-                auction_ends: this.state.auction_ends,
-                top_bid: this.state.top_bid,
-                createCourse: this.state.createCourse
+                courseNames: json
             });
         });
     }
     courseValue(value) {
         console.log("course value", value);
         this.setState({
-            courseNames: this.state.courseNames,
             course_name: value.label,
-            course_id: value.value,
-            tee_time: this.state.tee_time,
-            auction_ends: this.state.auction_ends,
-            top_bid: this.state.top_bid,
-            createCourse: this.state.createCourse
+            course_id: value.value
         });
     }
     teeTime(event) {
@@ -62,13 +51,7 @@ class AutoSelect extends Component {
         formatedDate = `${formatedDate} ${date[1]}:00 UTC`;
         console.log("teetime", formatedDate);
         this.setState({
-            courseNames: this.state.courseNames,
-            course_name: this.state.course_name,
-            course_id: this.state.course_id,
-            tee_time: formatedDate,
-            auction_ends: this.state.auction_ends,
-            top_bid: this.state.top_bid,
-            createCourse: this.state.createCourse
+            tee_time: formatedDate
         });
     }
     auctionEnds(event) {
@@ -77,37 +60,19 @@ class AutoSelect extends Component {
         date = `${date} 24:00:00 UTC`;
         console.log(date);
         this.setState({
-            courseNames: this.state.courseNames,
-            course_name: this.state.course_name,
-            course_id: this.state.course_id,
-            tee_time: this.state.tee_time,
-            auction_ends: date,
-            top_bid: this.state.top_bid,
-            createCourse: this.state.createCourse
+            auction_ends: date
         });
     }
     startingBid(event) {
         console.log("bid", event.target.value);
         this.setState({
-            courseNames: this.state.courseNames,
-            course_name: this.state.course_name,
-            course_id: this.state.course_id,
-            tee_time: this.state.tee_time,
-            auction_ends: this.state.auction_ends,
-            top_bid: event.target.value,
-            createCourse: this.state.createCourse
+            top_bid: event.target.value
         });
     }
     createCourse(){
         console.log("hello there bitch")
         var createCourse = !this.state.createCourse;
         this.setState({
-            courseNames: this.state.courseNames,
-            course_name: this.state.course_name,
-            course_id: this.state.course_id,
-            tee_time: this.state.tee_time,
-            auction_ends: this.state.auction_ends,
-            top_bid: this.state.top_bid,
             createCourse: createCourse
         });
         this.getCourseNames();

@@ -31,7 +31,6 @@ class CourseProfile extends Component {
             } else {
                 this.setState({
                     courseData: json,
-                    addComment: this.state.addComment,
                     noComments:false
                 });
             }
@@ -45,14 +44,12 @@ class CourseProfile extends Component {
             console.log("hello there bitch", json);
             this.setState({
                 courseData: json,
-                addComment: this.state.addComment,
                 noComments:true
             });
         });
     }
     commentBoolean() {
         this.setState({
-            courseData: this.state.courseData,
             addComment: !this.state.addComment
         });
         this.getCourse();

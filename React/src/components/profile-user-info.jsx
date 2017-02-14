@@ -36,41 +36,21 @@ class UserInfo extends Component {
     }
     changePassword(event){
         this.setState({
-            loading: '',
-            userInfo: this.state.userInfo,
             password: event.target.value,
-            email: this.state.email,
-            image: this.state.image,
-            zip: this.state.zip
         });
     }
     changeEmail(event){
         this.setState({
-            loading: '',
-            userInfo: this.state.userInfo,
-            password: this.state.password,
-            email: event.target.value,
-            image: this.state.image,
-            zip: this.state.zip
+            email: event.target.value
         });
     }
     changeImage(event){
         this.setState({
-            loading: '',
-            userInfo: this.state.userInfo,
-            password: this.state.password,
-            email: this.state.email,
-            image: event.target.value,
-            zip: this.state.zip
+            image: event.target.value
         });
     }
     changeZip(event){
         this.setState({
-            loading: '',
-            userInfo: this.state.userInfo,
-            password: this.state.password,
-            email: this.state.email,
-            image: this.state.image,
             zip: event.target.value
         });
     }

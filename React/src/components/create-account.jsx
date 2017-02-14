@@ -68,13 +68,7 @@ class CreateAccount extends Component {
         console.log("first", event.target.value);
         this.setState({
             loginData: {
-                firstName: event.target.value,
-                lastName: this.state.loginData.lastName,
-                userName: this.state.loginData.userName,
-                email: this.state.loginData.email,
-                zip: this.state.loginData.zip,
-                password: this.state.loginData.password,
-                image: this.state.loginData.image
+                firstName: event.target.value
             }
         });
     }
@@ -82,13 +76,7 @@ class CreateAccount extends Component {
         console.log("last", event.target.value);
         this.setState({
             loginData: {
-                firstName: this.state.loginData.firstName,
-                lastName: event.target.value,
-                userName: this.state.loginData.userName,
-                email: this.state.loginData.email,
-                zip: this.state.loginData.zip,
-                password: this.state.loginData.password,
-                image: this.state.loginData.image
+                lastName: event.target.value
             }
         });
     }
@@ -96,13 +84,7 @@ class CreateAccount extends Component {
         console.log("username", event.target.value);
         this.setState({
             loginData: {
-                firstName: this.state.loginData.firstName,
-                lastName: this.state.loginData.lastName,
-                userName: event.target.value,
-                email: this.state.loginData.email,
-                zip: this.state.loginData.zip,
-                password: this.state.loginData.password,
-                image: this.state.loginData.image
+                userName: event.target.value
             }
         });
     }
@@ -110,13 +92,7 @@ class CreateAccount extends Component {
         console.log("email", event.target.value);
         this.setState({
             loginData: {
-                firstName: this.state.loginData.firstName,
-                lastName: this.state.loginData.lastName,
-                userName: this.state.loginData.userName,
-                email: event.target.value,
-                zip: this.state.loginData.zip,
-                image: this.state.loginData.image,
-                password: this.state.loginData.password
+                email: event.target.value
             }
         });
     }
@@ -124,12 +100,6 @@ class CreateAccount extends Component {
         console.log("pass", event.target.value);
         this.setState({
             loginData: {
-                firstName: this.state.loginData.firstName,
-                lastName: this.state.loginData.lastName,
-                userName: this.state.loginData.userName,
-                email: this.state.loginData.email,
-                zip: this.state.loginData.zip,
-                image: this.state.loginData.image,
                 password: event.target.value
             }
         });
@@ -138,12 +108,6 @@ class CreateAccount extends Component {
         console.log("zip", event.target.value);
         this.setState({
             loginData: {
-                firstName: this.state.loginData.firstName,
-                lastName: this.state.loginData.lastName,
-                userName: this.state.loginData.userName,
-                email: this.state.loginData.email,
-                password: this.state.loginData.password,
-                image: this.state.loginData.image,
                 zip: event.target.value
             }
         });
@@ -151,12 +115,6 @@ class CreateAccount extends Component {
     getImageUrl(event) {
         this.setState({
             loginData: {
-                firstName: this.state.loginData.firstName,
-                lastName: this.state.loginData.lastName,
-                userName: this.state.loginData.userName,
-                email: this.state.loginData.email,
-                password: this.state.loginData.password,
-                zip: this.state.loginData.zip,
                 image: event.target.value,
             }
         });

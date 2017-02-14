@@ -31,91 +31,42 @@ class CreateCourseForm extends Component {
     stateValue(value) {
         console.log(value.value);
         this.setState({
-            country: this.state.country,
             state: value.value,
-            city: this.state.city,
-            zip: this.state.zip,
-            image: this.state.image,
-            course_name: this.state.course_name,
-            address: this.state.address,
-            description: this.state.description
         });
     }
     cityValue(event) {
         console.log(event.target.value);
         this.setState({
-            country: this.state.country,
-            state: this.state.state,
             city: event.target.value,
-            zip: this.state.zip,
-            image: this.state.image,
-            course_name: this.state.course_name,
-            address: this.state.address,
-            description: this.state.description
         });
     }
     zipValue(event) {
         console.log(event.target.value);
         this.setState({
-            country: this.state.country,
-            state: this.state.state,
-            city: this.state.city,
             zip: event.target.value,
-            image: this.state.image,
-            course_name: this.state.course_name,
-            address: this.state.address,
-            description: this.state.description
         });
     }
     imageValue(event) {
         console.log(event.target.value);
         this.setState({
-            country: this.state.country,
-            state: this.state.state,
-            city: this.state.city,
-            zip: this.state.zip,
             image: event.target.value,
-            course_name: this.state.course_name,
-            address: this.state.address,
-            description: this.state.description
         });
     }
     courseNameValue(event) {
         console.log(event.target.value);
         this.setState({
-            country: this.state.country,
-            state: this.state.state,
-            city: this.state.city,
-            zip: this.state.zip,
-            image: this.state.image,
             course_name: event.target.value,
-            address: this.state.address,
-            description: this.state.description
         });
     }
     addressValue(event) {
         console.log(event.target.value);
         this.setState({
-            country: this.state.country,
-            state: this.state.state,
-            city: this.state.city,
-            zip: this.state.zip,
-            image: this.state.image,
-            course_name: this.state.course_name,
             address: event.target.value,
-            description: this.state.description
         });
     }
     descriptionValue(event) {
         console.log(event.target.value);
         this.setState({
-            country: this.state.country,
-            state: this.state.state,
-            city: this.state.city,
-            zip: this.state.zip,
-            image: this.state.image,
-            course_name: this.state.course_name,
-            address: this.state.address,
             description: event.target.value
         });
     }
@@ -123,13 +74,6 @@ class CreateCourseForm extends Component {
         console.log(value.value);
         this.setState({
             country: value.value,
-            state: this.state.state,
-            city: this.state.city,
-            zip: this.state.zip,
-            image: this.state.image,
-            course_name: this.state.course_name,
-            address: this.state.address,
-            description: this.state.description
         });
     }
     createCourse(){

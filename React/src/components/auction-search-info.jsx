@@ -46,20 +46,6 @@ class SearchInfo extends Component {
             return promise.json();
         }).then((json) => {
             this.setState({
-                priceSort: {
-                    run: this.state.priceSort.run,
-                    type: this.state.priceSort.type
-                },
-                location: {
-                    run: this.state.location.run,
-                    type: this.state.location.type,
-                    radius: this.state.location.radius,
-                    value: this.state.location.value
-                },
-                courseName: {
-                    name: this.state.courseName.name
-                },
-                courseData: this.state.courseData,
                 courses: json
             });
         });
@@ -76,102 +62,57 @@ class SearchInfo extends Component {
             run = true;
         }
         this.setState({
-            priceSort: {
-                run: this.state.priceSort.run,
-                type: this.state.priceSort.type
-            },
             location: {
                 run: run,
                 type: value,
                 radius: this.state.location.radius,
                 value: this.state.location.value
             },
-            courseName: {
-                name: this.state.courseName.name
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
         });
 
     }
     radioButtonSearchBarText(event) {
         console.log(event.target.value);
         this.setState({
-            priceSort: {
-                run: this.state.priceSort.run,
-                type: this.state.priceSort.type
-            },
             location: {
                 run: true,
                 type: this.state.location.type,
                 value: event.target.value,
                 radius: this.state.location.radius
-            },
-            courseName: {
-                name: this.state.courseName.name
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
+            }
         });
     }
     zipDistance(value) {
         console.log('hello', value);
         this.setState({
-            priceSort: {
-                run: this.state.priceSort.run,
-                type: this.state.priceSort.type
-            },
             location: {
                 run: true,
                 type: this.state.location.type,
                 value: this.state.location.value,
                 radius: value.value
-            },
-            courseName: {
-                name: this.state.courseName.name
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
+            }
         });
     }
     radioButtonSearchBar(value) {
         //console.log("radio bar", value);
         this.setState({
-            priceSort: {
-                run: this.state.priceSort.run,
-                type: this.state.priceSort.type
-            },
             location: {
                 run: true,
                 type: this.state.location.type,
                 value: value.value,
                 radius: this.state.location.radius
-            },
-            courseName: {
-                name: this.state.courseName.name
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
+            }
         });
     }
     zipCodeRadius(value) {
         console.log("zip value", event.target.value);
         this.setState({
-            priceSort: {
-                run: this.state.priceSort.run,
-                type: this.state.priceSort.type
-            },
             location: {
                 run: true,
                 type: this.state.location.type,
                 value: this.state.location.value,
                 radius: value.value
-            },
-            courseName: {
-                name: this.state.courseName.name
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
+            }
         });
     }
     activateSort(event) {
@@ -186,39 +127,24 @@ class SearchInfo extends Component {
                 type: this.state.location.type,
                 value: this.state.location.value,
                 radius: this.state.location.radius
-            },
-            courseName: {
-                name: this.state.courseName.name
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
+            }
         });
     }
     dateChange(event) {
         console.log(event.target.value);
         this.setState({
-            priceSort: {
-                run: this.state.priceSort.run,
-                type: this.state.priceSort.type
-            },
             location: {
                 run: true,
                 type: this.state.location.type,
                 value: this.state.location.value,
                 radius: this.state.location.radius
-            },
-            courseName: {
-                name: this.state.courseName.name
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
+            }
         });
     }
     updateCourse(value) {
         this.setState({
             priceSort: {
                 run: true,
-                type: this.state.priceSort.type
             },
             location: {
                 run: true,
@@ -228,9 +154,7 @@ class SearchInfo extends Component {
             },
             courseName: {
                 name: value.value
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
+            }
         });
     }
     logChange(val) {
@@ -238,7 +162,6 @@ class SearchInfo extends Component {
         this.setState({
             priceSort: {
                 run: true,
-                type: this.state.priceSort.type
             },
             location: {
                 run: true,
@@ -248,9 +171,7 @@ class SearchInfo extends Component {
             },
             courseName: {
                 name: val.value
-            },
-            courseData: this.state.courseData,
-            courses: this.state.courses
+            }
         });
     }
     getCourseData() {

@@ -30,7 +30,6 @@ class CourseAuction extends Component {
             this.setState({
                 loading: false,
                 data: json,
-                courseComments: this.state.courseComments,
                 run:true
             });
         });
@@ -41,8 +40,6 @@ class CourseAuction extends Component {
         }).then((json) => {
             console.log(json);
             this.setState({
-                loading: this.state.loading,
-                data: this.state.data,
                 courseComments: json,
                 run:false
             });
