@@ -14,6 +14,29 @@ class GridDisplay extends Component {
         return data;
     }
     render() {
+        var positionMargin;
+        if(this.props.courseData.length === 1){
+            positionMargin = {
+                margin:'auto',
+                position: 'relative',
+                top:'150px',
+                marginLeft: '40%'
+            };
+        }else if(this.props.courseData.length === 2){
+            positionMargin = {
+                margin:'auto',
+                position: 'relative',
+                top:'150px',
+                marginLeft: '30%'
+            };
+        }else{
+            positionMargin = {
+                margin:'auto',
+                position: 'relative',
+                top:'150px',
+                marginLeft: '19%'
+            };
+        }
         var userId = this.getUserId();
         var key = 0;
         var favorites = this.props.courseData.map((course) =>{
@@ -27,7 +50,7 @@ class GridDisplay extends Component {
         });
         if(this.props.courseData){
             return(
-                <div className = "grid-display">{favorites}</div>
+                <div style={positionMargin}>{favorites}</div>
             )
         }
     }

@@ -7,46 +7,48 @@ var sendmail = require('sendmail')();
 var schedule = require('node-schedule');
 const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
 
-var sendConEmailAuctioner = schedule.scheduleJob({hour: 23}, function() {
+var sendConEmailAuctioner = schedule.scheduleJob({
+    hour: 23
+}, function() {
     var today = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()} 24:00:00 UTC`;
     knex('auction')
         .where('auction.auction_ends', today)
         .then((closedAuctions) => {
             closedAuctions.forEach((owner) => {
                 knex('users').where('id', owner.owner_id)
-                .then((sendEmail) => {
-                    sendmail({
-                        from: 'teebaytlp@gmail.com',
-                        to: `${sendEmail[0].email}`,
-                        cc: 'trevorpellegrini@gmail.com',
-                        subject: 'Auction Ended',
-                        html: `Your auction has closed`,
-                    }, function(err, reply) {
-                        console.log(err && err.stack);
-                        console.dir(reply);
+                    .then((sendEmail) => {
+                        sendmail({
+                            from: 'teebaytlp@gmail.com',
+                            to: `${sendEmail[0].email}`,
+                            cc: 'trevorpellegrini@gmail.com',
+                            subject: 'Auction Ended',
+                            html: `Your auction has closed`,
+                        }, function(err, reply) {
+                            console.log(err && err.stack);
+                            console.dir(reply);
+                        });
                     });
-                });
             });
             closedAuctions.forEach((bider) => {
                 knex('bids')
-                .innerJoin('users', 'users.id', 'bids.bider_id')
-                .innerJoin('auction', 'auction.id', 'bids.auction_id')
-                .innerJoin('courses', 'courses.id', 'auction.course_id')
-                .where('bids.bid_amount', closedAuctions.top_bid)
-                .where('bids.auction_id', closedAuctions.id)
-                .then((data) => {
-                    console.log(data);
-                    sendmail({
-                        from: 'teebaytlp@gmail.com',
-                        to: `${data[0].email}`,
-                        cc: 'trevorpellegrini@gmail.com',
-                        subject: 'Auction Ended',
-                        html: `Your bid of ${data[0].bid_amount} won the auction at ${data[0].name} tee time will be at ${data[0].tee_time}`,
-                    }, function(err, reply) {
-                        console.log(err && err.stack);
-                        console.dir(reply);
+                    .innerJoin('users', 'users.id', 'bids.bider_id')
+                    .innerJoin('auction', 'auction.id', 'bids.auction_id')
+                    .innerJoin('courses', 'courses.id', 'auction.course_id')
+                    .where('bids.bid_amount', closedAuctions.top_bid)
+                    .where('bids.auction_id', closedAuctions.id)
+                    .then((data) => {
+                        console.log(data);
+                        sendmail({
+                            from: 'teebaytlp@gmail.com',
+                            to: `${data[0].email}`,
+                            cc: 'trevorpellegrini@gmail.com',
+                            subject: 'Auction Ended',
+                            html: `Your bid of ${data[0].bid_amount} won the auction at ${data[0].name} tee time will be at ${data[0].tee_time}`,
+                        }, function(err, reply) {
+                            console.log(err && err.stack);
+                            console.dir(reply);
+                        });
                     });
-                });
             });
         });
 });
@@ -75,8 +77,28 @@ router.put('/delete', function(req, res) {
         .where('auction.id', auction_id)
         .then((data) => {
             console.log(data);
-            res.json(data);
         });
+    knex('users')
+        .innerJoin('bids', 'bids.bider_id', 'users.id')
+        .innerJoin('auction', 'bids.auction_id', 'auction.id')
+        .innerJoin('courses', 'courses.id', 'auction.course_id')
+        .where('bids.auction_id', auction_id)
+        .then((biderData) => {
+            console.log("this is the bider data for the deleted auction", biderData);
+            biderData.forEach((user) => {
+                sendmail({
+                    from: 'teebaytlp@gmail.com',
+                    to: `trevorpellegrini@gmail.com`,
+                    cc: 'trevorpellegrini@gmail.com',
+                    subject: 'Auction Cancelled',
+                    html: `The auction at ${user.name} as been cancelled`,
+                }, function(err, reply) {
+                    console.log(err && err.stack);
+                    console.dir(reply);
+                });
+            });
+        });
+    res.json("hello");
 });
 router.get('/course', function(req, res) {
     knex.select('name').from('courses')

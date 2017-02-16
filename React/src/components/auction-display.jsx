@@ -33,6 +33,26 @@ class DisplayAuctions extends Component{
     render(){
         var key = 0;
         var json = this.state.json;
+        var positionMargin;
+        if(json.length === 1){
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '40%'
+            };
+        }else if(json.length === 2){
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '30%'
+            };
+        }else{
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '19%'
+            };
+        }
         console.log("json", json);
         var length = json.length;
         var allAuctions = [];
@@ -56,7 +76,7 @@ class DisplayAuctions extends Component{
             )
         }
         return(
-            <div>
+            <div style={positionMargin}>
                 {all}
             </div>
         )
