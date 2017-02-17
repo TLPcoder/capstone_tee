@@ -31,7 +31,7 @@ class BidsMain extends Component {
                 <div>
                     <div id = 'bids-background-image'></div>
                     <MainNav/>
-                    <div className = 'bids-images'>
+                    <div>
                         <GridDisplay courseData={this.state.bidData}/>
                     </div>
                 </div>

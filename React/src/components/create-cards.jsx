@@ -45,9 +45,7 @@ class CreateCard extends Component {
             border: 'solid 2px red'
         };
         if (this.props.dataAuction.top_bid) {
-            console.log("shit");
         }
-        console.log("check this shit out", this.props.dataAuction)
         if (this.props.dataAuction.auction_id && this.props.dataAuction.top_bid && this.props.dataAuction.bid_amount < this.props.dataAuction.top_bid) {
             console.log("skljflksadjf;klafjkl;asjfl;ksadjf;lkadsjf;", this.props.dataAuction);
             var url = `http://localhost:8080/#/courseAuction/${this.props.dataAuction.auction_id}`;
@@ -57,8 +55,7 @@ class CreateCard extends Component {
                         <div className="card-image-hover">
                             <img style={bidBoarder} className="courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
                         </div>
-                        <p style={center}>{this.props.dataAuction.name}
-                            Current Bid: ${this.props.dataAuction.top_bid}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                         <p style={center}>
                             Tee Time: {teeTime} on {this.props.dataAuction.tee_time.slice(0, this.props.dataAuction.tee_time.indexOf('T'))}</p>
                         <p style={center}>Auction Ends: Midnight on {auctionEnds}</p>
@@ -71,8 +68,7 @@ class CreateCard extends Component {
                 <div className="card-auction">
                     <a href={url}>
                         <img style={bidBoarder} className="courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
-                        <p style={center}>{this.props.dataAuction.name}
-                            Current Bid: ${this.props.dataAuction.top_bid}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                         <p style={center}>Tee Time: {teeTime} on {this.props.dataAuction.tee_time.slice(0, this.props.dataAuction.tee_time.indexOf('T'))}</p>
                         <p style={center}>Auction Ends: Midnight on {auctionEnds}</p>
                     </a>
@@ -97,8 +93,7 @@ class CreateCard extends Component {
                 <div className="card-auction">
                     <a href={url}>
                         <img style={border} className="courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
-                        <p style={center}>{this.props.dataAuction.name}
-                            Current Bid: ${this.props.dataAuction.top_bid}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                         <p style={center}>Tee Time: {teeTime} on {this.props.dataAuction.tee_time.slice(0, this.props.dataAuction.tee_time.indexOf('T'))}</p>
                         <p style={center}>Auction Ends: Midnight on {auctionEnds}</p>
                     </a>
@@ -110,8 +105,7 @@ class CreateCard extends Component {
                 <div className="card-auction">
                     <a href={url}>
                         <img style={border} className="courseImage" src={this.props.dataAuction.image} alt="" height="300px" width="300px"/>
-                        <p style={center}>{this.props.dataAuction.name}
-                            Current Bid: ${this.props.dataAuction.top_bid}</p>
+                        <p style={center}>{this.props.dataAuction.name} Current Bid: ${this.props.dataAuction.top_bid}</p>
                         <p style={center}>Tee Time: {teeTime} on {this.props.dataAuction.tee_time.slice(0, this.props.dataAuction.tee_time.indexOf('T'))}</p>
                         <p style={center}>Auction Ends: Midnight on {auctionEnds}</p>
                     </a>

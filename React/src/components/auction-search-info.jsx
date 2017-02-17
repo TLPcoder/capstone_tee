@@ -264,7 +264,7 @@ class SearchInfo extends Component {
                         <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
                         <input className="search-zip" type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
                         <SimpleSelect style={size} onValueChange={this.zipDistance} options={zip} placeholder="Select a Distance"></SimpleSelect>
-                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
+                        <input value="Search" type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
@@ -280,7 +280,7 @@ class SearchInfo extends Component {
                         <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
                         <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
                         <SimpleSelect style={color} onValueChange={this.radioButtonSearchBar} options={countries} placeholder="Select a Country"></SimpleSelect>
-                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
+                        <input value="Search" type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
@@ -294,7 +294,7 @@ class SearchInfo extends Component {
                         <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
                         <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
                         <SimpleSelect style={color} onValueChange={this.radioButtonSearchBar} options={states} placeholder="Select a State"></SimpleSelect>
-                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
+                        <input value="Search" type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
@@ -308,7 +308,7 @@ class SearchInfo extends Component {
                         <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
                         <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
                         <input className="search-zip" type="text" onChange={this.radioButtonSearchBarText} placeholder={this.state.location.type}/>
-                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
+                        <input value="Search" type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )
@@ -322,7 +322,7 @@ class SearchInfo extends Component {
                         <input className="auction-search-inputs" type="radio" name='location' value='city' onClick ={this.radioButton}/>City
                         <input className="auction-search-inputs" type="radio" name='location' value='zip' onClick ={this.radioButton}/>Zip
                         <SimpleSelect style={color} onValueChange={this.updateCourse} options={courses} placeholder="Select a Course"></SimpleSelect>
-                        <input type="submit" className="submit-search-button" onClick={this.submitSearch}/>
+                        <input value="Search" type="submit" className="submit-search-button" onClick={this.submitSearch}/>
                     </form>
                 </div>
             )

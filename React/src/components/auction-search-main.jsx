@@ -77,7 +77,7 @@ class AuctionSearch extends Component {
                     <div className="auction-search-search-box">
                         <input type="button" value="Back to Auctions"className="submit-search-button" onClick={this.yourAuctions}/>
                     </div>
-                    <div className="auction-search-display-container">
+                    <div>
                         <DisplayAuctions run={true} key ={this.state.key} url={this.state.url}/>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ class AuctionSearch extends Component {
                 <div className="auction-search-search-box">
                     <SearchInfo yourAuctions={this.yourAuctions}updateSearchData={this.updateSearchData} run={true} auctions={this.state.url}/>
                 </div>
-                <div className="auction-search-display-container">
+                <div>
                     <DisplayAuctions key ={this.state.key} url={this.state.url}/>
                 </div>
             </div>

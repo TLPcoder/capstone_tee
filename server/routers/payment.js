@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
+var sendmail = require('sendmail')();
 
 router.get('/userInfo/:id', function(req,res){
     var userId = req.params.id
@@ -25,6 +26,25 @@ router.post('/newBid', function(req,res){
     }).returning('*')
     .then(function(data){
         console.log("some data", data);
+        knex('users').where('users.id', bider_id)
+        .innerJoin('bids', 'bids.bider_id', 'users.id')
+        .innerJoin('auction', 'auction.id', 'bids.auction_id')
+        .innerJoin('courses', 'courses.id', 'auction.course_id')
+        .where('bids.bider_id', bider_id)
+        .where('auction.id', auction_id)
+        .then((user) =>{
+            console.log("all user data", user);
+            sendmail({
+                from: 'teebaytlp@gmail.com',
+                to: `trevorpellegrini@gmail.com`,
+                cc: 'trevorpellegrini@gmail.com',
+                subject: `You have made a bid for ${user[0].name}`,
+                html: `Your bid of  $${bid_amount} was succesful!`,
+            }, function(err, reply) {
+                console.log(err && err.stack);
+                console.dir(reply);
+            });
+        });
         res.json(data);
     });
 });

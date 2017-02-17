@@ -59,6 +59,26 @@ class FavoriteMain extends Component {
         }
     }
     render() {
+        var positionMargin;
+        if(this.state.courses.length === 1){
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '40%'
+            };
+        }else if(this.state.courses.length === 2){
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '30%'
+            };
+        }else{
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '19%'
+            };
+        }
         var userId = this.getUserId();
         console.log("add course", this.state.addCourse)
         if(this.state.deleteFavorite){
@@ -69,7 +89,7 @@ class FavoriteMain extends Component {
                     <div className="favorite-options">
                         <DeleteFavorite addedFavorite={this.addedFavorite} deleteFavorite={this.deleteFavorite} deleteFavoriteCourse={this.deleteFavoriteCourse}/>
                     </div>
-                    <div className="favorite-images">
+                    <div>
                         <GridDisplay courseData={this.state.courses} addCourse={this.addCourse}/>
                     </div>
                 </div>
@@ -82,8 +102,8 @@ class FavoriteMain extends Component {
                     <div className="favorite-options">
                         <AddFavorite deleteFavorite={this.deleteFavorite} addedFavorite={this.addedFavorite} addCourse={this.addCourse}/>
                     </div>
-                    <div className="favorite-images">
-                        <GridDisplay courseData={this.state.courses} addCourse={this.addCourse}/>
+                    <div>
+                        <GridDisplay courses={this.state.courses.length} courseData={this.state.courses} addCourse={this.addCourse}/>
                     </div>
                 </div>
             )

@@ -819,12 +819,6 @@ border-radius: 10px;
     background-attachment:fixed;
     color:white;
 }
-.bids-images{
-    position: relative;
-    top:150px;
-    margin:auto;
-    margin-left: 19%;
-}
 
 #search-course-background-image{
     width:100%;
@@ -851,9 +845,7 @@ border-radius: 10px;
 
 #search-course-display{
     position: relative;
-    top:150px;
     margin:auto;
-    margin-left: 19%;
     color:white;
     text-decoration: none;
 }

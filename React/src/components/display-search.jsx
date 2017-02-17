@@ -35,6 +35,26 @@ class DisplaySearch extends Component{
         };
         var json = this.state.json;
         var length = json.length;
+        var positionMargin;
+        if(json.length === 1){
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '40%'
+            };
+        }else if(json.length === 2){
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '30%'
+            };
+        }else{
+            positionMargin = {
+                margin:'auto',
+                marginTop: '150px',
+                marginLeft: '19%'
+            };
+        }
         console.log("all courses", json);
         var all = json.map(function(element) {
             var url;
@@ -61,7 +81,7 @@ class DisplaySearch extends Component{
             )
         }
         return(
-            <div>
+            <div style={positionMargin}>
                 {all}
             </div>
         )
