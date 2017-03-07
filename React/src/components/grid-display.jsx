@@ -20,7 +20,7 @@ class GridDisplay extends Component {
                 margin:'auto',
                 position: 'relative',
                 top:'150px',
-                marginLeft: '40%'
+                marginLeft: '40.5%'
             };
         }else if(this.props.courseData.length === 2){
             positionMargin = {
@@ -34,11 +34,12 @@ class GridDisplay extends Component {
                 margin:'auto',
                 position: 'relative',
                 top:'150px',
-                marginLeft: '19%'
+                marginLeft: '18%'
             };
         }
         var userId = this.getUserId();
         var key = 0;
+        console.log("bids", this.props.courseData)
         var favorites = this.props.courseData.map((course) =>{
             key++;
             if (course.owner_id === userId * 1) {

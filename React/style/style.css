@@ -69,6 +69,8 @@
     border: solid #4CAF50 1px;
     margin-right: 10px;
     font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
 }
 
 .loginSubmit:hover{
@@ -145,6 +147,10 @@ body{
 .profile-nav-button a{
     color:#4CAF50;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
+    width: 0px;
+    transition: 0.5s ease;
+    white-space: nowrap;
 }
 .profile-nav-button a:hover{
     text-decoration: none;
@@ -226,9 +232,9 @@ border-radius: 10px;
 }
 .card-auction{
     max-width: 100%;
-    -moz-transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
 }
 .card-auction:hover{
     -moz-box-shadow: 0 0 5px black;
@@ -245,9 +251,9 @@ border-radius: 10px;
 }
 .card img{
     max-width: 100%;
-    -moz-transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
 }
 .card img:hover{
     -moz-box-shadow: 0 0 5px black;
@@ -302,6 +308,8 @@ border-radius: 10px;
     margin-top: 10px;
     margin-left: 33%;
     margin-right: 38%;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
 }
 .profile-update-button:hover{
     background-color: white;
@@ -340,7 +348,7 @@ border-radius: 10px;
 }
 
 .main-nav-button{
-    margin-top: 20px;
+    margin-top: 25px;
     display: inline;
     text-decoration: none;
     padding: 8px 16px;
@@ -350,6 +358,10 @@ border-radius: 10px;
 .main-nav-button a{
     color:#4CAF50;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
+    width: 0px;
+    transition: 0.5s ease;
+    white-space: nowrap;
 }
 .main-nav-button a:hover{
     text-decoration: none;
@@ -425,6 +437,8 @@ border-radius: 10px;
     border: solid #4CAF50 1px;
     margin-right: 10px;
     font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
 }
 
 .course-auction-delete:hover{
@@ -450,6 +464,8 @@ border-radius: 10px;
     text-decoration: none;
     display: inline-block;
     border: solid #4CAF50 1px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
     margin-right: 10px
 }
 
@@ -535,6 +551,8 @@ border-radius: 10px;
     text-decoration: none;
     display: inline-block;
     border: solid 1px #4CAF50;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
     margin: 10px 10px 10px 0px;
 }
 .create-auction-buttons:hover{
@@ -628,6 +646,8 @@ border-radius: 10px;
     display: inline-block;
     border: solid 1px #4CAF50;
     margin: 10px 10px 10px 0px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
 }
 
 .create-course-input-button:hover{
@@ -689,6 +709,8 @@ border-radius: 10px;
     text-decoration: none;
     display: inline-block;
     border: solid 1px #4CAF50;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
     margin: 20px 10px 10px 0px;
 }
 
@@ -781,6 +803,8 @@ border-radius: 10px;
     display: inline-block;
     border: solid 1px #4CAF50;
     margin: 15px 10px 10px 0px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
 }
 
 .submit-search-button:hover{
@@ -928,6 +952,8 @@ border-radius: 10px;
     border: solid #4CAF50 1px;
     margin-right: 10px;
     font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
 }
 
 .course-profile-button:hover{
@@ -1007,6 +1033,8 @@ border-radius: 10px;
     border: solid #4CAF50 1px;
     margin-right: 10px;
     font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
 }
 
 .create-comment-buttons:hover{
@@ -1076,6 +1104,8 @@ border-radius: 10px;
     border: solid #4CAF50 1px;
     margin-right: 10px;
     font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
 }
 
 #payment-inputs-button:hover{

@@ -34,17 +34,25 @@ class DisplayAuctions extends Component{
         var key = 0;
         var json = this.state.json;
         var positionMargin;
-        if(json.length === 1){
+        console.log("json", json);
+        var allAuctions = [];
+        json.forEach((auction) =>{
+            if(auction.owner_id !== this.getUser() * 1 || this.props.run){;
+                console.log(this.getUser());
+                allAuctions.push(auction);
+            }
+        });
+        if(allAuctions.length === 1){
             positionMargin = {
                 margin:'auto',
                 marginTop: '150px',
                 marginLeft: '40%'
             };
-        }else if(json.length === 2){
+        }else if(allAuctions.length === 2){
             positionMargin = {
                 margin:'auto',
                 marginTop: '150px',
-                marginLeft: '30%'
+                marginLeft: '29%'
             };
         }else{
             positionMargin = {
@@ -53,16 +61,6 @@ class DisplayAuctions extends Component{
                 marginLeft: '19%'
             };
         }
-        console.log("json", json);
-        var length = json.length;
-        var allAuctions = [];
-        var user = this.getUser();
-        json.forEach((auction) =>{
-            if(auction.owner_id !== this.getUser() * 1 || this.props.run){;
-                console.log(this.getUser());
-                allAuctions.push(auction);
-            }
-        });
         console.log("allAuctions", allAuctions)
         var all = allAuctions.map(function(element) {
             key++;
@@ -72,7 +70,8 @@ class DisplayAuctions extends Component{
         })
         if(!this.state.json.length){
             return (
-                <div></div>
+                <div>
+                </div>
             )
         }
         return(

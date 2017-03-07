@@ -71,7 +71,8 @@ router.get('/bids/:id', function(req, res) {
         setTimeout(resolve, 1, knex.select('bids.bider_id', 'bids.auction_id').from('bids').max('bids.bid_amount')
             .innerJoin('auction', 'auction.id', 'bids.auction_id')
             .groupBy('bids.bider_id', 'bids.auction_id')
-            .where('bids.bider_id', id));
+            .where('bids.bider_id', id)
+            .whereNot('auction.owner_id', '=', id));
     });
 
     var CourseData = new Promise((resolve, reject) => {
@@ -79,7 +80,8 @@ router.get('/bids/:id', function(req, res) {
             .innerJoin('courses', 'courses.id', 'auction.course_id')
             .innerJoin('bids', 'auction.id', 'bids.auction_id')
             .where('auction.auction_ends', '>', date)
-            .where('bids.bider_id', id));
+            .where('bids.bider_id', id)
+            .whereNot('auction.owner_id', '=', id));
     });
 
     Promise.all([maxBid,CourseData]).then(function(data) {
