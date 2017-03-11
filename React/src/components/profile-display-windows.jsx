@@ -28,16 +28,16 @@ class DisplayWindow extends Component {
     render() {
         console.log("category", this.props.category);
         var threeOrMoreCards = {
-            width: '89%',
-            margin: 'auto'
+            margin: 'auto',
+            width: '1000px'
         };
         var twoCards = {
-            width: '60%',
-            margin: 'auto'
+            margin: 'auto',
+            width: '700px'
         };
         var oneCard = {
-            width: '380px',
-            margin: 'auto'
+            margin: 'auto',
+            width: '380px'
         };
         var key = 0;
         var json = this.state.json;

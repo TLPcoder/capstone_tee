@@ -46,19 +46,21 @@ class DisplayAuctions extends Component{
             positionMargin = {
                 margin:'auto',
                 marginTop: '150px',
-                marginLeft: '40%'
+                marginLeft: '40%',
+                marginRight: '40%'
             };
         }else if(allAuctions.length === 2){
             positionMargin = {
                 margin:'auto',
                 marginTop: '150px',
-                marginLeft: '29%'
+                marginLeft: '29%',
+                marginRight: '29%'
             };
         }else{
             positionMargin = {
                 margin:'auto',
                 marginTop: '150px',
-                marginLeft: '19%'
+                width:'945px'
             };
         }
         console.log("allAuctions", allAuctions)

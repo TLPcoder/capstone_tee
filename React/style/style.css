@@ -182,8 +182,8 @@ body{
 #profile-container{
     margin:auto;
     margin-top:76px;
-    margin-left: 10%;
-    margin-right: 10%;
+    /*margin-left: 10%;
+    margin-right: 10%;*/
     padding-bottom:50px;
 }
 #profile-container ul{
