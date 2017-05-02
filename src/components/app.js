@@ -1,11 +1,18 @@
-import React from 'react'
+'use strict';
+import React, {Component} from 'react';
+import Login from './login';
+import CreateAccount from './create-account';
+import {Router, Route, IndexRoute, hashHistory, Link} from 'react-router';
 
-export default class App extends React.Component {
-  render () {
-    return (
-      <div>
-        <h1>Change me</h1>
-      </div>
-    )
-  }
+export default class App extends Component {
+    constructor(props){
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                {this.props.children}
+            </div>
+        );
+    }
 }

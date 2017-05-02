@@ -1,0 +1,1157 @@
+.app {
+    width: 100%;
+}
+
+#login-nav-bar {
+    width: 100%;
+    margin: auto;
+    height: 10%;
+    text-align: left;
+    color: white;
+    font-size: 2em;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: #4CAF50;
+    z-index: 10;
+}
+.title-log-login{
+    margin-left: 20px;
+    margin-top: 0;
+}
+
+.login {
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    position: relative;
+    top:15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 10px 10px 0px;
+    width:210px;
+    color:brown;
+}
+
+
+.login-container {
+    text-align: center;
+    background-color: white;
+    margin:auto;
+    border-radius: 10px;
+    width:300px;
+    height: 210px;
+    border:black solid 1px;
+    position: relative;
+    top:270px;
+}
+
+.loginSubmit{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+}
+
+.loginSubmit:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.create-account-a{
+    margin-top: 30px;
+    font-size: 20px;
+}
+.create-account-container{
+    text-align: center;
+    background-color: white;
+    /*margin-top: 270px;*/
+    margin-left: 37%;
+    margin-right: 37%;
+    border-radius: 10px;
+    width:300px;
+    height: 420px;
+    border:black solid 1px;
+    position: relative;
+    top:200px;
+}
+
+#profile-bakcground-image{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://www.golfchannel.com/sites/golfchannel.prod.acquia-sites.com/files/cypress_point_1920_file.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+
+body{
+    margin: 0;
+}
+
+#profile-body-container{
+    color:white;
+    background-image: url("https://cdn2.hubspot.net/hubfs/1883407/Imported_Blog_Media/14-web1-1.jpg?t=1485644052965");
+    background-repeat: no-repeat;
+    /*background-size: 100%;*/
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+#profile-nav-buttons-ul{
+    list-style-type: none;
+    margin-top: 54px;
+    float:right;
+}
+.profile-nav-button{
+    margin-top: 25px;
+    display: inline;
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: white;
+    margin-right:5px;
+}
+.profile-nav-button a{
+    color:#4CAF50;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    width: 0px;
+    transition: 0.5s ease;
+    white-space: nowrap;
+}
+.profile-nav-button a:hover{
+    text-decoration: none;
+    border-bottom: solid 1px #4CAF50;
+}
+#profile-nav {
+    width: 100%;
+    margin: auto;
+    height: 80px;
+    color: white;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: #4CAF50;
+}
+#profile-nav h1{
+    margin: auto;
+    margin-top:20px;
+    float:left;
+}
+.headshot{
+    margin-right;
+    margin: auto;
+    margin-top:20px;
+    margin-left:5%;
+    text-align: center;
+    border-radius: 50%;
+}
+#profile-container{
+    margin:auto;
+    margin-top:76px;
+    /*margin-left: 10%;
+    margin-right: 10%;*/
+    padding-bottom:50px;
+}
+#profile-container ul{
+    margin:auto;
+    list-style-type: none;
+}
+#profile-container li{
+    margin:auto;
+    margin-right: 20px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.profile-bids{
+    /*height:350px;*/
+    border-radius: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background-color: #F9F9FA;
+    border:solid 2px #B4B7C0;
+}
+
+::-webkit-scrollbar {
+width: 12px;
+}
+
+::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px     rgba(0,0,0,0.3);
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px     rgba(0,0,0,0.5);
+}
+.card-auction a{
+    text-decoration: none;
+}
+.card-auction img{
+    border-radius: 5px;
+}
+.card-auction{
+    border-radius: 5px;
+    overflow: hidden;
+}
+.card-auction{
+    max-width: 100%;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.card-auction:hover{
+    -moz-box-shadow: 0 0 5px black;
+    -webkit-box-shadow: 0 0 5px black;
+    box-shadow: 0px 0px 50px 10px  black;
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.card img{
+    overflow: hidden;
+    border-radius: 5px;
+}
+.card img{
+    max-width: 100%;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.card img:hover{
+    -moz-box-shadow: 0 0 5px black;
+    -webkit-box-shadow: 0 0 5px black;
+    box-shadow: 0px 0px 50px 10px  black;
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+.userInfor{
+    text-align: center;
+}
+
+.update-profile{
+    background-color: white;
+    margin: auto;
+    width:200px;
+    border-radius: 10px;
+    height: 250px;
+    border:2px #B4B7C0 solid;
+    float: right;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.profile-inputs{
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 0px 10px 0px;
+    width:180px;
+    color:brown;
+}
+
+.profile-update-button{
+    background-color: #4CAF50;
+    border: solid 1px #4CAF50;
+    color: white;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 33%;
+    margin-right: 38%;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+}
+.profile-update-button:hover{
+    background-color: white;
+    color: #4CAF50;
+    border: solid 1px #4CAF50;
+}
+
+#main-nav{
+    margin: auto;
+    margin-top:20px;
+    float:left;
+    z-index: 10;
+}
+
+#main-nav-buttons{
+    list-style-type: none;
+    margin-top: 54px;
+    float:right;
+}
+
+#main-nav {
+    width: 100%;
+    margin: auto;
+    height: 80px;
+    color: white;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 15;
+    background-color: #4CAF50;
+}
+#main-nav h1{
+    margin: auto;
+    margin-top:20px;
+    float:left;
+}
+
+.main-nav-button{
+    margin-top: 25px;
+    display: inline;
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: white;
+    margin-right:5px;
+}
+.main-nav-button a{
+    color:#4CAF50;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    width: 0px;
+    transition: 0.5s ease;
+    white-space: nowrap;
+}
+.main-nav-button a:hover{
+    text-decoration: none;
+    border-bottom: solid 1px #4CAF50;
+}
+
+#auction-body-container{
+    margin:auto;
+    position:relative;
+    top:120px;
+    margin-left:10%;
+    margin-right:10%;
+    background-color: white;
+    border-radius: 5px;
+    padding-bottom: 50px;
+    background-color: rgba(249, 249, 250, 0.90);
+    border: 2px solid #b6b9c2;
+}
+/*#auction-container{
+    position: relative;
+    top: 50px;
+    background-image: url('https://static1.squarespace.com/static/5436f6f4e4b07f1e91b331eb/t/557a259be4b028e09773e6ba/1434068393556/mlsouth.jpg?format=1500w');
+    background-size:cover;
+    background-attachment: fixed;
+    padding-top: 100px;
+}*/
+
+#auction-background{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://media.golfdigest.com/photos/585054bdba03cefc46ca21c1/master/pass/2017-01-Pine-Valley-GC-hole-11.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+
+.auction-bidding-box{
+    float:right;
+    border: 1px solid;
+    margin:auto;
+    width: 300px;
+    margin-top:70px;
+    background-color: #F9F9FA;
+    border-radius: 10px;
+    border: 2px #B4B7C0 solid;
+    margin-right:10%;
+    text-align: center;
+}
+
+#course-auction-bid-button{
+    list-style-type: none;
+}
+#course-auction-bid-button li{
+    display: inline-block;
+}
+
+
+.course-auction-delete{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+}
+
+.course-auction-delete:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.course-auction-bid-buttons a{
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+    margin-right: 10px
+}
+
+.course-auction-bid-buttons a:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.course-auction-text{
+    text-align: center;
+}
+
+#auction-image{
+    margin-left: 1%;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+#auction-image:active{
+    border-radius: 20px;
+    width:50%;
+    height: 500px;
+    z-index: 10;
+    position: relative;
+    left: 25%;
+}
+.auction-rating{
+    margin:auto;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+.course-auction-description{
+
+    margin:20px 10% 0% 10%;
+}
+.create-auction-box-container{
+    margin: auto;
+    margin-left: 36%;
+    margin-right: 37%;
+    width:400px;
+    position: relative;
+    top:270px;
+    border-radius: 5px;
+    background-color: #F9F9FA;
+}
+
+.create-auction-inputs {
+    margin-top:20px;
+}
+
+#create-auction-container{
+    height: 100vh;
+    background: url("http://www.golftripper.com/wp-content/uploads/2010/07/Olympic-Club-Lake-Hole-8-4-copy.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    text-align: center;
+}
+.react-selectize.root-node{
+    left:50px;
+    width:200px;
+}
+
+.create-auction-buttons{
+    background-color: #4CAF50;
+    /* Green */
+    /*font-size: 16px;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid 1px #4CAF50;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+    margin: 10px 10px 10px 0px;
+}
+.create-auction-buttons:hover{
+    background-color: white;
+    border: solid 1px #4CAF50;
+    color: #4CAF50;
+}
+.create-auction-buttons-left{
+    margin-left: 10px;
+}
+.create-auction-tee-time{
+    color:#4CAF50;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+}
+.create-auction-auction-ends{
+    padding-top: 10px;
+    color:#4CAF50;
+    padding-bottom: 10px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+}
+.create-auction-starting-bid{
+    color:#4CAF50;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+}
+
+.create-course-box-container{
+    margin: auto;
+    margin-left: 36%;
+    margin-right: 37%;
+    width:400px;
+    position: relative;
+    top:120px;
+    border-radius: 5px;
+    background-color: #F9F9FA;
+}
+
+.create-course-input{
+    color:#4CAF50;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 10px 10px 0px;
+    width:210px;
+}
+
+.create-course-input-button{
+    background-color: #4CAF50;
+    /* Green */
+    /*font-size: 16px;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid 1px #4CAF50;
+    margin: 10px 10px 10px 0px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+}
+
+.create-course-input-button:hover{
+    background-color: white;
+    border: solid 1px #4CAF50;
+    color: #4CAF50;
+}
+
+.create-course-input-text-box {
+    color:#4CAF50;
+    font-size: 15px;
+    border-radius: 3px;
+    color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 10px 10px 0px;
+    width:300px;
+}
+
+#favorite-body-container{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://images.akamai.steamusercontent.com/ugc/1457265578250890272/9D1ED6455CF8BA295E64A2BF4F4773B2E512AF60/") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+
+.favorite-options{
+    margin: auto;
+    margin: 10px 36% 20px 37%;
+    width:400px;
+    position: relative;
+    top:100px;
+    border-radius: 5px;
+    background-color: #F9F9FA;
+    text-align: center;
+}
+
+.favorite-options-create{
+    text-align: center;
+}
+
+.favorite-options-inputs{
+    margin-top: 20px;
+    text-align: center;
+}
+.favorite-options-inputs-buttons{
+    background-color: #4CAF50;
+    text-align: center;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid 1px #4CAF50;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+    margin: 20px 10px 10px 0px;
+}
+
+.favorite-options-inputs-buttons:hover{
+    background-color: white;
+    border: solid 1px #4CAF50;
+    color: #4CAF50;
+}
+
+.favorite-images{
+    /*float:left;*/
+    margin:auto;
+    margin-top: 150px;
+    margin-left: 19%;
+}
+
+.card{
+    float:left;
+    margin: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+
+.shadowCard:hover{
+    position: relative;
+    -moz-box-shadow: 0 0 5px black;
+    -webkit-box-shadow: 0 0 5px black;
+    box-shadow: 0px 0px 70px -15px  black;
+}
+
+.card-auction{
+    float:left;
+    margin: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    height: 420px;
+    background-color: white;
+    border: solid 1px #b9bcc5;
+    border-radius: 5px;
+}
+
+.auction-search-display-container{
+    margin:auto;
+    margin-top: 150px;
+    margin-left: 19%;
+}
+
+
+#auction-search-background{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://usgolftv.com/wp-content/uploads/Oakmont-3.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+.auction-search-inputs{
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color:white;
+}
+
+.auction-search-search-box{
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top:100px;
+    width: 400px;
+    background-color: #F9F9FA;
+    border: solid 1px #bababa;
+    border-radius: 5px;
+}
+
+.submit-search-button{
+    background-color: #4CAF50;
+    text-align: center;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid 1px #4CAF50;
+    margin: 15px 10px 10px 0px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+}
+
+.submit-search-button:hover{
+    background-color: white;
+    border: solid 1px #4CAF50;
+    color: #4CAF50;
+}
+
+.search-zip {
+    color:#4CAF50;
+    height:35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+    color: brown;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 0px 10px 1px 0px;
+    width:250px;
+}
+
+#bids-background-image{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("https://static1.squarespace.com/static/557c64bae4b0fd931dc0fdf3/t/557c6c23e4b0c0319fa78c6e/1434217517285/Clubhouse+-+%232.jpg?format=2500w") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+
+#search-course-background-image{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("https://static1.squarespace.com/static/557c64bae4b0fd931dc0fdf3/t/557c6c23e4b0c0319fa78c6e/1434217517285/Clubhouse+-+%232.jpg?format=2500w") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+#search-course-search-box{
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top:100px;
+    width: 400px;
+    background-color: #F9F9FA;
+    border: solid 1px #bababa;
+    border-radius: 5px;
+}
+
+#search-course-display{
+    position: relative;
+    margin:auto;
+    color:white;
+    text-decoration: none;
+}
+
+.course-search-imgs{
+    border-radius: 5px;
+    border: solid 1px #b9bcc5;
+}
+
+.auction-comments{
+    margin-top: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.comments {
+    margin:auto;
+    background-color: rgba(249, 249, 250, 0.90);
+    border-radius: 5px;
+    padding:5px;
+    margin-bottom: 20px;
+    color:black;
+    border: 2px solid #b6b9c2;
+}
+
+.comments-text{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.course-profile-info-box{
+    margin:auto;
+    position:relative;
+    top:120px;
+
+    margin-left:10%;
+    margin-right:10%;
+    background-color: white;
+    border-radius: 5px;
+    padding-bottom: 50px;
+    background-color: rgba(249, 249, 250, 0.90);
+    border: 2px solid #b6b9c2;
+}
+.course-profile-course-info{
+    float:right;
+    border: 1px solid;
+    margin:auto;
+    width: 330px;
+    height: 200px;
+    margin-top:70px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 2px #B4B7C0 solid;
+    margin-right:10%;
+    text-align: center;
+}
+.course-profile-img{
+    margin-left: 1%;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.course-profile-img:active{
+    border-radius: 20px;
+    width:50%;
+    height: 500px;
+    z-index: 10;
+    position: relative;
+    left: 25%;
+}
+.course-profile-button{
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+}
+
+.course-profile-button:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.course-profile-comments{
+    margin-top: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.course-profile-background-image{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://ncga.org/wp-content/uploads/2013/10/PGC1602-4368x2912.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+
+.course-profile-description{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.course-profile-rating{
+    margin-left: 1%;
+}
+.create-comment{
+    margin: auto;
+    background-color: rgba(249, 249, 250, 0.90);
+    width:400px;
+    position: relative;
+    top:300px;
+    text-align: center;
+    border-radius: 5px;
+    height: 300px;
+}
+.create-comment-textarea{
+    margin-top: 25px;
+    color:#4CAF50;
+    font-size: 15px;
+    border-radius: 3px;
+    color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    /*margin: 10px 10px 10px 0px;*/
+    width:300px;
+    text-align: left;
+    color: brown;
+}
+
+.create-comment-buttons{
+    margin-top: 20px;
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+}
+
+.create-comment-buttons:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+.create-comment-rating{
+    position: relative;
+    top: 15px;
+}
+.payment-window-container{
+    position: relative;
+    top: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.payment-window{
+    float:right;
+    border: 1px solid;
+    margin:auto;
+    width: 330px;
+    height: 320px;
+    margin-top:90px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 2px #B4B7C0 solid;
+    margin-right:10%;
+    text-align: center;
+}
+
+#payment-inputs{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   color: #bababa;
+    border: 1px solid #bababa;
+    background-color: #f6f6f6;
+    margin: 10px 10px 10px 0px;
+    width:210px;
+    color:brown;
+}
+
+#payment-inputs-button{
+    margin-top: 15px;
+    background-color: #4CAF50;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: solid #4CAF50 1px;
+    margin-right: 10px;
+    font-size: 15px;
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-duration: .5s;
+}
+
+#payment-inputs-button:hover{
+    background-color: white;
+    /*font-size: 1.0vw;*/
+    border: none;
+    color: #4CAF50;
+    border: solid #4CAF50 1px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.payment-image{
+    margin-left: 1%;
+    margin-top: 60px;
+    border-radius: 10px;
+    border: 2px solid #bababa;
+}
+
+.payment-image:active{
+    border-radius: 10px;
+    width:50%;
+    height: 500px;
+    width: 500px;
+    z-index: 10;
+    position: relative;
+    bottom:50px;
+    left: 25%;
+}
+
+
+#payment-background{
+    width:100%;
+    z-index: -5;
+    height:100vh;
+    position: fixed;
+
+    background: url("http://ww1.prweb.com/prfiles/2014/01/05/11462941/photo%20-%20Poppy%20Hills%2015.jpg") no-repeat center center fixed;
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+    color:white;
+}
+
+.card-image-hover:hover{
+    /*height: 310px;*/
+    /*width: 310px;*/
+}
