@@ -90,7 +90,7 @@ class AuctionSearch extends Component {
                 <div className="auction-search-search-box">
                     <SearchInfo yourAuctions={this.yourAuctions}updateSearchData={this.updateSearchData} run={true} auctions={this.state.url}/>
                 </div>
-                <div>
+                <div className = 'auction-display-container'>
                     <DisplayAuctions key ={this.state.key} url={this.state.url}/>
                 </div>
             </div>

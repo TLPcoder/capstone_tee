@@ -87,13 +87,17 @@
 .create-account-a{
     margin-top: 30px;
     font-size: 20px;
+    text-decoration: none;
+    color:brown;
+}
+.create-account-a:hover{
+    font-size: 22px;
 }
 .create-account-container{
     text-align: center;
     background-color: white;
     /*margin-top: 270px;*/
-    margin-left: 37%;
-    margin-right: 37%;
+    margin:auto;
     border-radius: 10px;
     width:300px;
     height: 420px;
@@ -163,6 +167,7 @@ body{
     left: 0;
     position: fixed;
     background-color: #4CAF50;
+    z-index: 10;
 }
 #profile-nav h1{
     margin: auto;
@@ -170,10 +175,8 @@ body{
     float:left;
 }
 .headshot{
-    margin-right;
     margin: auto;
     margin-top:20px;
-    margin-left:5%;
     text-align: center;
     border-radius: 50%;
 }
@@ -221,12 +224,14 @@ border-radius: 10px;
 .card-auction a{
     text-decoration: none;
 }
-.card-auction img{
+
+/*figure out bug when you try the shadow transition with the whole div rather than just the image*/
+.card-auction{
     border-radius: 5px;
 }
 .card-auction{
-    border-radius: 5px;
     overflow: hidden;
+    border-radius: 5px;
 }
 .card-auction{
     max-width: 100%;
@@ -235,6 +240,7 @@ border-radius: 10px;
     transition: all 0.5s;
 }
 .card-auction:hover{
+    z-index: 1;
     -moz-box-shadow: 0 0 5px black;
     -webkit-box-shadow: 0 0 5px black;
     box-shadow: 0px 0px 50px 10px  black;
@@ -248,7 +254,7 @@ border-radius: 10px;
     border-radius: 5px;
 }
 .card img{
-    max-width: 100%;
+    /*max-width: 100%;*/
     -moz-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -409,7 +415,6 @@ border-radius: 10px;
     background-color: #F9F9FA;
     border-radius: 10px;
     border: 2px #B4B7C0 solid;
-    margin-right:10%;
     text-align: center;
 }
 
@@ -509,13 +514,14 @@ border-radius: 10px;
 }
 .create-auction-box-container{
     margin: auto;
-    margin-left: 36%;
-    margin-right: 37%;
     width:400px;
     position: relative;
     top:270px;
     border-radius: 5px;
     background-color: #F9F9FA;
+}
+.auction-display-container{
+    margin:auto;
 }
 
 .create-auction-inputs {
@@ -670,23 +676,25 @@ border-radius: 10px;
     z-index: -5;
     height:100vh;
     position: fixed;
-
+    /*margin: auto;*/
     background: url("http://images.akamai.steamusercontent.com/ugc/1457265578250890272/9D1ED6455CF8BA295E64A2BF4F4773B2E512AF60/") no-repeat center center fixed;
     background-size:cover;
     background-position:center center;
     background-attachment:fixed;
     color:white;
 }
-
+.favorite-display{
+    margin: auto;
+}
 .favorite-options{
     margin: auto;
-    margin: 10px 36% 20px 37%;
     width:400px;
     position: relative;
     top:100px;
     border-radius: 5px;
     background-color: #F9F9FA;
     text-align: center;
+    margin-bottom: -200px
 }
 
 .favorite-options-create{

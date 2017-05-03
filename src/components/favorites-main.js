@@ -61,28 +61,28 @@ class FavoriteMain extends Component {
         }
     }
     render() {
-        var positionMargin;
-        if(this.state.courses.length === 1){
-            positionMargin = {
-                margin:'auto',
-                marginTop: '150px',
-                marginLeft: '40%'
+        var userId = this.getUserId();
+        var style;
+        console.log('something',this.state);
+        if(this.state.courses.length >= 3){
+            style = {
+                'width':'937px',
+                'position':'relative',
+                'top':'200px'
             };
         }else if(this.state.courses.length === 2){
-            positionMargin = {
-                margin:'auto',
-                marginTop: '150px',
-                marginLeft: '30%'
+            style = {
+                'width':'625px',
+                'position':'relative',
+                'top':'200px'
             };
         }else{
-            positionMargin = {
-                margin:'auto',
-                marginTop: '150px',
-                marginLeft: '19%'
+            style = {
+                'width':'300px',
+                'position':'relative',
+                'top':'200px'
             };
         }
-        var userId = this.getUserId();
-        console.log("add course", this.state.addCourse)
         if(this.state.deleteFavorite){
             return (
                 <div>
@@ -91,7 +91,7 @@ class FavoriteMain extends Component {
                     <div className="favorite-options">
                         <DeleteFavorite addedFavorite={this.addedFavorite} deleteFavorite={this.deleteFavorite} deleteFavoriteCourse={this.deleteFavoriteCourse}/>
                     </div>
-                    <div>
+                    <div className = "favorite-display" style={style}>
                         <GridDisplay courseData={this.state.courses} addCourse={this.addCourse}/>
                     </div>
                 </div>
@@ -104,7 +104,7 @@ class FavoriteMain extends Component {
                     <div className="favorite-options">
                         <AddFavorite deleteFavorite={this.deleteFavorite} addedFavorite={this.addedFavorite} addCourse={this.addCourse}/>
                     </div>
-                    <div>
+                    <div className = "favorite-display" style={style}>
                         <GridDisplay courses={this.state.courses.length} courseData={this.state.courses} addCourse={this.addCourse}/>
                     </div>
                 </div>

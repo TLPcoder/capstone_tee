@@ -35,29 +35,33 @@ class DisplaySearch extends Component{
             color:'white',
             textDecoration: 'none'
         };
-        var json = this.state.json;
-        var length = json.length;
-        var positionMargin;
-        if(json.length === 1){
-            positionMargin = {
-                margin:'auto',
-                marginTop: '150px',
-                marginLeft: '40%'
+        var style;
+        console.log('something',this.state);
+        if(this.state.json.length >= 3){
+            style = {
+                'width':'937px',
+                'position':'relative',
+                'top':'200px',
+                'margin':'auto'
             };
-        }else if(json.length === 2){
-            positionMargin = {
-                margin:'auto',
-                marginTop: '150px',
-                marginLeft: '30%'
+        }else if(this.state.json.length === 2){
+            style = {
+                'width':'625px',
+                'position':'relative',
+                'top':'200px',
+                'margin':'auto'
             };
         }else{
-            positionMargin = {
-                margin:'auto',
-                marginTop: '150px',
-                marginLeft: '19%'
+            style = {
+                'width':'300px',
+                'position':'relative',
+                'top':'200px',
+                'margin':'auto'
             };
         }
-        console.log("all courses", json);
+        var json = this.state.json;
+        var length = json.length;
+
         var all = json.map(function(element) {
             var url;
             if(element.course_id){
@@ -83,7 +87,7 @@ class DisplaySearch extends Component{
             )
         }
         return(
-            <div style={positionMargin}>
+            <div style = {style}>
                 {all}
             </div>
         )

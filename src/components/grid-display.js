@@ -14,32 +14,8 @@ class GridDisplay extends Component {
         return data;
     }
     render() {
-        var positionMargin;
-        if(this.props.courseData.length === 1){
-            positionMargin = {
-                margin:'auto',
-                position: 'relative',
-                top:'150px',
-                marginLeft: '40.5%'
-            };
-        }else if(this.props.courseData.length === 2){
-            positionMargin = {
-                margin:'auto',
-                position: 'relative',
-                top:'150px',
-                marginLeft: '30%'
-            };
-        }else{
-            positionMargin = {
-                margin:'auto',
-                position: 'relative',
-                top:'150px',
-                marginLeft: '18%'
-            };
-        }
         var userId = this.getUserId();
         var key = 0;
-        console.log("bids", this.props.courseData)
         var favorites = this.props.courseData.map((course) =>{
             key++;
             if (course.owner_id === userId * 1) {
@@ -49,9 +25,36 @@ class GridDisplay extends Component {
                 <CreateCard dataAuction={course} key={key}/>
             )
         });
+        var style;
+        console.log("PROPS", this.props)
+        if(this.props.courseData.length >= 3){
+            console.log('length', this.props.courseData.length)
+            style = {
+                'width':'937px',
+                'position':'relative',
+                'top':'200px',
+                'margin':'auto'
+            };
+        }else if(this.props.courseData.length === 2){
+            console.log('length', this.props.courseData.length)
+            style = {
+                'width':'629px',
+                'position':'relative',
+                'top':'200px',
+                'margin':'auto'
+            };
+        }else{
+            console.log('length', this.props.courseData.length)
+            style = {
+                'width':'300px',
+                'position':'relative',
+                'top':'200px',
+                'margin':'auto'
+            };
+        }
         if(this.props.courseData){
             return(
-                <div style={positionMargin}>{favorites}</div>
+                <div style={style}>{favorites}</div>
             )
         }
     }

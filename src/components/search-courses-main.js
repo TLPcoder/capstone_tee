@@ -50,8 +50,6 @@ class SearchCourse extends Component {
         }
     }
     render() {
-        console.log("hellllllllloooooo thhhhhheeerrreeee",this.state);
-        console.log("state main", this.state);
         return (
             <div>
                 <div id = "search-course-background-image"></div>
