@@ -10,6 +10,7 @@ module.exports = {
            max: 1
        }
   },
+  production: { client: 'postgresql', connection: process.env.DATABASE_URL },
   test: {
         client: 'postgresql',
         connection: "postgres://localhost/golf-bid-test",

@@ -46,9 +46,7 @@
     "react-star-rating": "^1.4.2",
     "react-toolbox": "^2.0.0-beta.6",
     "redux": "^3.0.4",
-    "sendmail": "^1.1.1"
-  },
-  "devDependencies": {
+    "sendmail": "^1.1.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
     "babel-polyfill": "^6.23.0",
@@ -64,5 +62,7 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
+  },
+  "devDependencies": {
   }
 }
