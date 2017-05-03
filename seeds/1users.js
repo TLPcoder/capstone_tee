@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
             first_name: 'Trevor',
             last_name: 'Pellegrini',
             username: 'TPslicer',
-            email: 'trevor@gmail.com',
+            email: 'trevorpellegrini@gmail.com',
             hashed_password: 'password',
             zip:94030,
             image:'https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/8/005/090/289/3ca32fd.jpg',

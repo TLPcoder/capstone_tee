@@ -88,7 +88,7 @@ router.put('/delete', function(req, res) {
             biderData.forEach((user) => {
                 sendmail({
                     from: 'teebaytlp@gmail.com',
-                    to: `trevorpellegrini@gmail.com`,
+                    to: `${user[0].email}`,
                     cc: 'trevorpellegrini@gmail.com',
                     subject: 'Auction Cancelled',
                     html: `The auction at ${user.name} as been cancelled`,
