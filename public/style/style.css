@@ -229,7 +229,7 @@ border-radius: 10px;
 .card-auction{
     border-radius: 5px;
 }
-.card-auction{
+/*.card-auction{
     overflow: hidden;
     border-radius: 5px;
 }
@@ -247,7 +247,7 @@ border-radius: 10px;
     -moz-transform: scale(1.05);
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
-}
+}*/
 
 .card img{
     overflow: hidden;
