@@ -41,7 +41,7 @@ class DisplayAuctions extends Component{
         if(json.length >= 3){
             console.log('length',json.length);
             style = {
-                'width':'944px',
+                'width':'945px',
                 'position':'relative',
                 'top':'200px',
                 'margin':'auto'
