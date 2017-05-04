@@ -1,6 +1,4 @@
 Live:https://teebay.herokuapp.com/#/login
-demo-user: username:BP 
-           password:something
 
 project:
 Tee-Bay
